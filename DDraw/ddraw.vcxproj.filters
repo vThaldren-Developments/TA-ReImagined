@@ -404,6 +404,9 @@
     <ClInclude Include="patcher.h">
       <Filter>Source Files\Thaldren_additions</Filter>
     </ClInclude>
+    <ClInclude Include="mymod.h">
+      <Filter>Source Files\Thaldren_additions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="bitmaps\3stagedbutton.pcx">

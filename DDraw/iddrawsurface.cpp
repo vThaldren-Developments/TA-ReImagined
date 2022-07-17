@@ -187,11 +187,15 @@ IDDrawSurface::IDDrawSurface(LPDIRECTDRAW lpDD, LPDDSURFACEDESC lpTAddsc, LPDIRE
 
 
 	SettingsDialog = new Dialog(VidMem);
-	//WhiteBoard = new AlliesWhiteboard(VidMem);
+#ifndef REIMAGINED
+	WhiteBoard = new AlliesWhiteboard(VidMem);
+#endif
 	Income = new CIncome(VidMem);
 	TAHook = new CTAHook(VidMem);
 	CommanderWarp = new CWarp(VidMem);
-	//SharedRect = new CMapRect(VidMem);
+#ifndef REIMAGINED
+	SharedRect = new CMapRect(VidMem);
+#endif
 	ChangeQueue = new CChangeQueue;
 	DDDTA = new CDDDTA;
 
@@ -267,17 +271,20 @@ ULONG __stdcall IDDrawSurface::Release()
 	}
 
 
-
+#ifndef REIMAGINED
 	delete WhiteBoard;
 	WhiteBoard = NULL;
+#endif
 	//delete Income;
 	//Income = NULL;
 	delete TAHook;
 	TAHook = NULL;
 	delete CommanderWarp;
 	CommanderWarp = NULL;
+#ifndef REIMAGINED
 	delete SharedRect;
 	SharedRect = NULL;
+#endif
 	//delete SettingsDialog;
 	//SettingsDialog = NULL;
 	delete ChangeQueue;
@@ -756,18 +763,25 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 
 
 
-
+#ifndef REIMAGINED
 				if (GameingState_P
 					&& (gameingstate::MULTI == GameingState_P->State))
 				{
-					SharedRect->LockBlit((char*)SurfaceMemory, lPitch);
+					if (DataShare->TAProgress == TAInGame)
+					{
+						SharedRect->LockBlit((char*)SurfaceMemory, lPitch);
+					}
 				}
+#endif
 
 #ifdef USEMEGAMAP
 				if ((GUIExpander)
 					&& (GUIExpander->myMinimap))
 				{
-					GUIExpander->myMinimap->LockBlit((char*)SurfaceMemory, dwWidth, dwHeight, lPitch);
+					if (DataShare->TAProgress == TAInGame)
+					{
+						GUIExpander->myMinimap->LockBlit((char*)SurfaceMemory, dwWidth, dwHeight, lPitch);
+					}
 				}
 #endif
 			
@@ -1590,9 +1604,11 @@ LRESULT CALLBACK WinProc(HWND WinProcWnd, UINT Msg, WPARAM wParam, LPARAM lParam
 		}
 		//////////////////////////////////////////////////////////////////////////
 
-		//if ((NULL != LocalShare->Whiteboard)
-		//	&& (((AlliesWhiteboard*)LocalShare->Whiteboard)->Message(WinProcWnd, Msg, wParam, lParam)))
-		//	return 0;
+#ifndef REIMAGINED
+		if ((NULL != LocalShare->Whiteboard)
+			&& (((AlliesWhiteboard*)LocalShare->Whiteboard)->Message(WinProcWnd, Msg, wParam, lParam)))
+			return 0;
+#endif
 
 		if ((NULL != LocalShare->Income)
 			&& (((CIncome*)LocalShare->Income)->Message(WinProcWnd, Msg, wParam, lParam)))

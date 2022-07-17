@@ -128,7 +128,9 @@ bool CTAHook::Message(HWND WinProcWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 				switch((int)wParam)
 				{
 				case 122: //f11
+#ifndef REIMAGINED
 					WriteShareMacro();
+#endif
 					return true;
 
 				case 33:  //pageup

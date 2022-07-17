@@ -117,12 +117,15 @@ AlliesWhiteboard::AlliesWhiteboard(BOOL VidMem)
 
 AlliesWhiteboard::~AlliesWhiteboard()
 {
+#ifndef REIMAGNINED
 	if(lpInputBox)
 		lpInputBox->Release();
 	lpInputBox= NULL;
 	if(lpSmallCircle)
 		lpSmallCircle->Release();
 	lpSmallCircle= NULL;
+#endif
+
 
 }
 

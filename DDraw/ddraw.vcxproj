@@ -675,6 +675,7 @@
     <ClInclude Include="headers.h" />
     <ClInclude Include="MegamapControl.h" />
     <ClInclude Include="megamaptastuff.h" />
+    <ClInclude Include="mymod.h" />
     <ClInclude Include="patcher.h" />
     <ClInclude Include="ProjectilesMap.h">
       <FileType>CppCode</FileType>

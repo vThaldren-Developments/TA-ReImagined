@@ -27,6 +27,9 @@ char* ____Sounds_Folder;
 char* ____Sounds2_Folder; // explode.wav
 
 
+char* ____Download_Folder;
+
+
 LPVOID ____NewDataFile_Hook_1_Return;// = (LPVOID)0x0041D4E5;
 
 
@@ -168,41 +171,44 @@ void MyMod()
 	____Registry_Keys_Root = (char*)____malloc(sizeof("TA ReImagined"));
 	____memcpy(____Registry_Keys_Root, (LPVOID)"TA ReImagined", sizeof("TA ReImagined"));
 
-	//____Units_Folder = (char*)____malloc(sizeof("ReIm_Units"));
-	//____memcpy(____Units_Folder, (LPVOID)"ReIm_Units", sizeof("ReIm_Units"));
+	____Units_Folder = (char*)____malloc(sizeof("ReIm_Units"));
+	____memcpy(____Units_Folder, (LPVOID)"ReIm_Units", sizeof("ReIm_Units"));
 
-	//____Weapons_Folder = (char*)____malloc(sizeof("ReIm_Weapons"));
-	//____memcpy(____Weapons_Folder, (LPVOID)"ReIm_Weapons", sizeof("ReIm_Weapons"));
+	____Weapons_Folder = (char*)____malloc(sizeof("ReIm_Weapons"));
+	____memcpy(____Weapons_Folder, (LPVOID)"ReIm_Weapons", sizeof("ReIm_Weapons"));
 
-	//____Weapons_Folder_TDFs = (char*)____malloc(sizeof("ReIm_Weapons\\*.tdf"));
-	//____memcpy(____Weapons_Folder_TDFs, (LPVOID)"ReIm_Weapons\\*.tdf", sizeof("ReIm_Weapons\\*.tdf"));
+	____Weapons_Folder_TDFs = (char*)____malloc(sizeof("ReIm_Weapons\\*.tdf"));
+	____memcpy(____Weapons_Folder_TDFs, (LPVOID)"ReIm_Weapons\\*.tdf", sizeof("ReIm_Weapons\\*.tdf"));
 
-	//____Models_Folder = (char*)____malloc(sizeof("ReIm_Models"));
-	//____memcpy(____Models_Folder, (LPVOID)"ReIm_Models", sizeof("ReIm_Models"));
+	____Models_Folder = (char*)____malloc(sizeof("ReIm_Models"));
+	____memcpy(____Models_Folder, (LPVOID)"ReIm_Models", sizeof("ReIm_Models"));
 
-	//____Scripts_Folder = (char*)____malloc(sizeof("ReIm_Scripts"));
-	//____memcpy(____Scripts_Folder, (LPVOID)"ReIm_Scripts", sizeof("ReIm_Scripts"));
+	____Scripts_Folder = (char*)____malloc(sizeof("ReIm_Scripts"));
+	____memcpy(____Scripts_Folder, (LPVOID)"ReIm_Scripts", sizeof("ReIm_Scripts"));
 
-	//____GameData_Folder = (char*)____malloc(sizeof("ReIm_GameData"));
-	//____memcpy(____GameData_Folder, (LPVOID)"ReIm_GameData", sizeof("ReIm_GameData"));
+	____GameData_Folder = (char*)____malloc(sizeof("ReIm_GameData"));
+	____memcpy(____GameData_Folder, (LPVOID)"ReIm_GameData", sizeof("ReIm_GameData"));
 
-	//____GameData2_Folder = (char*)____malloc(sizeof("ReIm_GameData\\translate.tdf"));
-	//____memcpy(____GameData2_Folder, (LPVOID)"ReIm_GameData\\translate.tdf", sizeof("ReIm_GameData\\translate.tdf"));
+	____GameData2_Folder = (char*)____malloc(sizeof("ReIm_GameData\\translate.tdf"));
+	____memcpy(____GameData2_Folder, (LPVOID)"ReIm_GameData\\translate.tdf", sizeof("ReIm_GameData\\translate.tdf"));
 
-	//____GUIs_Folder = (char*)____malloc(sizeof("ReIm_GUIs"));
-	//____memcpy(____GUIs_Folder, (LPVOID)"ReIm_GUIs", sizeof("ReIm_GUIs"));
+	____GUIs_Folder = (char*)____malloc(sizeof("ReIm_GUIs"));
+	____memcpy(____GUIs_Folder, (LPVOID)"ReIm_GUIs", sizeof("ReIm_GUIs"));
 
-	//____Features_Folder = (char*)____malloc(sizeof("ReIm_Features"));
-	//____memcpy(____Features_Folder, (LPVOID)"ReIm_Features", sizeof("ReIm_Features"));
+	____Features_Folder = (char*)____malloc(sizeof("ReIm_Features"));
+	____memcpy(____Features_Folder, (LPVOID)"ReIm_Features", sizeof("ReIm_Features"));
 
-	//____Anims_Folder = (char*)____malloc(sizeof("ReIm_Anims"));
-	//____memcpy(____Anims_Folder, (LPVOID)"ReIm_Anims", sizeof("ReIm_Anims"));
+	____Anims_Folder = (char*)____malloc(sizeof("ReIm_Anims"));
+	____memcpy(____Anims_Folder, (LPVOID)"ReIm_Anims", sizeof("ReIm_Anims"));
 
-	//____Sounds_Folder = (char*)____malloc(sizeof("ReIm_Sounds"));
-	//____memcpy(____Sounds_Folder, (LPVOID)"ReIm_Sounds", sizeof("ReIm_Sounds"));
+	____Sounds_Folder = (char*)____malloc(sizeof("ReIm_Sounds"));
+	____memcpy(____Sounds_Folder, (LPVOID)"ReIm_Sounds", sizeof("ReIm_Sounds"));
 
-	//____Sounds2_Folder = (char*)____malloc(sizeof("ReIm_Sounds\\explode.wav"));
-	//____memcpy(____Sounds2_Folder, (LPVOID)"ReIm_Sounds\\explode.wav", sizeof("ReIm_Sounds\\explode.wav"));
+	____Sounds2_Folder = (char*)____malloc(sizeof("ReIm_Sounds\\explode.wav"));
+	____memcpy(____Sounds2_Folder, (LPVOID)"ReIm_Sounds\\explode.wav", sizeof("ReIm_Sounds\\explode.wav"));
+
+	____Download_Folder = (char*)____malloc(sizeof("ReIm_Download"));
+	____memcpy(____Download_Folder, (LPVOID)"ReIm_Download", sizeof("ReIm_Download"));
 
 	____NewDataFile_Hook_1_Return = (LPVOID)0x0041D4E5;
 
@@ -224,12 +230,12 @@ void MyMod()
 	WriteJumpHook((LPVOID)0x0041D4C0, (LPVOID)____NewDataFile_Hook_1_HelperA);
 
 	// units
-	//*((DWORD*)(0x0042AA25+1)) = (DWORD)____Units_Folder;
-	//*((DWORD*)(0x0042AB68+1)) = (DWORD)____Units_Folder;
-	//*((DWORD*)(0x0042ABDC+1)) = (DWORD)____Units_Folder;
-	//*((DWORD*)(0x0042D24A+1)) = (DWORD)____Units_Folder;
-	//*((DWORD*)(0x0042D6F1+1)) = (DWORD)____Units_Folder;
-	//*((DWORD*)(0x00436C7E+1)) = (DWORD)____Units_Folder;
+	*((DWORD*)(0x0042AA25+1)) = (DWORD)____Units_Folder;
+	*((DWORD*)(0x0042AB68+1)) = (DWORD)____Units_Folder;
+	*((DWORD*)(0x0042ABDC+1)) = (DWORD)____Units_Folder;
+	*((DWORD*)(0x0042D24A+1)) = (DWORD)____Units_Folder;
+	*((DWORD*)(0x0042D6F1+1)) = (DWORD)____Units_Folder;
+	*((DWORD*)(0x00436C7E+1)) = (DWORD)____Units_Folder;
 
 
 
@@ -242,62 +248,67 @@ void MyMod()
 
 
 
-	//*((DWORD*)(0x0042A98B+1)) = (DWORD)____Weapons_Folder;
-	//*((DWORD*)(0x0042E39B+1)) = (DWORD)____Weapons_Folder;
+	*((DWORD*)(0x0042A98B+1)) = (DWORD)____Weapons_Folder;
+	*((DWORD*)(0x0042E39B+1)) = (DWORD)____Weapons_Folder;
 
 
-	//*((DWORD*)(0x0042A8EC+1)) = (DWORD)____Weapons_Folder_TDFs;
-	//*((DWORD*)(0x0042E350+1)) = (DWORD)____Weapons_Folder_TDFs;
+	*((DWORD*)(0x0042A8EC+1)) = (DWORD)____Weapons_Folder_TDFs;
+	*((DWORD*)(0x0042E350+1)) = (DWORD)____Weapons_Folder_TDFs;
 
 
-	//// this may break some maps that use TAFeatures213.ccx
-	//*((DWORD*)(0x0042A2D9+1)) = (DWORD)____Models_Folder;
-	//*((DWORD*)(0x0042D753+1)) = (DWORD)____Models_Folder;
-	//*((DWORD*)(0x0042ED0A+1)) = (DWORD)____Models_Folder;
+	// this may break some maps that use TAFeatures213.ccx
+	*((DWORD*)(0x0042A2D9+1)) = (DWORD)____Models_Folder;
+	*((DWORD*)(0x0042D753+1)) = (DWORD)____Models_Folder;
+	*((DWORD*)(0x0042ED0A+1)) = (DWORD)____Models_Folder;
 
 
-	//*((DWORD*)(0x0042A64F+1)) = (DWORD)____Scripts_Folder;
-	//*((DWORD*)(0x0042D284+1)) = (DWORD)____Scripts_Folder;
-	//*((DWORD*)(0x0042D8DF+1)) = (DWORD)____Scripts_Folder;
-
-
-
-
-	//*((DWORD*)(0x0042901E + 1)) = (DWORD)____GameData_Folder;
-	//*((DWORD*)(0x00429EB1 + 1)) = (DWORD)____GameData_Folder;
-	//*((DWORD*)(0x0042D301 + 1)) = (DWORD)____GameData_Folder;
-	//*((DWORD*)(0x0042D945 + 1)) = (DWORD)____GameData_Folder;
-	//*((DWORD*)(0x0042F5B7 + 1)) = (DWORD)____GameData_Folder;
-	//*((DWORD*)(0x0042F802 + 1)) = (DWORD)____GameData_Folder;
-	//*((DWORD*)(0x00431A81 + 1)) = (DWORD)____GameData_Folder;
-	//*((DWORD*)(0x00433150 + 1)) = (DWORD)____GameData_Folder;
-	//*((DWORD*)(0x00438340 + 1)) = (DWORD)____GameData_Folder;
-	//*((DWORD*)(0x0045F8FA + 1)) = (DWORD)____GameData_Folder;
-
-	//*((DWORD*)(0x0049EA2E + 1)) = (DWORD)____GameData2_Folder;
+	*((DWORD*)(0x0042A64F+1)) = (DWORD)____Scripts_Folder;
+	*((DWORD*)(0x0042D284+1)) = (DWORD)____Scripts_Folder;
+	*((DWORD*)(0x0042D8DF+1)) = (DWORD)____Scripts_Folder;
 
 
 
-	//*((DWORD*)(0x0041AD2C + 1)) = (DWORD)____GUIs_Folder;
-	//*((DWORD*)(0x0042A6FE + 1)) = (DWORD)____GUIs_Folder;
-	//*((DWORD*)(0x0042A752 + 1)) = (DWORD)____GUIs_Folder;
-	//*((DWORD*)(0x0042D82A + 1)) = (DWORD)____GUIs_Folder;
-	//*((DWORD*)(0x0042D888 + 1)) = (DWORD)____GUIs_Folder;
-	//*((DWORD*)(0x004914C2 + 1)) = (DWORD)____GUIs_Folder;
 
-	//// this will render TAFeatures2013 useless!
-	//*((DWORD*)(0x00422324 + 1)) = (DWORD)____Features_Folder;
-	//*((DWORD*)(0x00437183 + 1)) = (DWORD)____Features_Folder;
+	*((DWORD*)(0x0042901E + 1)) = (DWORD)____GameData_Folder;
+	*((DWORD*)(0x00429EB1 + 1)) = (DWORD)____GameData_Folder;
+	*((DWORD*)(0x0042D301 + 1)) = (DWORD)____GameData_Folder;
+	*((DWORD*)(0x0042D945 + 1)) = (DWORD)____GameData_Folder;
+	*((DWORD*)(0x0042F5B7 + 1)) = (DWORD)____GameData_Folder;
+	*((DWORD*)(0x0042F802 + 1)) = (DWORD)____GameData_Folder;
+	*((DWORD*)(0x00431A81 + 1)) = (DWORD)____GameData_Folder;
+	*((DWORD*)(0x00433150 + 1)) = (DWORD)____GameData_Folder;
+	*((DWORD*)(0x00438340 + 1)) = (DWORD)____GameData_Folder;
+	*((DWORD*)(0x0045F8FA + 1)) = (DWORD)____GameData_Folder;
+
+	*((DWORD*)(0x0049EA2E + 1)) = (DWORD)____GameData2_Folder;
 
 
-	//*((DWORD*)(0x00422712 + 1)) = (DWORD)____Anims_Folder;
-	//*((DWORD*)(0x00429758 + 1)) = (DWORD)____Anims_Folder;
-	//*((DWORD*)(0x004914D9 + 1)) = (DWORD)____Anims_Folder;
 
-	//*((DWORD*)(0x0047F014 + 1)) = (DWORD)____Sounds_Folder;
-	//*((DWORD*)(0x0047FE6A + 1)) = (DWORD)____Sounds_Folder;
+	*((DWORD*)(0x0041AD2C + 1)) = (DWORD)____GUIs_Folder;
+	*((DWORD*)(0x0042A6FE + 1)) = (DWORD)____GUIs_Folder;
+	*((DWORD*)(0x0042A752 + 1)) = (DWORD)____GUIs_Folder;
+	*((DWORD*)(0x0042D82A + 1)) = (DWORD)____GUIs_Folder;
+	*((DWORD*)(0x0042D888 + 1)) = (DWORD)____GUIs_Folder;
+	*((DWORD*)(0x004914C2 + 1)) = (DWORD)____GUIs_Folder;
 
-	//*((DWORD*)(0x0045DC6F + 1)) = (DWORD)____Sounds2_Folder;
+	// this will render TAFeatures2013 useless!
+	*((DWORD*)(0x00422324 + 1)) = (DWORD)____Features_Folder;
+	*((DWORD*)(0x00437183 + 1)) = (DWORD)____Features_Folder;
+
+
+	*((DWORD*)(0x00422712 + 1)) = (DWORD)____Anims_Folder;
+	*((DWORD*)(0x00429758 + 1)) = (DWORD)____Anims_Folder;
+	*((DWORD*)(0x004914D9 + 1)) = (DWORD)____Anims_Folder;
+
+	*((DWORD*)(0x0047F014 + 1)) = (DWORD)____Sounds_Folder;
+	*((DWORD*)(0x0047FE6A + 1)) = (DWORD)____Sounds_Folder;
+
+	*((DWORD*)(0x0045DC6F + 1)) = (DWORD)____Sounds2_Folder;
+
+
+	*((DWORD*)(0x0042A7A4 + 1)) = (DWORD)____Download_Folder;
+	*((DWORD*)(0x0042DD0E + 1)) = (DWORD)____Download_Folder;
+	*((DWORD*)(0x0042DDB0 + 1)) = (DWORD)____Download_Folder;
 
 
 	// EXE Hacks
@@ -318,9 +329,9 @@ void MyMod()
 		0x08, 0x01, 0x00, 0x00, 0x00, 0x75, 0x5E, 0x66, 0x8B, 0x88, 0xA6, 0x00, 0x00, 0x00, 0x8B, 0xD6
 	};
 
-	BYTE TargetLocking2[] = {
-		/*0x0F, 0x85,*/ 0xA4, /*0xFE, 0xFF, 0xFF, 0xA1, 0xE8, 0x1D, 0x51, 0x00, 0x33, 0xC9, 0x8B, 0x74, 0x24*/
-	};
+	//BYTE TargetLocking2[] = {
+		///*0x0F, 0x85,*/ 0xA4, /*0xFE, 0xFF, 0xFF, 0xA1, 0xE8, 0x1D, 0x51, 0x00, 0x33, 0xC9, 0x8B, 0x74, 0x24*/
+	//};
 
 
 	____memcpy((LPVOID)0x00408A20, TargetLocking1, sizeof(TargetLocking1));
