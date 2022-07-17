@@ -19,7 +19,7 @@ using namespace std;
 #include "fullscreenminimap.h"
 #include "GUIExpand.h"
 
-
+extern BYTE* WeaponTypeDefinitions;
 
 ExternHotKey * myExternHotKey;
 
@@ -735,7 +735,7 @@ int ExternHotKey::InitExternTypeMask (void)
 	UnitDefStruct * Begin= TAMainStruct_Ptr->UnitDef;
 	UnitDefStruct * Current;
 	int TypeCount= TAMainStruct_Ptr->UNITINFOCount;
-	unsigned long NoWeaponPtr= reinterpret_cast<unsigned long> (NowCrackLimit->NowIncreaseWeaponTypeLimit->CurtPtr);
+	unsigned long NoWeaponPtr= reinterpret_cast<unsigned long> (WeaponTypeDefinitions /*NowCrackLimit->NowIncreaseWeaponTypeLimit->CurtPtr*/);
 
 	int Inited= 0;
 

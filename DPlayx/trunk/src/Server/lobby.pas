@@ -3,7 +3,7 @@ unit lobby;
 interface
 
 uses
-  packet, dplay, textdata, logging, math, dialogs, sysutils;
+  packet_old, dplay, textdata, logging, math, dialogs, sysutils;
 
 { $ 2 0}
 type

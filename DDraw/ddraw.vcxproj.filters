@@ -79,6 +79,9 @@
     <Filter Include="Source Files\Functions\externFromChina\externcontrol">
       <UniqueIdentifier>{c59a4664-b027-4d60-ac31-5f5b6f2143d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Thaldren_additions">
+      <UniqueIdentifier>{b00497b5-0a52-4e38-99da-90fc83633838}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ddraw.cpp">
@@ -386,8 +389,20 @@
     <ClInclude Include="ExternhotKey.h">
       <Filter>Header Files\Functions\externFromChina</Filter>
     </ClInclude>
-    <ClInclude Include="newglobals.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="defines.h">
+      <Filter>Source Files\Thaldren_additions</Filter>
+    </ClInclude>
+    <ClInclude Include="Thaldren_weaponids.h">
+      <Filter>Source Files\Thaldren_additions</Filter>
+    </ClInclude>
+    <ClInclude Include="builtin.h">
+      <Filter>Source Files\Thaldren_additions</Filter>
+    </ClInclude>
+    <ClInclude Include="headers.h">
+      <Filter>Source Files\Thaldren_additions</Filter>
+    </ClInclude>
+    <ClInclude Include="patcher.h">
+      <Filter>Source Files\Thaldren_additions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -435,6 +450,7 @@
     </None>
     <None Include="ddraw.def" />
     <None Include="tdraw.def" />
+    <None Include="idraw.def" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ddraw.rc">

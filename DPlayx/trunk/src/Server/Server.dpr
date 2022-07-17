@@ -4,7 +4,7 @@ uses
   Forms,
   main in 'main.pas' {fmMain},
   tasv in 'tasv.pas',
-  packet in '..\packet.pas',
+  packet_old in '..\packet_old.pas',
   textdata in '..\TextData.pas',
   lobby in 'lobby.pas',
   loading in 'loading.pas',
@@ -14,6 +14,11 @@ uses
   logging in '..\logging.pas',
   cstream in '..\cstream.pas',
   unitid in 'unitid.pas',
+  textfileu in '..\textfileu.pas',
+  gphugef in '..\3rdparty\gphugef.pas',
+  tademoconsts in '..\Recorder\tademoconsts.pas',
+  udebug in '..\udebug.pas',
+  freelistu in '..\freelistu.pas',
   selip in 'selip.pas' {fmSelIP};
 
 {$R *.RES}

@@ -5,7 +5,7 @@
 #include <tchar.h>
 #include <CString>
 #include "fullscreenminimap.h"
-#include "newglobals.h"
+
 
 
 #ifdef USEMEGAMAP

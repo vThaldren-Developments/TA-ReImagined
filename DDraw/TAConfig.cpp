@@ -36,6 +36,10 @@ TADRConfig::TADRConfig ()
 	GetTempFileNameA(TAexePath, "TAini", 0x0, TAexeName);
 #endif
 
+#ifdef REIMAGINED
+	GetTempFileNameA(TAexePath, "TAini", 0x0, TAexeName);
+#endif
+
 #ifdef ESCALATION
 	GetTempFileNameA(TAexePath, "TAESCini", 0x0, TAexeName);
 #endif

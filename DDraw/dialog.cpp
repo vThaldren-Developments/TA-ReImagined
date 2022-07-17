@@ -844,7 +844,7 @@ void Dialog::DrawText(LPBYTE SurfaceMemory_, int x, int y, char *Text)
 			DDSURFACEDESC locked;
 			DDRAW_INIT_STRUCT(locked);
 
-			if (lpUCFont->Lock(NULL, &locked, DDLOCK_SURFACEMEMORYPTR, NULL) == DD_OK)
+			if (lpUCFont->Lock(NULL, &locked, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT, NULL) == DD_OK)
 			{
 				if (respectPitch)
 				{
@@ -893,7 +893,7 @@ void Dialog::DrawText(LPBYTE SurfaceMemory_, int x, int y, char *Text)
 			DDSURFACEDESC locked;
 			DDRAW_INIT_STRUCT(locked);
 
-			if (lpLCFont->Lock(NULL, &locked, DDLOCK_SURFACEMEMORYPTR, NULL) == DD_OK)
+			if (lpLCFont->Lock(NULL, &locked, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT, NULL) == DD_OK)
 			{
 				if (respectPitch)
 				{
@@ -965,7 +965,7 @@ void Dialog::DrawSmallText(LPBYTE SurfaceMemory_, int x, int y, char *Text)
 			DDSURFACEDESC locked;
 			DDRAW_INIT_STRUCT(locked);
 
-			if (lpSmallUCFont->Lock(NULL, &locked, DDLOCK_SURFACEMEMORYPTR, NULL) == DD_OK)
+			if (lpSmallUCFont->Lock(NULL, &locked, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT, NULL) == DD_OK)
 			{
 				if (respectPitch)
 				{

@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// ÈðµäÓï(Èðµä) resources
+// ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_SVE)
 LANGUAGE LANG_SWEDISH, SUBLANG_SWEDISH
@@ -51,8 +51,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 3,9,2,0
- PRODUCTVERSION 3,9,2,0
+ FILEVERSION 5,0,0,0
+ PRODUCTVERSION 5,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -67,14 +67,14 @@ BEGIN
     BEGIN
         BLOCK "041d04b0"
         BEGIN
-            VALUE "CompanyName", "Swedish Yankspankers"
-            VALUE "FileDescription", "3,9,2,0"
-            VALUE "FileVersion", "3.9.2.0"
-            VALUE "InternalName", "Swedish Eye"
-            VALUE "LegalCopyright", "Copyright 2013"
-            VALUE "OriginalFilename", "tdraw.dll"
-            VALUE "ProductName", "TA PATCH 3.9.2.0"
-            VALUE "ProductVersion", "3.9.2.0"
+            VALUE "CompanyName", "vThaldren Developments"
+            VALUE "FileDescription", "5,0,0,0"
+            VALUE "FileVersion", "5.0.0.0"
+            VALUE "InternalName", "vThaldren Dev"
+            VALUE "LegalCopyright", "Copyright 2022"
+            VALUE "OriginalFilename", "idraw.dll"
+            VALUE "ProductName", "TA Patch 5.0.0.0"
+            VALUE "ProductVersion", "5.0.0.0"
         END
     END
     BLOCK "VarFileInfo"
@@ -103,7 +103,7 @@ GREENRECT               RCDATA                  "bitmaps/greenrect.pcx"
 STANDARBUTTON           RCDATA                  "bitmaps/standarbutton.pcx"
 INPUTBOX                RCDATA                  "bitmaps/inputbox.pcx"
 SMALLCIRCLE             RCDATA                  "bitmaps/smallcircle.pcx"
-#endif    // ÈðµäÓï(Èðµä) resources
+#endif    // ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

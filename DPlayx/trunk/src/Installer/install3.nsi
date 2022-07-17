@@ -6,7 +6,7 @@
 !define VERSION "TA Demo 0.99b2"
 !define EXENAME "tademo99b2.exe"
 
-; Ändrar defaultprylar
+; ï¿½ndrar defaultprylar
 Name "${VERSION}"
 OutFile "${EXENAME}"
 Caption "${VERSION} Installer"
@@ -25,7 +25,7 @@ InstallDir $PROGRAMFILES\TADemo
 
 ; Registry key to check for directory (so if you install again, it will 
 ; overwrite the old one automatically)
-InstallDirRegKey HKLM "SOFTWARE\Yankspankers\TA Demo" "Install_Dir"
+InstallDirRegKey HKLM "Software\TA ReImagined\Recorder" "Install_Dir"
 
 ; The text to prompt the user to enter a directory
 ComponentText "This will install ${VERSION} on your computer. Select which optional things you want installed."
@@ -35,7 +35,7 @@ DirText "Choose a directory to install in to:"
 ; The stuff to install
 Section "TA Demo Recorder (required)"
 
-  ; Börja med ett shortcut-entry
+  ; Bï¿½rja med ett shortcut-entry
   CreateDirectory "$SMPROGRAMS\TA Demo"
 
   ; Saker som ska in i TA-katalogen
@@ -66,12 +66,12 @@ Section "TA Demo Recorder (required)"
 
   CreateShortCut "$SMPROGRAMS\TA Demo\Documentation.lnk" "$INSTDIR\docs\readme.html"
 
-  ; Skriv ner en regkey som denna installer kikar på sen
-  WriteRegStr HKLM "SOFTWARE\Yankspankers\TA Demo" "Install_Dir" "$INSTDIR"
-  WriteRegStr HKLM "SOFTWARE\Yankspankers\TA Demo" "TA_Dir" $6
+  ; Skriv ner en regkey som denna installer kikar pï¿½ sen
+  WriteRegStr HKLM "Software\TA ReImagined\Recorder" "Install_Dir" "$INSTDIR"
+  WriteRegStr HKLM "Software\TA ReImagined\Recorder" "TA_Dir" $6
 
   ; Skriv uninstaller
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\TA Demo Recorder" "TA Demo Recorder 0.99ß2" "TA Demo Recorder (remove only)"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\TA Demo Recorder" "TA Demo Recorder 0.99ï¿½2" "TA Demo Recorder (remove only)"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\TA Demo Recorder" "UninstallString" '"$INSTDIR\uninstall.exe"'
   WriteUninstaller "uninstall.exe"
 
@@ -115,7 +115,7 @@ UninstallText "This will uninstall ${VERSION}. Hit next to continue."
 ; special uninstall section.
 Section "Uninstall"
   ; Kolla i vilken katalog vi installerade dplayx.dll etc
-  ReadRegStr $R0 HKLM "SOFTWARE\Yankspankers\TA Demo" "TA_Dir"
+  ReadRegStr $R0 HKLM "Software\TA ReImagined\Recorder" "TA_Dir"
 
   ; remove registry keys
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\TA Demo Recorder"
@@ -131,11 +131,11 @@ Section "Uninstall"
   Delete $R0\ddraw.dll
   Delete $R0\tademo.ufo
 
-  ; Saker ur underkataloger kan vi köra *.* på
+  ; Saker ur underkataloger kan vi kï¿½ra *.* pï¿½
   Delete $INSTDIR\Docs\*.*
   Delete $INSTDIR\bitmaps\*.*
 
-  ; Men i huvudkatalogen känns bäst att specificera
+  ; Men i huvudkatalogen kï¿½nns bï¿½st att specificera
   Delete $INSTDIR\server.exe
   Delete $INSTDIR\maps.txt
   Delete $INSTDIR\unitid.txt
@@ -149,7 +149,7 @@ Section "Uninstall"
   Delete $INSTDIR\uikeys.txt
   Delete $INSTDIR\tatex.*
 
-  ; Själva installern ska också bort
+  ; Sjï¿½lva installern ska ocksï¿½ bort
   Delete $INSTDIR\uninstall.exe
 
   ; remove shortcuts, if any.
@@ -162,7 +162,7 @@ Section "Uninstall"
   RMDir "$INSTDIR"
 SectionEnd
 
-; Saker för att hantera våra custom dialogrutor
+; Saker fï¿½r att hantera vï¿½ra custom dialogrutor
 
 ; $9 = counter
 ; $8 = DLL
@@ -240,7 +240,7 @@ Function .onPrevPage
   IntOp $9 $9 - 1
 FunctionEnd
 
-; Lägger resultatet från CallInstDLL på stacken innan avslut
+; Lï¿½gger resultatet frï¿½n CallInstDLL pï¿½ stacken innan avslut
 Function RunConfigure
 
   again:
@@ -248,23 +248,23 @@ Function RunConfigure
   CallInstDLL $8 dialog
   Pop $R0
 
-  ; Lägg in katalognamnet i global $6 och "fixa-pathar" i $5
+  ; Lï¿½gg in katalognamnet i global $6 och "fixa-pathar" i $5
   ReadINIStr $6 $7 "Field 3" State
   ReadINIStr $5 $7 "Field 5" State
 
-  ; Om man tryckt på cancel så ska det avslutas
+  ; Om man tryckt pï¿½ cancel sï¿½ ska det avslutas
   StrCmp $R0 "cancel" "" nocancel
     Call Cleanup
     Quit
   nocancel:
 
-  ; Trycker man på back så behöver man inte validera katalogen
+  ; Trycker man pï¿½ back sï¿½ behï¿½ver man inte validera katalogen
   StrCmp $R0 "back" "" noback
     Push "back"
     Return 
   noback:
 
-  ; Men trycker man på next måste man ha valt en giltig TA-katalog, annars körs väljsidan igen
+  ; Men trycker man pï¿½ next mï¿½ste man ha valt en giltig TA-katalog, annars kï¿½rs vï¿½ljsidan igen
   StrCpy $R1 $6\Totala.exe
   IfFileExists $R1 done
     MessageBox MB_OK|MB_ICONSTOP "The specified directory is not a valid TA directory. (It does not contain the file totala.exe). Please select a different directory."

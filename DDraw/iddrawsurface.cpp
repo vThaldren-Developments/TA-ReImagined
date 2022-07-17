@@ -187,11 +187,11 @@ IDDrawSurface::IDDrawSurface(LPDIRECTDRAW lpDD, LPDDSURFACEDESC lpTAddsc, LPDIRE
 
 
 	SettingsDialog = new Dialog(VidMem);
-	WhiteBoard = new AlliesWhiteboard(VidMem);
+	//WhiteBoard = new AlliesWhiteboard(VidMem);
 	Income = new CIncome(VidMem);
 	TAHook = new CTAHook(VidMem);
 	CommanderWarp = new CWarp(VidMem);
-	SharedRect = new CMapRect(VidMem);
+	//SharedRect = new CMapRect(VidMem);
 	ChangeQueue = new CChangeQueue;
 	DDDTA = new CDDDTA;
 
@@ -460,6 +460,10 @@ HRESULT __stdcall IDDrawSurface::Lock(LPRECT arg1, LPDDSURFACEDESC arg2, DWORD a
 	// 
 	// 
 	// original code
+
+	arg3 |= DDLOCK_WAIT;
+	
+
 	result = lpFront->Lock(arg1, arg2, arg3, arg4);
 
 
@@ -747,8 +751,8 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 			{
 
 
-				if(!megamapON)
-					WhiteBoard->LockBlit((char*)SurfaceMemory, lPitch);
+				//if(!megamapON)
+					//WhiteBoard->LockBlit((char*)SurfaceMemory, lPitch);
 
 
 
@@ -766,7 +770,7 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 					GUIExpander->myMinimap->LockBlit((char*)SurfaceMemory, dwWidth, dwHeight, lPitch);
 				}
 #endif
-			}
+			
 
 			//result = lpFront->Unlock(arg1);
 			//if (result != DD_OK)
@@ -775,7 +779,7 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 			//	return result;
 			//}
 
-
+			}
 
 			DDDTA->Blit(lpFront);
 
@@ -784,10 +788,11 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 
 			lpDDClipper->SetClipList(BattleFieldRegion, 0);
 
-
-			if(!megamapON)
-				WhiteBoard->Blit((LPBYTE)SurfaceMemory);
-
+			if (SurfaceMemory != NULL)
+			{
+				//if (!megamapON)
+					//WhiteBoard->Blit((LPBYTE)SurfaceMemory);
+			
 
 
 
@@ -834,6 +839,8 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 					Income->BlitIncome((LPBYTE)SurfaceMemory);
 				}
 			//}
+			// 
+			
 //#endif	
 //#else
 
@@ -910,7 +917,7 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 			
 //#endif
 
-
+			}
 
 			// disabling settings dialog
 			// going to file system instead
@@ -1583,9 +1590,9 @@ LRESULT CALLBACK WinProc(HWND WinProcWnd, UINT Msg, WPARAM wParam, LPARAM lParam
 		}
 		//////////////////////////////////////////////////////////////////////////
 
-		if ((NULL != LocalShare->Whiteboard)
-			&& (((AlliesWhiteboard*)LocalShare->Whiteboard)->Message(WinProcWnd, Msg, wParam, lParam)))
-			return 0;
+		//if ((NULL != LocalShare->Whiteboard)
+		//	&& (((AlliesWhiteboard*)LocalShare->Whiteboard)->Message(WinProcWnd, Msg, wParam, lParam)))
+		//	return 0;
 
 		if ((NULL != LocalShare->Income)
 			&& (((CIncome*)LocalShare->Income)->Message(WinProcWnd, Msg, wParam, lParam)))

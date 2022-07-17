@@ -17,7 +17,7 @@ type
     interval:integer;
     smooth:integer;
     lastprot :integer;
-    mod2cstatus:integer; //borde inte vara här men error i tasv
+    mod2cstatus:integer; //borde inte vara hï¿½r men error i tasv
 
     usecomp :boolean;
     usenewtimer :boolean;
@@ -222,7 +222,7 @@ var
   s :string;
   i :integer;
 begin
-  //Hindra att detta körs mer än en gång.. kanske orsakar 215-kraschen
+  //Hindra att detta kï¿½rs mer ï¿½n en gï¿½ng.. kanske orsakar 215-kraschen
   if running = 4711 then
     exit;
   running := 4711;
@@ -670,7 +670,7 @@ procedure TfmMain.LoadOptions;
 var
   r :TRegIniFile;
 begin
-  r := TRegIniFile.Create ('Software\Yankspankers\TA Demo');
+  r := TRegIniFile.Create ('Software\TA ReImagined\Recorder');
 
   options.Tadir := r.ReadString ('Options', 'TADir', '');
   options.usedir := r.ReadInteger ('Options', 'usedir', 0);
@@ -700,7 +700,7 @@ procedure TfmMain.SaveOptions;
 var
   r :TRegIniFile;
 begin
-  r := TRegIniFile.Create ('Software\Yankspankers\TA Demo');
+  r := TRegIniFile.Create ('Software\TA ReImagined\Recorder');
 
   r.WriteString ('Options', 'TADir', options.tadir);
   r.writeinteger ('Options', 'usedir', options.usedir);

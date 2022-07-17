@@ -30,6 +30,12 @@ using namespace std;
 
 
 
+#ifdef REIMAGINED
+#include "mymod.h"
+#include "Thaldren_weaponids.h"
+#endif
+
+
 //---------------------------------------------------------------------------
 #include "ddraw.h"
 //---------------------------------------------------------------------------
@@ -70,7 +76,10 @@ int __stdcall AddtionInit (PInlineX86StackBuffer X86StrackBuffer)
 
 	IDDrawSurface::OutptTxt ("Init TAHPI");
 	TAHPI= NULL;
+
+#ifndef REIMAGINED
 	TAHPI= new _TAHPI ( FALSE);
+#endif
 	//break limit
 
 	//IDDrawSurface::OutptTxt ("Init TAConfig");
@@ -175,6 +184,20 @@ bool APIENTRY DllMain(HINSTANCE hinst, unsigned long reason, void*)
 
 		//IDDrawSurface::OutptTxt ("Install Limit Crack");
 		NowCrackLimit= new LimitCrack;
+
+#ifdef REIMAGINED
+		// Thaldren's Initializers
+		StaticInitializers_DllMain();
+
+		SetExeMemoryProtection((LPVOID)0x401000, (LPVOID)(0x401000 + 0xFAA00), PAGE_EXECUTE_READWRITE);
+
+		// Thaldren's ReImagined Mod
+		MyMod();
+		// Thaldren_weaponids.h
+		WeaponIds();
+
+		SetExeMemoryProtection((LPVOID)0x401000, (LPVOID)(0x401000 + 0xFAA00), PAGE_EXECUTE_READ);
+#endif
 
 		FixTABug= new TABugFixing;
 

@@ -590,7 +590,7 @@ if IsRecording then
     s[4] := char(b shr 8);
 
     if Source = TDPID(-1) then
-      s[5] := char(1)                        //spelare som sände
+      s[5] := char(1)                        //spelare som sï¿½nde
     else
       s[5] := char(Players.ConvertId(Source,ZI_Everyone,false));
     s:=s+c;                                 //paketet
@@ -696,7 +696,7 @@ begin
       continue;
 
     case state of
-      0  :begin   //i början
+      0  :begin   //i bï¿½rjan
             if st[1] = '+' then
               state := 1;
           end;
@@ -1920,7 +1920,7 @@ if FromPlayer <> nil then
 
 
       if s[1]=#$8 then
-        begin //börja ladda
+        begin //bï¿½rja ladda
         TLog.add(3,'loading started');
         TAStatus := InLoading;
         if assigned(chatview) then
@@ -1964,7 +1964,7 @@ if FromPlayer <> nil then
               end;
             end;
           filename := RemoveInvalid (filename);
-          //Lägg till default sökväg
+          //Lï¿½gg till default sï¿½kvï¿½g
           if demodir <> '' then
             filename := IncludeTrailingPathDelimiter(demodir) + filename;
 
@@ -2088,7 +2088,7 @@ if FromPlayer <> nil then
                     begin
                       if Players[w].EnemyChat and (ToPlayerDPID <> Players[w].ID) then
                       begin
-                         //först från och sen till
+                         //fï¿½rst frï¿½n och sen till
                         s2 := #$F9 + '####' + '>>>>' + Copy (tmp, 2, 100);
                         Setlongword (@s2[2], FromPlayerDPID);
                         Setlongword (@s2[6], ToPlayerDPID);
@@ -2107,7 +2107,7 @@ if FromPlayer <> nil then
                   ToPlayer := players.EveryonePlayer;
                   end;
               end;
-        #$09 :begin //börjar bygga
+        #$09 :begin //bï¿½rjar bygga
 //yx bas
                 pw:=@tmp[2];
                 w:=pw^;
@@ -2118,7 +2118,7 @@ if FromPlayer <> nil then
                 if staton then begin
                   procnewunit(w,w2,Players[1].LastTimeStamp);
                 end;
-// kefft sätt att sätta StartInfo.ID.. damnusj
+// kefft sï¿½tt att sï¿½tta StartInfo.ID.. damnusj
 
                 UnitStatus[w - 1].DoneStatus := 255;
                 if not UnitStatus[w-1].Unitalive then
@@ -2293,7 +2293,7 @@ if FromPlayer <> nil then
             end;
             end;
               end;
-        #$12 :begin //unit är klarbyggd
+        #$12 :begin //unit ï¿½r klarbyggd
                 pw:=@tmp[2];
                 w:=pw^;
                 if staton then
@@ -2302,7 +2302,7 @@ if FromPlayer <> nil then
 //                SendChat (Players.Name[FromPlayerID] + ' unit ' + inttostr (w - (StartInfo.ID [FromPlayerID] + 1)) + ' is done');
               end;
         #$0c :
-          begin //unit dör
+          begin //unit dï¿½r
           pw:=@tmp[2];
           w:=pw^;
           if staton then
@@ -2577,7 +2577,7 @@ assert(ToPlayer <> nil);
           b:=b+1000*60*60*24;                   //kl24 fix
         s[3] := char(b and $ff);                //tid sedan senaste
         s[4] := char(b shr 8);
-        s[5] := char(FromPlayer.playerindex);             //spelare som sände
+        s[5] := char(FromPlayer.playerindex);             //spelare som sï¿½nde
         s:=s+c;                                 //paketet
         s[1] :=char(length(s) and $ff);          //fyll i storlek
         s[2] :=char(length(s) shr 8);
@@ -3224,7 +3224,7 @@ var
 begin
 cs.Acquire;
 try
-reg := TRegInifile.Create ('Software\Yankspankers\TA Demo');
+reg := TRegInifile.Create ('Software\TA ReImagined\Recorder');
 try
 {$IFDEF ThreadLogging}
   ThreadLogger.KnownThreads.Clear;
@@ -3362,7 +3362,7 @@ IsInGame := False;
 TADemoRecorderOff := True;
 try
   // write out persistant options
-  reg := TRegInifile.Create ('Software\Yankspankers\TA Demo');
+  reg := TRegInifile.Create ('Software\TA ReImagined\Recorder');
   try
     reg.WriteInteger( 'Options', 'DecompressionBufferSize', DecompressionBufferSize);
   finally

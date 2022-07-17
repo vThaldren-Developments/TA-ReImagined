@@ -3,7 +3,7 @@ const tapi = require('./TAPI');
 
 async function init() {
 	
-  await tapi.init('./ReImagined/ReImagined HPI GEN', '../ReImagined/Spreadsheets GEN/', '\t');
+  await tapi.init('..\\ReImagined\\ReImagined HPI RAW', '..\\ReImagined\\Spreadsheets GEN', '\t');
   
   //await tapi.makeCSV('download', '.tdf');
   //await sleep(10);
@@ -21,9 +21,9 @@ async function init() {
   //await sleep(10);
   await tapi.makeTDF('units', '.fbi');
   await sleep(10);
-  //await tapi.makeCSV('weapons', '.fbi');
+  //await tapi.makeCSV('weapons', '.tdf');
   //await sleep(10);
-  await tapi.makeTDF('weapons', '.fbi');
+  await tapi.makeTDF('weapons', '.tdf');
   await sleep(10);
 }
 

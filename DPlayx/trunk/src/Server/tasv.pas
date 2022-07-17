@@ -3,7 +3,7 @@ unit tasv;
 interface
 
 uses
-  DPlay, ActiveX, Classes, Windows, SysUtils, packet, Forms, Logging, lobby,
+  DPlay, ActiveX, Classes, Windows, SysUtils, packet_old, Forms, Logging, lobby,
   replay, savefile,  unitsync, extctrls, dialogs;
 
 //const

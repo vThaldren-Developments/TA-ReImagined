@@ -21,7 +21,7 @@
 using namespace std;
 #include "TAConfig.h"
 #include "ExternHotKey.h"
-#include "newglobals.h"
+
 
 
 #ifdef USEMEGAMAP

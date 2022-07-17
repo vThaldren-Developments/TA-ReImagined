@@ -202,7 +202,7 @@ begin
   reg := TRegistry.Create;
   try
     reg.RootKey := HKEY_LOCAL_MACHINE;
-    if reg.OpenKeyReadOnly('SOFTWARE\Yankspankers\TA Demo') then
+    if reg.OpenKeyReadOnly('Software\TA ReImagined\Recorder') then
       tadir := reg.ReadString ('TA_Dir')
     else
       if reg.OpenKeyReadOnly('SOFTWARE\Microsoft\DirectPlay\Applications\Total Annihilation') then
