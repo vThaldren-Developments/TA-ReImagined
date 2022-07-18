@@ -13,7 +13,90 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// �����(���) resources
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 5,0,0,0
+ PRODUCTVERSION 5,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "vThaldren Developments"
+            VALUE "FileDescription", "5,0,0,0"
+            VALUE "FileVersion", "5.0.0.0"
+            VALUE "InternalName", "vThaldren Dev"
+            VALUE "LegalCopyright", "Copyright 2022"
+            VALUE "OriginalFilename", "idraw.dll"
+            VALUE "ProductName", "TA Patch 5.0.0.0"
+            VALUE "ProductVersion", "5.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RCDATA
+//
+
+BGBITMAP                RCDATA                  "bitmaps/ControPanelBG.pcx"
+
+TACURSOR                RCDATA                  "bitmaps/tacursor.pcx"
+
+OKBUTTON                RCDATA                  "bitmaps/okbutton.pcx"
+
+TTTSTAGEDBUTTON         RCDATA                  "bitmaps/3stagedbutton.pcx"
+
+HATFONT12UC             RCDATA                  "bitmaps/hatfontUC.pcx"
+
+HATFONT12LC             RCDATA                  "bitmaps/hatfontLC.pcx"
+
+HATFONT11UC             RCDATA                  "bitmaps/hatfontsmallUC.pcx"
+
+HATFONT11LC             RCDATA                  "bitmaps/hatfontsmallLC.pcx"
+
+CHECKBOXBITMAP          RCDATA                  "bitmaps/CheckBox.pcx"
+
+STAGEDBUTTN1            RCDATA                  "bitmaps/StagedButtn1.pcx"
+
+GREENRECT               RCDATA                  "bitmaps/greenrect.pcx"
+
+STANDARBUTTON           RCDATA                  "bitmaps/standarbutton.pcx"
+
+INPUTBOX                RCDATA                  "bitmaps/inputbox.pcx"
+
+SMALLCIRCLE             RCDATA                  "bitmaps/smallcircle.pcx"
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Swedish (Sweden) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_SVE)
 LANGUAGE LANG_SWEDISH, SUBLANG_SWEDISH
@@ -44,66 +127,7 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Version
-//
-
-VS_VERSION_INFO VERSIONINFO
- FILEVERSION 5,0,0,0
- PRODUCTVERSION 5,0,0,0
- FILEFLAGSMASK 0x3fL
-#ifdef _DEBUG
- FILEFLAGS 0x1L
-#else
- FILEFLAGS 0x0L
-#endif
- FILEOS 0x40004L
- FILETYPE 0x2L
- FILESUBTYPE 0x0L
-BEGIN
-    BLOCK "StringFileInfo"
-    BEGIN
-        BLOCK "041d04b0"
-        BEGIN
-            VALUE "CompanyName", "vThaldren Developments"
-            VALUE "FileDescription", "5,0,0,0"
-            VALUE "FileVersion", "5.0.0.0"
-            VALUE "InternalName", "vThaldren Dev"
-            VALUE "LegalCopyright", "Copyright 2022"
-            VALUE "OriginalFilename", "idraw.dll"
-            VALUE "ProductName", "TA Patch 5.0.0.0"
-            VALUE "ProductVersion", "5.0.0.0"
-        END
-    END
-    BLOCK "VarFileInfo"
-    BEGIN
-        VALUE "Translation", 0x41d, 1200
-    END
-END
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// RCDATA
-//
-
-BGBITMAP                RCDATA                  "bitmaps/ControPanelBG.pcx"
-TACURSOR                RCDATA                  "bitmaps/tacursor.pcx"
-OKBUTTON                RCDATA                  "bitmaps/okbutton.pcx"
-TTTSTAGEDBUTTON         RCDATA                  "bitmaps/3stagedbutton.pcx"
-HATFONT12UC             RCDATA                  "bitmaps/hatfontUC.pcx"
-HATFONT12LC             RCDATA                  "bitmaps/hatfontLC.pcx"
-HATFONT11UC             RCDATA                  "bitmaps/hatfontsmallUC.pcx"
-HATFONT11LC             RCDATA                  "bitmaps/hatfontsmallLC.pcx"
-CHECKBOXBITMAP          RCDATA                  "bitmaps/CheckBox.pcx"
-STAGEDBUTTN1            RCDATA                  "bitmaps/StagedButtn1.pcx"
-GREENRECT               RCDATA                  "bitmaps/greenrect.pcx"
-STANDARBUTTON           RCDATA                  "bitmaps/standarbutton.pcx"
-INPUTBOX                RCDATA                  "bitmaps/inputbox.pcx"
-SMALLCIRCLE             RCDATA                  "bitmaps/smallcircle.pcx"
-#endif    // �����(���) resources
+#endif    // Swedish (Sweden) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

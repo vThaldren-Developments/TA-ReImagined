@@ -1108,7 +1108,11 @@ void Dialog::WriteSettings()
 	HKEY hKey1;
 	DWORD dwDisposition;
 
+#ifndef REIMAGINED
 	RegCreateKeyEx(HKEY_CURRENT_USER, "Software\\TA Patch", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey1, &dwDisposition);
+#else
+	RegCreateKeyEx(HKEY_CURRENT_USER, "Software\\TA ReImagined\\Patch", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey1, &dwDisposition);
+#endif
 
 	RegCreateKeyEx(hKey1, "Eye", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey, &dwDisposition);
 
@@ -1195,7 +1199,13 @@ void Dialog::WritePos()
 	HKEY hKey1;
 	DWORD dwDisposition;
 
+#ifndef REIMAGINED
 	RegCreateKeyEx(HKEY_CURRENT_USER, "Software\\TA Patch", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey1, &dwDisposition);
+#else
+	RegCreateKeyEx(HKEY_CURRENT_USER, "Software\\TA ReImagined\\Patch", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey1, &dwDisposition);
+#endif
+
+
 
 	RegCreateKeyEx(hKey1, "Eye", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey, &dwDisposition);
 

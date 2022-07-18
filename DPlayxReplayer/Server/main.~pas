@@ -493,7 +493,7 @@ procedure TfmMain.Label12Click(Sender: TObject);
 var
   s :string;
 begin
-  s := 'http://www.clan-sy.com';
+  s := 'https://github.com/vThaldren';
   ShellExecute (0, nil, @s[1], nil, nil, SW_NORMAL);
 end;
 

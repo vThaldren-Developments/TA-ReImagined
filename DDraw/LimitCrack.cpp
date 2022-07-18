@@ -40,34 +40,38 @@ LimitCrack* NowCrackLimit;
 LimitCrack::LimitCrack ( void)
 {
 	NowIncreaseAISearchMapEntriesLimit= new IncreaseAISearchMapEntriesLimit ( MyConfig->GetIniInt ( "AISearchMapEntries", 66650));
-	//DWORD tmp_i= MyConfig->GetIniInt ( "WeaponType", 16000);
-	//NowIncreaseWeaponTypeLimit= new IncreaseWeaponTypeLimit ( tmp_i);
-	//if ((tmp_i* 0x115)<=(*(WeaponAryLen[0])))
-	//{
-	//	DataShare->WeaponIDLimit= tmp_i;
-	//}
-	//else
-	//{
+
+#ifndef REIMAGINED
+	DWORD tmp_i= MyConfig->GetIniInt ( "WeaponType", 16000);
+	NowIncreaseWeaponTypeLimit= new IncreaseWeaponTypeLimit ( tmp_i);
+	if ((tmp_i* 0x115)<=(*(WeaponAryLen[0])))
+	{
+		DataShare->WeaponIDLimit= tmp_i;
+	}
+	else
+	{
 		DataShare->WeaponIDLimit= 0;
-	//}
+	}
+#endif
 
 	NowIncreaseUnitTypeLimit= new IncreaseUnitTypeLimit ( MyConfig->GetIniInt ( "UnitType", 16000) );
 	NowIncreaseCompositeBuf= new IncreaseCompositeBuf ( MyConfig->GetIniInt ( "X_CompositeBuf", 1280) , MyConfig->GetIniInt ( "Y_CompositeBuf", 1280));
 
 	NowIncreaseSfxLimit= new IncreaseSfxLimit ( MyConfig->GetIniInt ( "SfxLimit", 16000));
 
-	//tmp_i= MyConfig->GetIniBool ( "MultiGameWeapon", FALSE);
-	//NowModifyWeaponPacket= new ModifyWeaponPacket ( tmp_i);
+#ifndef REIMAGINED
+	tmp_i= MyConfig->GetIniBool ( "MultiGameWeapon", FALSE);
+	NowModifyWeaponPacket= new ModifyWeaponPacket ( tmp_i);
 
-	//if (TRUE==tmp_i)
-	//{
-	//	DataShare->MultiWeaponID= 1;
-	//}
-	//else
-	//{
+	if (TRUE==tmp_i)
+	{
+		DataShare->MultiWeaponID= 1;
+	}
+	else
+	{
 		DataShare->MultiWeaponID= 0;
-	//}
-
+	}
+#endif
 
 	//SetUnitLimit= new UnitLimit (  MyConfig->GetIniInt ( "UnitLimit", 3663));
 
@@ -78,6 +82,7 @@ LimitCrack::LimitCrack ( void)
 
 LimitCrack::~LimitCrack ( void)
 {
+#ifndef REIMAGINED
 	delete NowIncreaseAISearchMapEntriesLimit;
 	delete NowIncreaseWeaponTypeLimit;
 	delete NowIncreaseUnitTypeLimit;
@@ -88,6 +93,7 @@ LimitCrack::~LimitCrack ( void)
 	delete NowModifyWeaponPacket;
 
 	delete myExternHotKey;
+#endif
 
 }
 

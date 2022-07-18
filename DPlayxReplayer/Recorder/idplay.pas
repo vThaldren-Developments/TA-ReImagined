@@ -486,7 +486,7 @@ var
   a       :integer;
 begin
   if not (filename='') and createtxtfile and islogging then begin
-    if (ExtractFileExt(filename)='.tad') then
+    if (ExtractFileExt(filename)='.reimd') then
       filename:=copy(filename,1,length(filename)-4);
     filename:=filename+'.txt';
 
@@ -1236,7 +1236,7 @@ begin
           inc(a);
         end;
         if (ExtractFileExt(filename)='') and (filename<>'') and (filename<>'none') then
-          filename:=filename+'.tad';
+          filename:=filename+'.reimd';
         if filename<>'none' then
           sendchat('Recording to '+filename)
         else
@@ -1253,7 +1253,7 @@ begin
           end;
 
           if (ExtractFileExt(filename)='') and (filename<>'') then
-            filename:=filename+'.tad';
+            filename:=filename+'.reimd';
           if filename<>'' then
           begin
             filename := removeinvalid (filename);
@@ -2539,15 +2539,15 @@ begin
           //L�gg till default s�kv�g
           filename := demodir + filename;
 
-          if fileexists (filename + '.tad') then
+          if fileexists (filename + '.reimd') then
           begin
             a := 1;
             repeat
               inc (a);
-            until not fileexists (filename + ' - nr ' + inttostr (a) + '.tad');
+            until not fileexists (filename + ' - nr ' + inttostr (a) + '.reimd');
             filename := filename + ' - nr ' + inttostr (a);
           end;
-          filename := filename + '.tad';
+          filename := filename + '.reimd';
           createlogfile();
           prevtime:=GetTickCount;
         end;

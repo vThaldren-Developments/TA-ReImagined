@@ -480,7 +480,11 @@ void CIncome::WritePos()
 	HKEY hKey1;
 	DWORD dwDisposition;
 
+#ifndef REIMAGINED
 	RegCreateKeyEx(HKEY_CURRENT_USER, "Software\\TA Patch", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey1, &dwDisposition);
+#else
+	RegCreateKeyEx(HKEY_CURRENT_USER, "Software\\TA ReImagined\\Patch", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey1, &dwDisposition);
+#endif
 
 	RegCreateKeyEx(hKey1, "Eye", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey, &dwDisposition);
 
@@ -495,19 +499,50 @@ void CIncome::WritePos()
 bool CIncome::inRect(int x, int y)
 {
 	CorrectPos();
-	if (x > posX &&
-		x<(posX + LocalShare->Width)
-		&& y>(posY)
-		&& y < ((posY)+LocalShare->Height))
+
+	int j = 0;
+	for (int i = 1; i < 10; i++)
 	{
-		return true;
+		if (DataShare->allies[i])
+		{
+			j++;
+		}
 	}
+
+	TAdynmemStruct* Ptr = *(TAdynmemStruct**)0x00511de8;
+
+	if (!DataShare->PlayingDemo && (0 != (WATCH & (Ptr->Players[LocalShare->OrgLocalPlayerID].PlayerInfo->PropertyMask))))
+	{
+		if (x > posX &&
+			x<(posX + LocalShare->Width)
+			&& y>(posY)
+			&& y < ((posY)+LocalShare->Height))
+		{
+			return true;
+		}
+	}
+	else
+	{
+		if (x > posX &&
+			x<(posX + LocalShare->Width)
+			&& y>(posY)
+			&& y < ((posY)+PlayerHight * j))
+		{
+			return true;
+		}
+	}
+
+
 	return false;
 }
 bool CIncome::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
 	__try
 	{
+		TAdynmemStruct* Ptr;
+		Ptr = *(TAdynmemStruct**)0x00511de8;
+
+
 		if (DataShare->TAProgress != TAInGame)
 			return false;
 
@@ -521,12 +556,12 @@ bool CIncome::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 			}
 		}
 
-		if (j == 0)
+		if (j == 0 &&
+			(!DataShare->PlayingDemo && (0 == (WATCH & (Ptr->Players[LocalShare->OrgLocalPlayerID].PlayerInfo->PropertyMask)))))
+		{
 			return false;
+		}
 
-
-		TAdynmemStruct* Ptr;
-		Ptr = *(TAdynmemStruct**)0x00511de8;
 
 		//if (DataShare->PlayingDemo
 		//	|| (0 != (WATCH& (Ptr->Players[LocalShare->OrgLocalPlayerID].PlayerInfo->PropertyMask))))

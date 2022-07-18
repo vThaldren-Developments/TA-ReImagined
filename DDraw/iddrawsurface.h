@@ -16,8 +16,12 @@ enum TAProcessEnum
 };
 
 
-
+#ifndef REIMAGINED
 #define TADRREGPATH ("Software\\TA Patch\\Eye")
+#else
+#define TADRREGPATH ("Software\\TA ReImagined\\Patch\\Eye")
+#endif
+
 #define TADRCONFIGREGNAME ("Moo")
 
 

@@ -344,7 +344,7 @@ if TAStatus = InBattleRoom then
     FileName := '';
 
   if (ExtractFileExt(FileName)='') and (FileName<>'') and (FileName<>'none') then
-    FileName := FileName+'.tad';
+    FileName := FileName+'.reimd';
   if FileName<>'none' then
     SendChat('Recording to '+FileName)
   else
@@ -363,7 +363,7 @@ else
       FileName := '';
 
     if (ExtractFileExt(FileName)='') and (FileName<>'') then
-      FileName:=FileName+'.tad';
+      FileName:=FileName+'.reimd';
     if FileName <> '' then
       begin
       FileName := removeinvalid (FileName);

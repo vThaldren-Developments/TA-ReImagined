@@ -76,7 +76,7 @@ Section "TA Demo Recorder (required)"
   WriteUninstaller "uninstall.exe"
 
   ; Fixa associationer
-  WriteRegStr HKCR ".tad" "" "server.Document" 
+  WriteRegStr HKCR ".reimd" "" "server.Document" 
   WriteRegStr HKCR "server.Document" "" "TA Demo" 
   WriteRegStr HKCR "server.Document\shell\open\command" "" '"$INSTDIR\SERVER.EXE" %1'
 
@@ -123,7 +123,7 @@ Section "Uninstall"
   DeleteRegKey HKCU "SOFTWARE\Yankspankers"
 
   ; Ta bort filassociationen
-  DeleteRegKey HKCR ".tad"
+  DeleteRegKey HKCR ".reimd"
   DeleteRegKey HKCR "server.Document"
 
   ; Ta bort saker ur ta-katalogen

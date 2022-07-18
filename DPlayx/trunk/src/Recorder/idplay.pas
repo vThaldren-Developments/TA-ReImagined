@@ -1968,15 +1968,15 @@ if FromPlayer <> nil then
           if demodir <> '' then
             filename := IncludeTrailingPathDelimiter(demodir) + filename;
 
-          if fileexists (filename + '.tad') then
+          if fileexists (filename + '.reimd') then
             begin
             a := 1;
             repeat
               inc (a);
-            until not fileexists (filename + ' - nr ' + inttostr (a) + '.tad');
+            until not fileexists (filename + ' - nr ' + inttostr (a) + '.reimd');
             filename := filename + ' - nr ' + inttostr (a);
             end;
-          filename := filename + '.tad';
+          filename := filename + '.reimd';
           createlogfile();
           prevtime:=timeGetTime;
         end;

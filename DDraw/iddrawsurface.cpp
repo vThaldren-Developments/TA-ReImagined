@@ -996,7 +996,7 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 			//result = lpFront->Unlock(NULL);
 		}
 
-		lpFront->Unlock(arg1);
+		result = lpFront->Unlock(arg1);
 
 		//lpFront->Unlock(arg1);
 

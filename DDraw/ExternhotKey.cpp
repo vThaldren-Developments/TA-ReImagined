@@ -64,7 +64,11 @@ ExternHotKey::ExternHotKey ()
 	DWORD dwDisposition;
 	DWORD Size;
 
+#ifndef REIMAGINED
 	RegCreateKeyEx(HKEY_CURRENT_USER, "Software\\TA Patch", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey, &dwDisposition);
+#else
+	RegCreateKeyEx(HKEY_CURRENT_USER, "Software\\TA ReImagined\\Patch", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey, &dwDisposition);
+#endif
 
 	RegCreateKeyEx(hKey, "Eye", NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey1, &dwDisposition);
 
@@ -735,7 +739,13 @@ int ExternHotKey::InitExternTypeMask (void)
 	UnitDefStruct * Begin= TAMainStruct_Ptr->UnitDef;
 	UnitDefStruct * Current;
 	int TypeCount= TAMainStruct_Ptr->UNITINFOCount;
+
+#ifndef REIMAGINED
+	unsigned long NoWeaponPtr = reinterpret_cast<unsigned long> (NowCrackLimit->NowIncreaseWeaponTypeLimit->CurtPtr);
+#else
 	unsigned long NoWeaponPtr= reinterpret_cast<unsigned long> (WeaponTypeDefinitions /*NowCrackLimit->NowIncreaseWeaponTypeLimit->CurtPtr*/);
+#endif
+
 
 	int Inited= 0;
 
