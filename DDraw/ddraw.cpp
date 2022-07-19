@@ -31,6 +31,7 @@ using namespace std;
 
 
 #ifdef REIMAGINED
+#include "soundmixingbuffers.h"
 #include "mymod.h"
 #include "Thaldren_weaponids.h"
 #endif
@@ -190,6 +191,9 @@ bool APIENTRY DllMain(HINSTANCE hinst, unsigned long reason, void*)
 		StaticInitializers_DllMain();
 
 		SetExeMemoryProtection((LPVOID)0x401000, (LPVOID)(0x401000 + 0xFAA00), PAGE_EXECUTE_READWRITE);
+
+		// Thaldren's soundmixingbuffers redo
+		SoundMixingBuffers();
 
 		// Thaldren's ReImagined Mod
 		MyMod();

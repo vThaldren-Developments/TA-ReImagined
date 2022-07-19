@@ -959,6 +959,7 @@
     <ClInclude Include="pcxread.h" />
     <ClInclude Include="rings.h" />
     <ClInclude Include="sharedialog.h" />
+    <ClInclude Include="soundmixingbuffers.h" />
     <ClInclude Include="SwitchAlt.h" />
     <ClInclude Include="TAbugfix.h" />
     <ClInclude Include="TAConfig.h" />
