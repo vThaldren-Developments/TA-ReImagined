@@ -58,6 +58,10 @@ type
     lockviewon       : longint;
     unitCount        : longword;
     ta3d             : longint;
+    losviewon        : longint;
+    weaponidlimit    : longint;
+    multiweaponid    : longint;
+    inicrc           : longword;
   end;
 
 Procedure OpenMemMap( var hMemMap : Cardinal; var chatview : PMKChatMem);

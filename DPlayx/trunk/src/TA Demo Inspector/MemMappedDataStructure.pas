@@ -49,6 +49,10 @@ type
     lockviewon     : integer;
     unitCount      : integer;
     ta3d           :integer;
+    losviewon      : longint;
+    weaponidlimit  : longint;
+    multiweaponid  : longint;
+    inicrc         : longword;
   end;
 
 type
