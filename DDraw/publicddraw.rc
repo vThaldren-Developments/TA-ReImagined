@@ -42,7 +42,7 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "CompanyName", "vThaldren Developments"
-            VALUE "FileDescription", "5,0,0,0"
+            VALUE "FileDescription", "Unofficial Beta Patch DDraw"
             VALUE "FileVersion", "5.0.0.0"
             VALUE "InternalName", "vThaldren Dev"
             VALUE "LegalCopyright", "Copyright 2022"
