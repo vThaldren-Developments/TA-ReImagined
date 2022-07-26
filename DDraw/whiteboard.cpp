@@ -379,14 +379,14 @@ bool AlliesWhiteboard::Message(HWND WinProcWnd, UINT Msg, WPARAM wParam, LPARAM 
 			{
 				EreaseArea(LOWORD(lParam)-128, HIWORD(lParam)-32);
 			}
-			//if(Move)
-			//{
-				//if(CurrentElement)
-				//{
-					//PacketHandler.push_back(new GraphicMoveText(CurrentElement->x1, CurrentElement->y1, *MapX+LOWORD(lParam)-128, *MapY+HIWORD(lParam)-32, *PlayerColor));
-					//CurrentElement = ElementHandler.MoveTextElement(CurrentElement, *MapX+LOWORD(lParam)-128, *MapY+HIWORD(lParam)-32);
-				//}
-			//}
+			if(Move)
+			{
+				if(CurrentElement)
+				{
+					PacketHandler.push_back(new GraphicMoveText(CurrentElement->x1, CurrentElement->y1, *MapX+LOWORD(lParam)-128, *MapY+HIWORD(lParam)-32, *PlayerColor));
+					CurrentElement = ElementHandler.MoveTextElement(CurrentElement, *MapX+LOWORD(lParam)-128, *MapY+HIWORD(lParam)-32);
+				}
+			}
 		}
 		break;
 	}
@@ -438,6 +438,9 @@ void AlliesWhiteboard::DrawTextInput(LPBYTE SurfaceMemory_)
 	Dest.right = Dest.left+InputBoxWidth;
 	Dest.bottom = Dest.top+InputBoxHeight;
 
+
+	//Dest.left += 128;
+	//Dest.top += 32;
 
 
 	bool respectPitch = false;
@@ -707,6 +710,12 @@ void AlliesWhiteboard::DrawTextMarker(LPBYTE SurfaceMemory_, int X, int Y, char 
 	//	DestSurf->Blt(&Dest, lpSmallCircle, &Source, DDBLT_WAIT | DDBLT_KEYSRCOVERRIDE, &ddbltfx);
 	//}
 
+
+	//Dest.left += 128;
+	//Dest.top += 32;
+
+
+
 	bool respectPitch = false;
 
 
@@ -714,6 +723,9 @@ void AlliesWhiteboard::DrawTextMarker(LPBYTE SurfaceMemory_, int X, int Y, char 
 	{
 		respectPitch = true;
 	}
+
+
+
 
 
 	DDSURFACEDESC locked;
@@ -725,7 +737,8 @@ void AlliesWhiteboard::DrawTextMarker(LPBYTE SurfaceMemory_, int X, int Y, char 
 		{
 			for (int y2 = 0; y2 < locked.dwHeight; y2++)
 			{
-				if (Dest.top > 0 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight)
+				if (Dest.top > 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+					Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
 					memcpy((void*)(SurfaceMemory_ + (y2 + Dest.top) * lastPitch + Dest.left), (LPBYTE)locked.lpSurface + y2 * locked.lPitch + Source.left, Source.right - Source.left);
 			}
 		}
@@ -733,7 +746,8 @@ void AlliesWhiteboard::DrawTextMarker(LPBYTE SurfaceMemory_, int X, int Y, char 
 		{
 			for (int y2 = 0; y2 < locked.dwHeight; y2++)
 			{
-				if (Dest.top > 0 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight)
+				if (Dest.top > 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+					Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
 					memcpy((void*)(SurfaceMemory_ + (y2 + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth + Dest.left), (LPBYTE)locked.lpSurface + y2 * locked.lPitch + Source.left, Source.right - Source.left);
 			}
 		}

@@ -107,7 +107,11 @@ public:
 	virtual ~CElementHandler();
 
 private:
-	typedef std::list<GraphicElement*> ElementList;
+	//GraphicElement* ElementList;
+
+	//std::vector<GraphicElement*> ElementList;
+
+	typedef std::vector<GraphicElement*> ElementList;
 
 	ElementList map[ELEMENT_HASH_SIZE][ELEMENT_HASH_SIZE];
 };

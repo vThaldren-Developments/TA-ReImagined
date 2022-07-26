@@ -133,7 +133,7 @@ class Dialog
     bool SetVisiblePushed;
     
     bool Inside(int x, int y, int Control);
-    void RenderDialog();
+
     void DrawTinyText(char *String, int posx, int posy, char Color);
     void FillRect(int x, int y, int x2, int y2, char Color);
 
@@ -166,6 +166,8 @@ class Dialog
   public:
     Dialog(BOOL VidMem_a);
     ~Dialog();
+    void RenderDialog(LPBYTE SurfaceMemory_);
+
     void RestoreAll();
     void ShowDialog();
     void HideDialog();

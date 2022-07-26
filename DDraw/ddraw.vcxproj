@@ -678,7 +678,7 @@
     <ClInclude Include="mymod.h" />
     <ClInclude Include="patcher.h" />
     <ClInclude Include="ProjectilesMap.h">
-      <FileType>CppCode</FileType>
+      <FileType>CppHeader</FileType>
     </ClInclude>
     <ClCompile Include="UnitIcon.cpp" />
     <ClCompile Include="ddraw.cpp">

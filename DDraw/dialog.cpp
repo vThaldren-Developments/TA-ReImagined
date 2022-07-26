@@ -177,7 +177,7 @@ void Dialog::ShowDialog()
 
 	RestoreAll ( );
 
-	RenderDialog();
+	//RenderDialog();
 	DialogVisible = true;
 }
 
@@ -205,8 +205,8 @@ void Dialog::BlitDialog(LPBYTE DestSurf)
 			RestoreAll();
 		}
 
-		if(!DialogVisible)
-			return;
+		//if(!DialogVisible)
+		//	return;
 
 
 		RECT Dest;
@@ -225,26 +225,35 @@ void Dialog::BlitDialog(LPBYTE DestSurf)
 		}
 
 
-		DDSURFACEDESC srcSurfDesc;
-		DDRAW_INIT_STRUCT(srcSurfDesc);
+		DDSURFACEDESC locked;
+		DDRAW_INIT_STRUCT(locked);
 
-		if (lpDialogSurf->Lock(NULL, &srcSurfDesc, DDLOCK_WAIT | DDLOCK_SURFACEMEMORYPTR, 0) == DD_OK)
+		if (lpDialogSurf->Lock(NULL, &locked, DDLOCK_WAIT | DDLOCK_SURFACEMEMORYPTR, 0) == DD_OK)
 		{
 
 			if (respectPitch)
 			{
 				for (int y = 0; y < DialogHeight; y++)
 				{
-					memcpy((void*)((LPBYTE)DestSurf + ((y + Dest.top) * lastPitch) + Dest.left), (void*)((LPBYTE)srcSurfDesc.lpSurface + (y * DialogWidth)), DialogWidth);
+					if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+						Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+					{
+						memcpy((void*)((LPBYTE)DestSurf + ((y + Dest.top) * lastPitch) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+					}
 				}
 			}
 			else
 			{
 				for (int y = 0; y < DialogHeight; y++)
 				{
-					memcpy((void*)((LPBYTE)DestSurf + ((y + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), (void*)((LPBYTE)srcSurfDesc.lpSurface + (y * DialogWidth)), DialogWidth);
+					if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+						Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+					{
+						memcpy((void*)((LPBYTE)DestSurf + ((y + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+					}
 				}
 			}
+
 			lpDialogSurf->Unlock(NULL);
 		}
 
@@ -373,27 +382,27 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 			if(KeyCodeFocus)
 			{
 				KeyCodeFocus = false;
-				RenderDialog();
+				//RenderDialog();
 			}
 			if(WhiteboardKeyFocus)
 			{
 				WhiteboardKeyFocus = false;
-				RenderDialog();
+				//RenderDialog();
 			}
 			if(ShareBoxFocus)
 			{
 				ShareBoxFocus = false;
-				RenderDialog();
+				//RenderDialog();
 			}
 			if(AutoClickDelayFocus)
 			{
 				AutoClickDelayFocus = false;
-				RenderDialog();
+				//RenderDialog();
 			}
 			if (MegmapFocus)
 			{
 				MegmapFocus= false;
-				RenderDialog();
+				//RenderDialog();
 			}
 			if(LOWORD(lParam)>posX && LOWORD(lParam)<(posX+DialogWidth) && HIWORD(lParam)>posY && HIWORD(lParam)<(posY+DialogHeight))
 			{
@@ -401,40 +410,40 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 				{
 					OKButtonPushed = true;
 					StartedIn = OKButton;
-					RenderDialog();
+					//RenderDialog();
 				}
 				else if(Inside(LOWORD(lParam), HIWORD(lParam), StagedButton3))
 				{
 					StagedButton3Pushed = true;
 					StartedIn = StagedButton3;
-					RenderDialog();
+					//RenderDialog();
 				}
 				else if(Inside(LOWORD(lParam), HIWORD(lParam), SetVisible))
 				{
 					SetVisiblePushed = true;
 					StartedIn = SetVisible;
-					RenderDialog();
+					//RenderDialog();
 				}
 				else if(Inside(LOWORD(lParam), HIWORD(lParam), VSync))
 				{
 					VSyncPushed = true;
 					StartedIn = VSync;
-					RenderDialog();
+					//RenderDialog();
 				}
 				else if(Inside(LOWORD(lParam), HIWORD(lParam), KeyCode))
 				{
 					KeyCodeFocus = true;
-					RenderDialog();
+					//RenderDialog();
 				}
 				else if(Inside(LOWORD(lParam), HIWORD(lParam), WhiteboardKey))
 				{
 					WhiteboardKeyFocus = true;
-					RenderDialog();
+					//RenderDialog();
 				}
 				else if(Inside(LOWORD(lParam), HIWORD(lParam), ShareBox))
 				{
 					ShareBoxFocus = true;
-					RenderDialog();
+					//RenderDialog();
 				}
 				/*else if(Inside(LOWORD(lParam), HIWORD(lParam), AutoClickDelay))
 				{
@@ -452,7 +461,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 				else if(Inside(LOWORD(lParam), HIWORD(lParam), MegaMapKey))
 				{
 					MegmapFocus = true;
-					RenderDialog();
+					//RenderDialog();
 				}
 				else  //only move if outside button
 				{
@@ -474,13 +483,13 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 				StagedButton3State += 1;
 				StagedButton3State = StagedButton3State%3;
 				StagedButton3Pushed = false;
-				RenderDialog();
+				//RenderDialog();
 			}
 			else if(Inside(LOWORD(lParam), HIWORD(lParam), SetVisible) && StartedIn==SetVisible)
 			{
 				SetVisibleList();
 				SetVisiblePushed = false;
-				RenderDialog();
+				//RenderDialog();
 			}
 			else if(Inside(LOWORD(lParam), HIWORD(lParam), VSync) && StartedIn==VSync)
 			{
@@ -489,7 +498,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 				else
 					VSyncEnabled = true;
 				VSyncPushed = false;
-				RenderDialog();
+				//RenderDialog();
 			}
 			else if(Inside(LOWORD(lParam), HIWORD(lParam), OptimizeDT) && StartedIn==OptimizeDT)
 			{
@@ -497,7 +506,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 					OptimizeDTEnabled = false;
 				else
 					OptimizeDTEnabled = true;
-				RenderDialog();
+				//RenderDialog();
 			}
 			else if(Inside(LOWORD(lParam), HIWORD(lParam), FullRings) && StartedIn==FullRings)
 			{
@@ -505,7 +514,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 					FullRingsEnabled = false;
 				else
 					FullRingsEnabled = true;
-				RenderDialog();
+				//RenderDialog();
 			}
 			StartedIn = None;
 			Move = false;
@@ -550,7 +559,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 					if(OKButtonPushed == true)
 					{
 						OKButtonPushed = false;
-						RenderDialog();
+						//RenderDialog();
 					}
 				}
 				else if(StartedIn == OKButton)
@@ -558,7 +567,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 					if(OKButtonPushed == false)
 					{
 						OKButtonPushed = true;
-						RenderDialog();
+						//RenderDialog();
 					}
 				}
 				if(!Inside(LOWORD(lParam), HIWORD(lParam), StagedButton3))
@@ -566,7 +575,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 					if(StagedButton3Pushed == true)
 					{
 						StagedButton3Pushed = false;
-						RenderDialog();
+						//RenderDialog();
 					}
 				}
 				else if(StartedIn == StagedButton3)
@@ -574,7 +583,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 					if(StagedButton3Pushed == false)
 					{
 						StagedButton3Pushed = true;
-						RenderDialog();
+						//RenderDialog();
 					}
 				}
 				if(!Inside(LOWORD(lParam), HIWORD(lParam), SetVisible))
@@ -582,7 +591,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 					if(SetVisiblePushed == true)
 					{
 						SetVisiblePushed = false;
-						RenderDialog();
+						//RenderDialog();
 					}
 				}
 				else if(StartedIn == SetVisible)
@@ -590,7 +599,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 					if(SetVisiblePushed == false)
 					{
 						SetVisiblePushed = true;
-						RenderDialog();
+						//RenderDialog();
 					}
 				}
 				if(!Inside(LOWORD(lParam), HIWORD(lParam), VSync))
@@ -598,7 +607,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 					if(VSyncPushed == true)
 					{
 						VSyncPushed = false;
-						RenderDialog();
+						//RenderDialog();
 					}
 				}
 				else if(StartedIn == VSync)
@@ -606,7 +615,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 					if(VSyncPushed == false)
 					{
 						VSyncPushed = true;
-						RenderDialog();
+						//RenderDialog();
 					}
 				}
 				return true;
@@ -616,20 +625,20 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 			if(KeyCodeFocus)
 			{
 				VirtualKeyCode = (int)wParam;
-				RenderDialog();
+				//RenderDialog();
 				return true;
 			}
 			if(WhiteboardKeyFocus)
 			{
 				VirtualWhiteboardKey = (int)wParam;
-				RenderDialog();
+				//RenderDialog();
 				return true;
 			}
 
 			if(MegmapFocus)
 			{
 				VirtualMegamap = (int)wParam;
-				RenderDialog();
+				//RenderDialog();
 				return true;
 			}
 			break;
@@ -663,7 +672,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 						lstrcatA(ShareText, App);
 					}
 				}
-				RenderDialog();
+				//RenderDialog();
 				return true;
 			}
 			if(AutoClickDelayFocus)
@@ -686,7 +695,7 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 						}
 					}
 				}
-				RenderDialog();
+				//RenderDialog();
 				return true;
 			}
 			break;
@@ -700,42 +709,101 @@ bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	return false;//mesage not handled by this dialog
 }
 
-void Dialog::RenderDialog()
+void Dialog::RenderDialog(LPBYTE SurfaceMemory_)
 {
-	RECT Dest;
-	RECT Source;
-
-	if(lpDialogSurf->Blt(NULL, lpBackground, NULL, DDBLT_ASYNC, NULL)!=DD_OK)
+	if (DialogVisible)
 	{
-		lpDialogSurf->Blt(NULL, lpBackground, NULL, DDBLT_WAIT , NULL);
-	}
+		SurfaceMemory = SurfaceMemory_;
 
-	Dest.left = OKButtonPosX;
-	Dest.top = OKButtonPosY;
-	Dest.right = OKButtonPosX + OKButtonWidth;
-	Dest.bottom = OKButtonPosY + OKButtonHeight;
-	Source.left = OKButtonPushed*OKButtonWidth;
-	Source.top = 0;
-	Source.right = OKButtonWidth + OKButtonPushed*OKButtonWidth;
-	Source.bottom = OKButtonHeight;
-	//if(lpDialogSurf->Blt(&Dest, lpOKButton, &Source, DDBLT_ASYNC, NULL)!=DD_OK)
-	//{
-		//lpDialogSurf->Blt(&Dest, lpOKButton, &Source, DDBLT_WAIT , NULL);
-	//}
+		RECT Dest;
+		RECT Source;
 
-	DrawBackgroundButton();
-	DrawKeyCode();
-	DrawShareBox();
-	DrawOptimizeDT();
-	DrawVSync();
-	DrawFullRings();
-	//DrawDelay();
-	DrawWhiteboardKey();
-	//DrawVisibleButton();
+
+
+
+
+
+
+
+		//if(lpDialogSurf->Blt(NULL, lpBackground, NULL, DDBLT_ASYNC, NULL)!=DD_OK)
+		//{
+		//	lpDialogSurf->Blt(NULL, lpBackground, NULL, DDBLT_WAIT , NULL);
+		//}
+
+		Dest.left = OKButtonPosX;
+		Dest.top = OKButtonPosY;
+		Dest.right = OKButtonPosX + OKButtonWidth;
+		Dest.bottom = OKButtonPosY + OKButtonHeight;
+		Source.left = OKButtonPushed * OKButtonWidth;
+		Source.top = 0;
+		Source.right = OKButtonWidth + OKButtonPushed * OKButtonWidth;
+		Source.bottom = OKButtonHeight;
+		//if(lpDialogSurf->Blt(&Dest, lpOKButton, &Source, DDBLT_ASYNC, NULL)!=DD_OK)
+		//{
+			//lpDialogSurf->Blt(&Dest, lpOKButton, &Source, DDBLT_WAIT , NULL);
+		//}
+
+
+
+		bool respectPitch = false;
+
+
+		if (lastPitch != (*TAmainStruct_PtrPtr)->ScreenWidth)
+		{
+			respectPitch = true;
+		}
+
+
+		DDSURFACEDESC locked;
+		DDRAW_INIT_STRUCT(locked);
+
+		if (lpOKButton->Lock(NULL, &locked, DDLOCK_WAIT | DDLOCK_SURFACEMEMORYPTR, 0) == DD_OK)
+		{
+
+			if (respectPitch)
+			{
+				for (int y = 0; y < locked.dwHeight; y++)
+				{
+					if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+						Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+					{
+						memcpy((void*)((LPBYTE)SurfaceMemory_ + ((y + Dest.top) * lastPitch) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+					}
+				}
+			}
+			else
+			{
+				for (int y = 0; y < locked.dwHeight; y++)
+				{
+					if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+						Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+					{
+						memcpy((void*)((LPBYTE)SurfaceMemory_ + ((y + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+					}
+				}
+			}
+
+			lpOKButton->Unlock(NULL);
+		}
+
+
+
+
+
+
+		DrawBackgroundButton();
+		DrawKeyCode();
+		DrawShareBox();
+		DrawOptimizeDT();
+		DrawVSync();
+		DrawFullRings();
+		//DrawDelay();
+		DrawWhiteboardKey();
+		//DrawVisibleButton();
 #ifdef USEMEGAMAP
-	DrawMegaMapKey ( );
+		DrawMegaMapKey();
 #endif
-	
+	}
 }
 
 bool Dialog::Inside(int x, int y, int Control)
@@ -850,16 +918,22 @@ void Dialog::DrawText(LPBYTE SurfaceMemory_, int x, int y, char *Text)
 				{
 					for (DWORD y2 = 0; y2 < Source.bottom - Source.top; y2++)
 					{
-						if (Dest.top > 0 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight)
+						if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+							Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+						{
 							memcpy((void*)(SurfaceMemory_ + ((y2 + Dest.top) * lastPitch) + Dest.left), ((LPBYTE)locked.lpSurface + ((y2 + Source.top) * locked.lPitch) + Source.left), Source.right - Source.left);
+						}
 					}
 				}
 				else
 				{
 					for (DWORD y2 = 0; y2 < Source.bottom - Source.top; y2++)
 					{
-						if (Dest.top > 0 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight)
+						if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+							Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+						{
 							memcpy((void*)(SurfaceMemory_ + ((y2 + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), ((LPBYTE)locked.lpSurface + ((y2 + Source.top) * locked.lPitch) + Source.left), Source.right - Source.left);
+						}
 					}
 				}
 
@@ -899,8 +973,11 @@ void Dialog::DrawText(LPBYTE SurfaceMemory_, int x, int y, char *Text)
 				{
 					for (DWORD y2 = 0; y2 < Source.bottom - Source.top; y2++)
 					{
-						if (Dest.top > 0 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight)
+						if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+							Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+						{
 							memcpy((void*)(SurfaceMemory_ + ((y2 + Dest.top) * lastPitch) + Dest.left), ((LPBYTE)locked.lpSurface + ((y2 + Source.top) * locked.lPitch) + Source.left), Source.right - Source.left);
+						}
 					}
 
 				}
@@ -908,8 +985,11 @@ void Dialog::DrawText(LPBYTE SurfaceMemory_, int x, int y, char *Text)
 				{
 					for (DWORD y2 = 0; y2 < Source.bottom - Source.top; y2++)
 					{
-						if (Dest.top > 0 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight)
+						if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+							Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+						{
 							memcpy((void*)(SurfaceMemory_ + ((y2 + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), ((LPBYTE)locked.lpSurface + ((y2 + Source.top) * locked.lPitch) + Source.left), Source.right - Source.left);
+						}
 					}
 
 				}
@@ -971,16 +1051,22 @@ void Dialog::DrawSmallText(LPBYTE SurfaceMemory_, int x, int y, char *Text)
 				{
 					for (DWORD y2 = 0; y2 < Source.bottom - Source.top; y2++)
 					{
-						if (Dest.top > 0 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight)
+						if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+							Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+						{
 							memcpy((void*)(SurfaceMemory_ + ((y2 + Dest.top) * lastPitch) + Dest.left), ((LPBYTE)locked.lpSurface + ((y2 + Source.top) * locked.lPitch) + Source.left), Source.right - Source.left);
+						}
 					}
 				}
 				else
 				{
 					for (DWORD y2 = 0; y2 < Source.bottom - Source.top; y2++)
 					{
-						if (Dest.top > 0 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight)
+						if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+							Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+						{
 							memcpy((void*)(SurfaceMemory_ + ((y2 + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), ((LPBYTE)locked.lpSurface + ((y2 + Source.top) * locked.lPitch) + Source.left), Source.right - Source.left);
+						}
 					}
 				}
 
@@ -1018,14 +1104,22 @@ void Dialog::DrawSmallText(LPBYTE SurfaceMemory_, int x, int y, char *Text)
 				{
 					for (DWORD y2 = 0; y2 < Source.bottom - Source.top; y2++)
 					{
-						memcpy((void*)(SurfaceMemory_ + ((y2 + Dest.top) * lastPitch) + Dest.left), ((LPBYTE)locked.lpSurface + ((y2 + Source.top) * locked.lPitch) + Source.left), Source.right - Source.left);
+						if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+							Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+						{
+							memcpy((void*)(SurfaceMemory_ + ((y2 + Dest.top) * lastPitch) + Dest.left), ((LPBYTE)locked.lpSurface + ((y2 + Source.top) * locked.lPitch) + Source.left), Source.right - Source.left);
+						}
 					}
 				}
 				else
 				{
 					for (DWORD y2 = 0; y2 < Source.bottom - Source.top; y2++)
 					{
-						memcpy((void*)(SurfaceMemory_ + ((y2 + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), ((LPBYTE)locked.lpSurface + ((y2 + Source.top) * locked.lPitch) + Source.left), Source.right - Source.left);
+						if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+							Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+						{
+							memcpy((void*)(SurfaceMemory_ + ((y2 + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), ((LPBYTE)locked.lpSurface + ((y2 + Source.top) * locked.lPitch) + Source.left), Source.right - Source.left);
+						}
 					}
 				}
 
@@ -1236,6 +1330,19 @@ void Dialog::DrawTinyText(char *String, int posx, int posy, char Color)
 
 	char *SurfMem = (char*)SurfaceMemory;
 
+
+
+
+	bool respectPitch = false;
+
+
+	if (lastPitch != (*TAmainStruct_PtrPtr)->ScreenWidth)
+	{
+		respectPitch = true;
+	}
+
+
+
 	for(size_t i=0; i<strlen(String); i++)
 	{
 		for(int j=0; j<8; j++)
@@ -1243,8 +1350,14 @@ void Dialog::DrawTinyText(char *String, int posx, int posy, char Color)
 			for(int k=0; k<8; k++)
 			{
 				bool b = 0!=(ThinFont[String[i]*8+j] & (1 << k));
-				if(b)
-					SurfMem[(posx+(i*8)+(7-k))+(posy+j)*lPitch] = Color;
+				if (b)
+					//SurfMem[(posx+(i*8)+(7-k))+(posy+j)*lPitch] = Color;
+				{
+					if(respectPitch)
+						SurfMem[(posx + (i * 8) + (7 - k)) + (posy + j) * (*TAmainStruct_PtrPtr)->ScreenWidth] = Color;
+					else
+						SurfMem[(posx + (i * 8) + (7 - k)) + (posy + j) * lastPitch] = Color;
+				}
 			}
 		}
 	}
@@ -1257,9 +1370,23 @@ void Dialog::FillRect(int x, int y, int x2, int y2, char Color)
 
 	char *SurfMem = (char*)SurfaceMemory;
 
+
+	bool respectPitch = false;
+
+
+	if (lastPitch != (*TAmainStruct_PtrPtr)->ScreenWidth)
+	{
+		respectPitch = true;
+	}
+
+
+
 	for(int i=y; i<y2; i++)
 	{
-		memset(&SurfMem[x+i*lPitch], Color, x2-x);
+		if(respectPitch)
+			memset(&SurfMem[x+i*lastPitch], Color, x2-x);
+		else
+			memset(&SurfMem[x+i* (*TAmainStruct_PtrPtr)->ScreenWidth], Color, x2 - x);
 	}
 }
 
@@ -1280,10 +1407,59 @@ void Dialog::DrawBackgroundButton()
 	Source.top = 0;
 	Source.right = Source.left + StagedButton3Width;
 	Source.bottom = StagedButton3Height;
-	if(lpDialogSurf->Blt(&Dest, lpStagedButton3, &Source, DDBLT_ASYNC, NULL)!=DD_OK)
+
+
+
+
+	bool respectPitch = false;
+
+
+	if (lastPitch != (*TAmainStruct_PtrPtr)->ScreenWidth)
 	{
-		lpDialogSurf->Blt(&Dest, lpStagedButton3, &Source, DDBLT_WAIT , NULL);
+		respectPitch = true;
 	}
+
+
+	DDSURFACEDESC locked;
+	DDRAW_INIT_STRUCT(locked);
+
+	if (lpOKButton->Lock(NULL, &locked, DDLOCK_WAIT | DDLOCK_SURFACEMEMORYPTR, 0) == DD_OK)
+	{
+
+		if (respectPitch)
+		{
+			for (int y = 0; y < locked.dwHeight; y++)
+			{
+				if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+					Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+				{
+					memcpy((void*)((LPBYTE)SurfaceMemory + ((y + Dest.top) * lastPitch) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+				}
+			}
+		}
+		else
+		{
+			for (int y = 0; y < locked.dwHeight; y++)
+			{
+				if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+					Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+				{
+					memcpy((void*)((LPBYTE)SurfaceMemory + ((y + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+				}
+			}
+		}
+
+		lpOKButton->Unlock(NULL);
+	}
+
+	//if(lpDialogSurf->Blt(&Dest, lpStagedButton3, &Source, DDBLT_ASYNC, NULL)!=DD_OK)
+	//{
+	//	lpDialogSurf->Blt(&Dest, lpStagedButton3, &Source, DDBLT_WAIT , NULL);
+	//}
+
+
+
+
 	int y;
 	if(StagedButton3Pushed)
 		y = StagedButton3PosY+4;
@@ -1313,10 +1489,10 @@ void Dialog::DrawKeyCode()
 	DrawSmallText((LPBYTE)SurfaceMemory, KeyCodePosX, KeyCodePosY-13, "Autoclick Key");
 	DDSURFACEDESC ddsd;
 	DDRAW_INIT_STRUCT(ddsd);
-	//if(lpDialogSurf->Lock(NULL, &ddsd, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT , NULL)==DD_OK)
-	//{
-	// SurfaceMemory = ddsd.lpSurface;
-		//lPitch = ddsd.lPitch;
+	if(lpDialogSurf->Lock(NULL, &ddsd, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT , NULL)==DD_OK)
+	{
+		//SurfaceMemory = ddsd.lpSurface;
+		lPitch = ddsd.lPitch;
 
 		FillRect(KeyCodePosX, KeyCodePosY, KeyCodePosX+KeyCodeWidth, KeyCodePosY+KeyCodeHeight, 0);
 
@@ -1328,8 +1504,8 @@ void Dialog::DrawKeyCode()
 		else
 			DrawTinyText(String, KeyCodePosX + 2, KeyCodePosY + 3, 208U);
 
-		//lpDialogSurf->Unlock(NULL);
-	//}
+		lpDialogSurf->Unlock(NULL);
+	}
 }
 
 void Dialog::DrawShareBox()
@@ -1337,14 +1513,14 @@ void Dialog::DrawShareBox()
 	DrawSmallText((LPBYTE)SurfaceMemory, ShareBoxPosX, ShareBoxPosY-13, "Chat Macro (F11)");
 	DDSURFACEDESC ddsd;
 	DDRAW_INIT_STRUCT(ddsd);
-	//if(lpDialogSurf->Lock(NULL, &ddsd, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT , NULL)==DD_OK)
-	//{
-		SurfaceMemory = ddsd.lpSurface;
+	if(lpDialogSurf->Lock(NULL, &ddsd, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT , NULL)==DD_OK)
+	{
+		//SurfaceMemory = ddsd.lpSurface;
 		lPitch = ddsd.lPitch;
 
 		FillRect(ShareBoxPosX, ShareBoxPosY, ShareBoxPosX+ShareBoxWidth, ShareBoxPosY+ShareBoxHeight, 0);
 
-		//DrawTinyText(ShareText, ShareBoxPosX + 2, ShareBoxPosY + 3, 208);
+		DrawTinyText(ShareText, ShareBoxPosX + 2, ShareBoxPosY + 3, 208);
 		int CharsPerLine = (ShareBoxWidth-4)/8;
 		char Line[100];
 		Line[0] = '\0';
@@ -1396,8 +1572,8 @@ void Dialog::DrawShareBox()
 		else
 			DrawTinyText(Line, static_cast<int>(ShareBoxPosX + 2), static_cast<int>(ShareBoxPosY + 3 + LineNum*9), 208U);
 		Lines = LineNum+1;
-		//lpDialogSurf->Unlock(NULL);
-	//}
+		lpDialogSurf->Unlock(NULL);
+	}
 	MaxLines = (ShareBoxHeight-4)/8;
 }
 
@@ -1419,6 +1595,48 @@ void Dialog::DrawOptimizeDT()
 	//{
 		//lpDialogSurf->Blt(&Dest, lpCheckBox, &Source, DDBLT_WAIT , NULL);
 	//}
+
+	bool respectPitch = false;
+
+
+	if (lastPitch != (*TAmainStruct_PtrPtr)->ScreenWidth)
+	{
+		respectPitch = true;
+	}
+
+
+	DDSURFACEDESC locked;
+	DDRAW_INIT_STRUCT(locked);
+
+	if (lpCheckBox->Lock(NULL, &locked, DDLOCK_WAIT | DDLOCK_SURFACEMEMORYPTR, 0) == DD_OK)
+	{
+
+		if (respectPitch)
+		{
+			for (int y = 0; y < locked.dwHeight; y++)
+			{
+				if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+					Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+				{
+					memcpy((void*)((LPBYTE)SurfaceMemory + ((y + Dest.top) * lastPitch) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+				}
+			}
+		}
+		else
+		{
+			for (int y = 0; y < locked.dwHeight; y++)
+			{
+				if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+					Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+				{
+					memcpy((void*)((LPBYTE)SurfaceMemory + ((y + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+				}
+			}
+		}
+
+		lpCheckBox->Unlock(NULL);
+	}
+
 }
 
 void Dialog::DrawVSync()
@@ -1438,6 +1656,50 @@ void Dialog::DrawVSync()
 	Source.top = 0;
 	Source.right = Source.left + VSyncWidth;
 	Source.bottom = VSyncHeight;
+
+
+
+	bool respectPitch = false;
+
+
+	if (lastPitch != (*TAmainStruct_PtrPtr)->ScreenWidth)
+	{
+		respectPitch = true;
+	}
+
+
+	DDSURFACEDESC locked;
+	DDRAW_INIT_STRUCT(locked);
+
+	if (lpStagedButton1->Lock(NULL, &locked, DDLOCK_WAIT | DDLOCK_SURFACEMEMORYPTR, 0) == DD_OK)
+	{
+
+		if (respectPitch)
+		{
+			for (int y = 0; y < locked.dwHeight; y++)
+			{
+				if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+					Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+				{
+					memcpy((void*)((LPBYTE)SurfaceMemory + ((y + Dest.top) * lastPitch) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+				}
+			}
+		}
+		else
+		{
+			for (int y = 0; y < locked.dwHeight; y++)
+			{
+				if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+					Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+				{
+					memcpy((void*)((LPBYTE)SurfaceMemory + ((y + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+				}
+			}
+		}
+
+		lpStagedButton1->Unlock(NULL);
+	}
+
 	//if(lpDialogSurf->Blt(&Dest, lpStagedButton1, &Source, DDBLT_ASYNC, NULL)!=DD_OK)
 	//{
 		//lpDialogSurf->Blt(&Dest, lpStagedButton1, &Source, DDBLT_WAIT , NULL);
@@ -1484,6 +1746,49 @@ void Dialog::DrawFullRings()
 	//{
 		//lpDialogSurf->Blt(&Dest, lpCheckBox, &Source, DDBLT_WAIT , NULL);
 	//}
+
+
+
+	bool respectPitch = false;
+
+
+	if (lastPitch != (*TAmainStruct_PtrPtr)->ScreenWidth)
+	{
+		respectPitch = true;
+	}
+
+
+	DDSURFACEDESC locked;
+	DDRAW_INIT_STRUCT(locked);
+
+	if (lpCheckBox->Lock(NULL, &locked, DDLOCK_WAIT | DDLOCK_SURFACEMEMORYPTR, 0) == DD_OK)
+	{
+
+		if (respectPitch)
+		{
+			for (int y = 0; y < locked.dwHeight; y++)
+			{
+				if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+					Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+				{
+					memcpy((void*)((LPBYTE)SurfaceMemory + ((y + Dest.top) * lastPitch) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+				}
+			}
+		}
+		else
+		{
+			for (int y = 0; y < locked.dwHeight; y++)
+			{
+				if (Dest.top >= 32 && Dest.bottom + locked.dwHeight < (*TAmainStruct_PtrPtr)->ScreenHeight - 32 &&
+					Dest.left >= 128 && Dest.right < (*TAmainStruct_PtrPtr)->ScreenWidth)
+				{
+					memcpy((void*)((LPBYTE)SurfaceMemory + ((y + Dest.top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + Dest.left), (void*)((LPBYTE)locked.lpSurface + (y * DialogWidth)), DialogWidth);
+				}
+			}
+		}
+
+		lpCheckBox->Unlock(NULL);
+	}
 }
 
 void Dialog::DrawDelay()
@@ -1491,10 +1796,10 @@ void Dialog::DrawDelay()
 	DrawSmallText((LPBYTE)SurfaceMemory, AutoClickDelayPosX, AutoClickDelayPosY-13, "Autoclick delay");
 	DDSURFACEDESC ddsd;
 	DDRAW_INIT_STRUCT(ddsd);
-	//if(lpDialogSurf->Lock(NULL, &ddsd, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT , NULL)==DD_OK)
-	//{
+	if(lpDialogSurf->Lock(NULL, &ddsd, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT , NULL)==DD_OK)
+	{
 		//SurfaceMemory = ddsd.lpSurface;
-		//lPitch = ddsd.lPitch;
+		lPitch = ddsd.lPitch;
 
 		FillRect(AutoClickDelayPosX, AutoClickDelayPosY, (AutoClickDelayPosX)+AutoClickDelayWidth, AutoClickDelayPosY+AutoClickDelayHeight, 0);
 
@@ -1503,8 +1808,8 @@ void Dialog::DrawDelay()
 		else
 			DrawTinyText(cAutoClickDelay, static_cast<int>(AutoClickDelayPosX+2), static_cast<int>(AutoClickDelayPosY+3), 208U);
 
-		//lpDialogSurf->Unlock(NULL);
-	//}
+		lpDialogSurf->Unlock(NULL);
+	}
 }
 
 void Dialog::DrawMegaMapKey ()
@@ -1514,10 +1819,12 @@ void Dialog::DrawMegaMapKey ()
 
 	DDSURFACEDESC ddsd;
 	DDRAW_INIT_STRUCT(ddsd);
-	if(lpDialogSurf->Lock(NULL, &ddsd, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT , NULL)==DD_OK)
-	{
-		SurfaceMemory = ddsd.lpSurface;
-		lPitch = ddsd.lPitch;
+	//if(lpDialogSurf->Lock(NULL, &ddsd, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT , NULL)==DD_OK)
+	//{
+		//SurfaceMemory = ddsd.lpSurface;
+
+	// kinda sketch
+	lPitch = lastPitch;
 
 		FillRect ( MegaMapKeyPosX, MegaMapKeyPoxY, MegaMapKeyPosX+MegamapKeyWidth, MegaMapKeyPoxY+MegamapKeyHeight, 0);
 
@@ -1529,18 +1836,22 @@ void Dialog::DrawMegaMapKey ()
 		else
 			DrawTinyText (String, static_cast<int>(MegaMapKeyPosX + 2), static_cast<int>(MegaMapKeyPoxY + 3), 208U);
 
-		lpDialogSurf->Unlock(NULL);
-	}
+		//lpDialogSurf->Unlock(NULL);
+	//}
 }
 void Dialog::DrawWhiteboardKey()
 {
 	DrawSmallText((LPBYTE)SurfaceMemory, WhiteboardKeyPosX, WhiteboardKeyPosY-13, "Whiteboard Key");
 	DDSURFACEDESC ddsd;
 	DDRAW_INIT_STRUCT(ddsd);
-	if(lpDialogSurf->Lock(NULL, &ddsd, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT , NULL)==DD_OK)
-	{
-		SurfaceMemory = ddsd.lpSurface;
-		lPitch = ddsd.lPitch;
+	//if(lpDialogSurf->Lock(NULL, &ddsd, DDLOCK_SURFACEMEMORYPTR | DDLOCK_WAIT , NULL)==DD_OK)
+	//{
+	// if(
+		//SurfaceMemory = ddsd.lpSurface;
+		//lPitch = ddsd.lPitch;
+		
+		// kinda sketch
+		lPitch = lastPitch;
 
 		FillRect(WhiteboardKeyPosX, WhiteboardKeyPosY, WhiteboardKeyPosX+WhiteboardKeyWidth, WhiteboardKeyPosY+WhiteboardKeyHeight, 0);
 
@@ -1552,8 +1863,8 @@ void Dialog::DrawWhiteboardKey()
 		else
 			DrawTinyText(String, static_cast<int>(WhiteboardKeyPosX + 2), static_cast<int>(WhiteboardKeyPosY + 3), 208U);
 
-		lpDialogSurf->Unlock(NULL);
-	}
+		//lpDialogSurf->Unlock(NULL);
+	//}
 }
 
 void Dialog::DrawVisibleButton()
@@ -1570,10 +1881,10 @@ void Dialog::DrawVisibleButton()
 	Source.top = 0;
 	Source.right = SetVisibleWidth + SetVisiblePushed*SetVisibleWidth;
 	Source.bottom = SetVisibleHeight;
-	if(lpDialogSurf->Blt(&Dest, lpStandardButton, &Source, DDBLT_ASYNC, NULL)!=DD_OK)
-	{
-		lpDialogSurf->Blt(&Dest, lpStandardButton, &Source, DDBLT_WAIT , NULL);
-	}
+	//if(lpDialogSurf->Blt(&Dest, lpStandardButton, &Source, DDBLT_ASYNC, NULL)!=DD_OK)
+	//{
+	//	lpDialogSurf->Blt(&Dest, lpStandardButton, &Source, DDBLT_WAIT , NULL);
+	//}
 
 	DrawText((LPBYTE)SurfaceMemory, SetVisiblePosX+10+SetVisiblePushed, SetVisiblePosY+4+SetVisiblePushed, "Set Visible");
 }

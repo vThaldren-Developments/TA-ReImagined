@@ -1,0 +1,11 @@
+
+REASONS
+Commander: Storage Buffer due to Early Economy. Prevent Excess M/E Stats For Small Beginning Idle Time. Increase build distances to make assisting more accessible. Feels perfect.
+Solar Collector: Make Solars less expensive since they kill early Energy and somewhat Metal unless build is spaced. Make Arm slightly less expensive than Core.
+Wind Generator: Make Winds slightly more expensive in Metal since they are too cost effective compared to Solar Collectors.
+Energy/Metal Storages: Energy Storage took forever to construct, Metal Storage took too short to construct. Make build times closer to each other.
+Labs: Make Labs cost more Energy, cost less Metal, and reduce Build Times slightly to have more Energy-wise economic impact. Labs cost less Metal to reduce the Metal impact in early game to allow more economic buildings to be built.
+Constructions: Increase build distances to allow assisting Labs with more constructions at once. Increase max speed of Construction Kbots since they moved very slow for expansion and in general. Reduce Metal Cost of Construction Ships for less economic impact early in water. Adjust Construction Vehicle Metal Costs to make ARM slightly cheaper than CORE.
+Metal Wreckage Values: All wreckage values which were adjusted should match the caluclated 80% (from OTA 3.1) of the original Metal build cost for the unit.
+
+Overall Goal: Make the early game economy building decisions much more important to serve as a foundation for later build paths. Economy should always be the most important aspect in any situation. Economic mastery should be rewarded with the ability to construct as much as they want, provided they have the resoruces and the economy remains well managed. Providing more utility in the economic area to allow this. ARM should be slightly cheaper in costs than CORE to allow massability on ARM compared to CORE with more durable units.

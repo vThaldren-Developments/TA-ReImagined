@@ -1,0 +1,72 @@
+ARM
+Commander EnergyStorage increased to 1000 from 0.
+Commander MetalStorage increased to 1000 from 0.
+Commander BuildDistance increased to 150 from 60.
+Solar Collector BuildEnergyCost decreased to 684 from 760.
+Solar Collector BuildMetalCost decreased to 141 from 145.
+Wind Generator BuildCostMetal increased to 72 from 52.
+Underwater Metal Extractor BuildCostEnergy decreased to 1451 from 2074.
+Energy Storage BuildTime decreased to 4690 from 12710.
+Metal Storage BuildTime increased to 3127 from 2925.
+Underwater Energy Storage BuildTime decreased to 5844 from 15741.
+Underwater Metal Storage BuildTime increased to 3896 from 3741.
+Aircraft Plant BuildCostEnergy increased to 2278 from 1370.
+Aircraft Plant BuildCostMetal decreased to 664 from 850.
+Kbot Lab BuildCostEnergy increased to 1921 from 1130.
+Kbot Lab BuildCostMetal decreased to 544 from 705.
+Shipyard BuildCostEnergy increased to 1275 from 775.
+Shipyard BuildCostMetal decreased to 480 from 615.
+Vehicle Plant BuildCostEnergy increased to 1700 from 1000.
+Vehicle Plant BuildCostMetal decreased to 480 from 620.
+Construction Aircraft BuildDistance increased to 100 from 40.
+Construction Kbot BuildDistance increased to 100 from 40.
+Construction Kbot MaxVelocity increased to 1.17 from 0.8.
+Construction Ship BuildCostMetal decreased to 204 from 255.
+Construction Ship BuildDistance increased to 150 from 60.
+Construction Vehicle BuildCostMetal decreased to 175 from 185.
+Construction Vehicle BuildDistance increased to 100 from 40.
+
+Solar Collector Metal Wreckage Value decreased to 112 from 116.
+Wind Generator Metal Wreckage Value increased to 57 from 42.
+Aircraft Plant Metal Wreckage Value decreased to 531 from 680.
+Kbot Lab Metal Wreckage Value decreased to 451 from 564.
+Shipyard Metal Wreckage Value decreased to 384 from 492.
+Vehicle Plant Metal Wreckage Value decreased to 384 from 492.
+Construction Ship Metal Wreckage Value decreased to 163 from 204.
+Construction Vehicle Metal Wreckage Value decreased to 140 from 148.
+
+CORE
+Commander EnergyStorage increased to 1k from 0.
+Commander MetalStorage increased to 1k from 0.
+Commander BuildDistance increased to 150 from 60.
+Solar Collector BuildEnergyCost decreased to 711 from 790.
+Solar Collector BuildMetalCost increased to 145 from 141.
+Wind Generator BuildCostMetal increased to 77 from 55.
+Underwater Metal Extractor BuildCostEnergy decreased to 1553 from 2219.
+Energy Storage BuildTime decreased to 4702 from 12750.
+Metal Storage BuildTime increased to 3135 from 2925.
+Underwater Energy Storage BuildTime decreased to 5506 from 14482.
+Underwater Metal Storage BuildTime decreased to 3671 from 3874.
+Aircraft Plant BuildCostEnergy increased to 2329 from 1340.
+Aircraft Plant BuildCostMetal decreased to 680 from 830.
+Kbot Lab BuildCostEnergy increased to 2125 from 1250.
+Kbot Lab BuildCostMetal decreased to 564 from 680.
+Shipyard BuildCostEnergy increased to 1317 from 750.
+Shipyard BuildCostMetal decreased to 492 from 600.
+Vehicle Plant BuildCostEnergy increased to 1870 from 1100.
+Vehicle Plant BuildCostMetal decreased to 496 from 600.
+Construction Aircraft BuildDistance increased to 100 from 40.
+Construction Kbot BuildDistance increased to 100 from 40.
+Construction Kbot MaxVelocity increased to 1.04 from 0.9.
+Construction Ship BuildCostMetal decreased to 208 from 260.
+Construction Ship BuildDistance increased to 150 from 60.
+Construction Vehicle BuildCostMetal increased to 185 from 175.
+Construction Vehicle BuildDistance increased to 100 from 40.
+
+Wind Generator Metal Wreckage Value increased to 61 from 44.
+Aircraft Plant Metal Wreckage Value decreased to 544 from 664.
+Kbot Lab Metal Wreckage Value decreased to 451 from 544.
+Shipyard Metal Wreckage Value decreased to 393 from 480.
+Vehicle Plant Metal Wreckage Value decreased to 396 from 480.
+Construction Ship Metal Wreckage Value decreased to 166 from 208.
+Construction Vehicle Metal Wreckage Value increased to 148 from 140.

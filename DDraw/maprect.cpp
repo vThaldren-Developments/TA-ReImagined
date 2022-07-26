@@ -9,6 +9,10 @@
 
 CMapRect::CMapRect(BOOL VidMem)
 {
+
+	VidMem = false;
+
+
 	lpMapRect = NULL;
 	if(DataShare->ehaOff == 1)
 		return;
@@ -32,15 +36,15 @@ CMapRect::CMapRect(BOOL VidMem)
 		DDRAW_INIT_STRUCT(ddsd);
 		ddsd.dwFlags = DDSD_CAPS | DDSD_WIDTH | DDSD_HEIGHT;
 
-		if (VidMem)
-		{
-			ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN | DDSCAPS_VIDEOMEMORY;
+		//if (VidMem)
+		//{
+			ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN/* | DDSCAPS_VIDEOMEMORY*/;
 			
-		}
-		else	
-		{
-			ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN | DDSCAPS_SYSTEMMEMORY;
-		}
+		//}
+		//else	
+		//{
+		//	ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN/* | DDSCAPS_SYSTEMMEMORY*/;
+		//}
 		if(GetMapMaxX() == GetMapMaxY())
 		{
 			MiniMapWidth = 126;

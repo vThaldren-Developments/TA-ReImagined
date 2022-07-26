@@ -18,19 +18,47 @@ CElementHandler::~CElementHandler()
 {
 //	GraphicElement * Curt_GElemPtr;
 
+	GraphicElement* element;
 
 	for(int y=0;y<ELEMENT_HASH_SIZE;y++)
 		for(int x=0;x<ELEMENT_HASH_SIZE;x++)
 		{
+
+			for (int i = 0; i < map[y][x].size(); i++)
+			{
+				element = map[y][x][i];
+
+				if (element)
+				{
+					delete element;
+
+					map[y][x].erase(map[y][x].begin() + i);
+				}
+			}
+
+
+
+
+
+
 			//while(!map[y][x].empty())
 			//{
-				for (ElementList::iterator iter = map[y][x].begin(); iter != map[y][x].end () ; )
-				{
-					//map[y][x].pop_back();
-					//delete Curt_GElemPtr;
-					delete (*iter);
-					iter = map[y][x].erase ( iter);
-				}
+				//for (ElementList::iterator iter = map[y][x].begin(); iter != map[y][x].end () ; )
+				//{
+				//	//map[y][x].pop_back();
+				//	//delete Curt_GElemPtr;
+				//	delete (*iter);
+				//	iter = map[y][x].erase ( iter);
+				//}
+
+
+
+
+
+
+
+
+
 				//Curt_GElemPtr= map[y][x].back();
 				//delete ;
 
@@ -68,36 +96,95 @@ void CElementHandler::DeleteOn(int x, int y)
 
 void CElementHandler::DeleteBetween(int x1, int y1, int x2, int y2)
 {
-	int sx1=(x1>>HASH_SQUARE_SIZE) & (ELEMENT_HASH_SIZE-1);
-	int sy1=(y1>>HASH_SQUARE_SIZE) & (ELEMENT_HASH_SIZE-1);
-	int sx2=(x2>>HASH_SQUARE_SIZE) & (ELEMENT_HASH_SIZE-1);
-	int sy2=(y2>>HASH_SQUARE_SIZE) & (ELEMENT_HASH_SIZE-1);
+	int sx1 = (x1 >> HASH_SQUARE_SIZE) & (ELEMENT_HASH_SIZE - 1);
+	int sy1 = (y1 >> HASH_SQUARE_SIZE) & (ELEMENT_HASH_SIZE - 1);
+	int sx2 = (x2 >> HASH_SQUARE_SIZE) & (ELEMENT_HASH_SIZE - 1);
+	int sy2 = (y2 >> HASH_SQUARE_SIZE) & (ELEMENT_HASH_SIZE - 1);
 
-	if(sx1>sx2){
-		int tmp=sx1;
-		sx1=sx2;
-		sx2=tmp;
+	if (sx1 > sx2) {
+		int tmp = sx1;
+		sx1 = sx2;
+		sx2 = tmp;
 	}
-	if(sy1>sy2){
-		int tmp=sy1;
-		sy1=sy2;
-		sy2=tmp;
+	if (sy1 > sy2) {
+		int tmp = sy1;
+		sy1 = sy2;
+		sy2 = tmp;
 	}
 	std::vector<GraphicElement*> toBeDeleted;
+	GraphicElement* element;
 
-	for(int y=sy1;y<=sy2;y++)
-		for(int x=sx1;x<=sx2;x++){
-			ElementList::iterator eli;
-			for(eli=map[y][x].begin();eli!=map[y][x].end();++eli){
-				if(((*eli)->x1 >= x1) && ((*eli)->y1 >= y1))
-					toBeDeleted.push_back(*eli);
+	for (int y = sy1; y <= sy2; y++)
+	{
+		for (int x = sx1; x <= sx2; x++)
+		{
+			//ElementList::iterator eli;
+			for (int i = 0; i < map[y][x].size(); i++)
+			{
+				element = map[y][x][i];
+
+				if (element->x1 >= x1 && element->y1 >= y1)
+				{
+					toBeDeleted.push_back(element);
+				}
 			}
-			while(!toBeDeleted.empty()){
-				delete toBeDeleted.back();
-				map[y][x].remove(toBeDeleted.back());
-				toBeDeleted.pop_back();
+
+
+
+			//for (eli = map[y][x].begin(); eli != map[y][x].end(); ++eli) {
+			//	if (((*eli)->x1 >= x1) && ((*eli)->y1 >= y1))
+			//		toBeDeleted.push_back(*eli);
+			//}
+
+
+
+
+			while (!toBeDeleted.empty())
+			{
+				GraphicElement* mapGE;
+				GraphicElement* deleteGE;
+				deleteGE = toBeDeleted.back();
+
+				int index = -1;
+
+				// find identical's index by iterating
+				for (int i = 0; i < map[y][x].size(); i++)
+				{
+
+					mapGE = map[y][x][i];
+					if (deleteGE && mapGE)
+					{
+						if (mapGE->x1 == deleteGE->x1 && mapGE->y1 == deleteGE->y1)
+						{
+							index = i;
+							break;
+						}
+					}
+
+				}
+
+
+				if (index != -1)
+				{
+					if (mapGE)
+						delete mapGE;
+
+					toBeDeleted.pop_back();
+
+					map[y][x].erase(map[y][x].begin() + index);
+				}
 			}
+
+
 		}
+	}
+
+	//while (!toBeDeleted.empty()) {
+	//	delete toBeDeleted.back();
+	//	map[y][x].remove(toBeDeleted.back());
+	//	toBeDeleted.pop_back();
+	//}
+
 }
 
 std::vector<GraphicElement*> CElementHandler::GetArea(int x1, int y1, int x2, int y2)
@@ -157,13 +244,21 @@ std::vector<GraphicElement*> CElementHandler::GetArea(int x1, int y1, int x2, in
 
 	try
 	{
+		GraphicElement* element;
+
 		for(int y=sy1;y<=sy2;y++)
-		for(int x=sx1;x<=sx2;x++){
-			ElementList::iterator eli;
-			for(eli=map[y][x].begin();eli!=map[y][x].end();++eli)
-			{// weird eli maybe invalid ptr
-			if((((*eli)->x1 >= x1) && ((*eli)->x1 <= x2) && ((*eli)->y1 >= y1) && ((*eli)->y1 <= y2)))
-					r.push_back(*eli);
+		{
+			for (int x = sx1; x <= sx2; x++) {
+
+				for (int i = 0; i < map[y][x].size(); i++)
+				{
+					element = map[y][x][i];
+					if (element != nullptr)
+					{
+						if (((element)->x1 >= x1) && ((element)->x1 <= x2) && ((element)->y1 >= y1) && ((element)->y1 <= y2))
+							r.push_back(element);
+					}
+				}
 			}
 		}
 		
@@ -193,9 +288,30 @@ GraphicElement* CElementHandler::MoveTextElement(GraphicElement* GE, int x, int 
 
 		int mx=(ge->x1>>HASH_SQUARE_SIZE) & (ELEMENT_HASH_SIZE-1);
 		int my=(ge->y1>>HASH_SQUARE_SIZE) & (ELEMENT_HASH_SIZE-1);
-		map[my][mx].remove(ge);
-		if(ge)
+
+		int index = -1;
+
+		// find identical's index by iterating
+		for (int i = 0; i < map[my][mx].size(); i++)
+		{
+			GraphicElement* currentGE = map[my][mx][i];
+			if (currentGE && ge)
+			{
+				if (ge->x1 == currentGE->x1 && ge->y1 == currentGE->y1)
+				{
+					index = i;
+					break;
+				}
+			}
+		}
+
+		if (ge)
+		{
 			delete ge;
+
+			map[my][mx].erase(map[my][mx].begin() + index);
+		}
+
 
 		AddElement(Nge);
 

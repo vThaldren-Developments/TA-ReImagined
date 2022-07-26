@@ -66,6 +66,15 @@ void ____NewDataFile_Hook_1_HelperA()
 		hpiHandleArray();
 		hpiCdToTAPath();
 
+		FindResult = hpiFindFirst((LPVOID)"*.th4", FindDataAll, -1, 1);
+		if ((int)FindResult >= 0)
+		{
+			do
+				hpiInsertToArray(FindDataAll + 20, 1);
+			while (!hpiFindNext(FindResult, FindDataAll));
+			hpiClose(FindResult);
+		}
+
 		FindResult = hpiFindFirst((LPVOID)"*.th3", FindDataAll, -1, 1);
 		if ((int)FindResult >= 0)
 		{
@@ -85,6 +94,15 @@ void ____NewDataFile_Hook_1_HelperA()
 		}
 
 		FindResult = hpiFindFirst((LPVOID)"*.th1", FindDataAll, -1, 1);
+		if ((int)FindResult >= 0)
+		{
+			do
+				hpiInsertToArray(FindDataAll + 20, 1);
+			while (!hpiFindNext(FindResult, FindDataAll));
+			hpiClose(FindResult);
+		}
+
+		FindResult = hpiFindFirst((LPVOID)"*.th0", FindDataAll, -1, 1);
 		if ((int)FindResult >= 0)
 		{
 			do

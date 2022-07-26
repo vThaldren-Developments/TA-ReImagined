@@ -187,15 +187,15 @@ IDDrawSurface::IDDrawSurface(LPDIRECTDRAW lpDD, LPDDSURFACEDESC lpTAddsc, LPDIRE
 
 
 	SettingsDialog = new Dialog(VidMem);
-#ifndef REIMAGINED
+//#ifndef REIMAGINED
 	WhiteBoard = new AlliesWhiteboard(VidMem);
-#endif
+//#endif
 	Income = new CIncome(VidMem);
 	TAHook = new CTAHook(VidMem);
 	CommanderWarp = new CWarp(VidMem);
-#ifndef REIMAGINED
+//#ifndef REIMAGINED
 	SharedRect = new CMapRect(VidMem);
-#endif
+//#endif
 	ChangeQueue = new CChangeQueue;
 	DDDTA = new CDDDTA;
 
@@ -271,20 +271,20 @@ ULONG __stdcall IDDrawSurface::Release()
 	}
 
 
-#ifndef REIMAGINED
+//#ifndef REIMAGINED
 	delete WhiteBoard;
 	WhiteBoard = NULL;
-#endif
+//#endif
 	//delete Income;
 	//Income = NULL;
 	delete TAHook;
 	TAHook = NULL;
 	delete CommanderWarp;
 	CommanderWarp = NULL;
-#ifndef REIMAGINED
+//#ifndef REIMAGINED
 	delete SharedRect;
 	SharedRect = NULL;
-#endif
+//#endif
 	//delete SettingsDialog;
 	//SettingsDialog = NULL;
 	delete ChangeQueue;
@@ -758,12 +758,12 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 			{
 
 
-				//if(!megamapON)
-					//WhiteBoard->LockBlit((char*)SurfaceMemory, lPitch);
+				if(!megamapON)
+					WhiteBoard->LockBlit((char*)SurfaceMemory, lPitch);
 
 
 
-#ifndef REIMAGINED
+//#ifndef REIMAGINED
 				if (GameingState_P
 					&& (gameingstate::MULTI == GameingState_P->State))
 				{
@@ -772,7 +772,7 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 						SharedRect->LockBlit((char*)SurfaceMemory, lPitch);
 					}
 				}
-#endif
+//#endif
 
 #ifdef USEMEGAMAP
 				if ((GUIExpander)
@@ -804,9 +804,10 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 
 			if (SurfaceMemory != NULL)
 			{
-				//if (!megamapON)
-					//WhiteBoard->Blit((LPBYTE)SurfaceMemory);
-			
+//#ifndef REIMAGINED
+				if (!megamapON)
+					WhiteBoard->Blit((LPBYTE)SurfaceMemory);
+//#endif
 
 
 
@@ -949,7 +950,12 @@ HRESULT __stdcall IDDrawSurface::Unlock(LPVOID arg1)
 			//	mov pushvar, eax
 			//}
 
-			//SettingsDialog->BlitDialog(pushvar);
+
+			if (SurfaceMemory != NULL)
+			{
+				SettingsDialog->RenderDialog((LPBYTE)SurfaceMemory);
+			}
+
 
 
 
@@ -1604,11 +1610,11 @@ LRESULT CALLBACK WinProc(HWND WinProcWnd, UINT Msg, WPARAM wParam, LPARAM lParam
 		}
 		//////////////////////////////////////////////////////////////////////////
 
-#ifndef REIMAGINED
+//#ifndef REIMAGINED
 		if ((NULL != LocalShare->Whiteboard)
 			&& (((AlliesWhiteboard*)LocalShare->Whiteboard)->Message(WinProcWnd, Msg, wParam, lParam)))
 			return 0;
-#endif
+//#endif
 
 		if ((NULL != LocalShare->Income)
 			&& (((CIncome*)LocalShare->Income)->Message(WinProcWnd, Msg, wParam, lParam)))
