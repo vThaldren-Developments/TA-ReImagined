@@ -9,6 +9,12 @@
     <LocalDebuggerCommandArguments>
     </LocalDebuggerCommandArguments>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseTwilight|Win32'">
+    <LocalDebuggerCommand />
+    <LocalDebuggerWorkingDirectory />
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments />
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">
     <LocalDebuggerCommand />
     <LocalDebuggerWorkingDirectory />

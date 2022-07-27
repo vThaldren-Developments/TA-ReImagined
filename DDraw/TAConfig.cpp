@@ -32,7 +32,7 @@ TADRConfig::TADRConfig ()
 	GetTempFileNameA ( TAexePath, "TotalMini", 0x0, TAexeName);
 #endif
 
-#if defined OTA || ProTA
+#if defined OTA || ProTA || TWILIGHT
 	GetTempFileNameA(TAexePath, "TAini", 0x0, TAexeName);
 #endif
 
@@ -43,11 +43,6 @@ TADRConfig::TADRConfig ()
 #ifdef ESCALATION
 	GetTempFileNameA(TAexePath, "TAESCini", 0x0, TAexeName);
 #endif
-
-#ifdef TAZERO
-	GetTempFileNameA(TAexePath, "TAZeroini", 0x0, TAexeName);
-#endif
-
 
 	//strcat_s ( TAexePath, MAX_PATH, TAexeName);
 // 

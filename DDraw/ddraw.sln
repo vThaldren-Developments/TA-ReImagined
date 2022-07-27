@@ -16,6 +16,7 @@ Global
 		ReleaseOTA|Win32 = ReleaseOTA|Win32
 		ReleaseProTA|Win32 = ReleaseProTA|Win32
 		ReleaseReImagined|Win32 = ReleaseReImagined|Win32
+		ReleaseTwilight|Win32 = ReleaseTwilight|Win32
 		ReleaseZero|Win32 = ReleaseZero|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -37,6 +38,8 @@ Global
 		{C5B2BA2B-6F36-47B2-9333-CA8109AB6AA6}.ReleaseProTA|Win32.Build.0 = ReleaseProTA|Win32
 		{C5B2BA2B-6F36-47B2-9333-CA8109AB6AA6}.ReleaseReImagined|Win32.ActiveCfg = ReleaseReImagined|Win32
 		{C5B2BA2B-6F36-47B2-9333-CA8109AB6AA6}.ReleaseReImagined|Win32.Build.0 = ReleaseReImagined|Win32
+		{C5B2BA2B-6F36-47B2-9333-CA8109AB6AA6}.ReleaseTwilight|Win32.ActiveCfg = ReleaseTwilight|Win32
+		{C5B2BA2B-6F36-47B2-9333-CA8109AB6AA6}.ReleaseTwilight|Win32.Build.0 = ReleaseTwilight|Win32
 		{C5B2BA2B-6F36-47B2-9333-CA8109AB6AA6}.ReleaseZero|Win32.ActiveCfg = ReleaseZero|Win32
 		{C5B2BA2B-6F36-47B2-9333-CA8109AB6AA6}.ReleaseZero|Win32.Build.0 = ReleaseZero|Win32
 	EndGlobalSection
