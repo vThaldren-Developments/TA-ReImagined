@@ -17,6 +17,10 @@
       <Configuration>LinuxZero</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseProTA|Win32">
+      <Configuration>ReleaseProTA</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseEsc|Win32">
       <Configuration>ReleaseEsc</Configuration>
       <Platform>Win32</Platform>
@@ -44,6 +48,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>NotSet</CharacterSet>
@@ -106,6 +117,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
@@ -142,6 +157,7 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">$(SolutionDir)\Output\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">$(SolutionDir)\Output\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">$(SolutionDir)\Output\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">$(SolutionDir)\Output\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">$(SolutionDir)\Output\</OutDir>
@@ -150,16 +166,18 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='LinuxEsc|Win32'">$(SolutionDir)\Output\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseMayhem|Win32'">$(SolutionDir)\Output\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='LinuxMayhem|Win32'">$(SolutionDir)\Output\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">.\Release\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">.\Others\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">.\Others\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">.\Others\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">.\ReleaseLinux\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">.\Release\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='LinuxZero|Win32'">.\ReleaseLinux\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseEsc|Win32'">.\Release\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='LinuxEsc|Win32'">.\ReleaseLinux\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseMayhem|Win32'">.\Release\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseMayhem|Win32'">.\Others\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='LinuxMayhem|Win32'">.\ReleaseLinux\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">false</LinkIncremental>
@@ -169,6 +187,7 @@
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='ReleaseMayhem|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='LinuxMayhem|Win32'">false</LinkIncremental>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
@@ -178,6 +197,7 @@
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseMayhem|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='LinuxMayhem|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'" />
@@ -187,6 +207,7 @@
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseMayhem|Win32'" />
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='LinuxMayhem|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'" />
@@ -196,6 +217,7 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseMayhem|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='LinuxMayhem|Win32'" />
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">$(IncludePath)</IncludePath>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">$(IncludePath)</IncludePath>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">$(IncludePath)</IncludePath>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">$(IncludePath)</IncludePath>
@@ -205,6 +227,7 @@
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseMayhem|Win32'">$(IncludePath)</IncludePath>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='LinuxMayhem|Win32'">$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">C:\Program Files (x86)\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">C:\Program Files (x86)\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">C:\Program Files (x86)\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">C:\Program Files (x86)\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">C:\Program Files (x86)\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
@@ -214,6 +237,7 @@
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='ReleaseMayhem|Win32'">C:\Program Files (x86)\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='LinuxMayhem|Win32'">C:\Program Files (x86)\Visual Leak Detector\lib\Win32;$(LibraryPath)</LibraryPath>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">tdraw</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">tdraw</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">idraw</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">tdraw</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">zdraw</TargetName>
@@ -259,14 +283,64 @@
       <AdditionalDependencies>imm32.lib;user32.lib;kernel32.lib;gdi32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>.\tdraw.def</ModuleDefinitionFile>
-      <MapFileName>.\Public\tdraw.map</MapFileName>
+      <MapFileName>.\Output\tdraw.map</MapFileName>
       <ImportLibrary>.\Release/tdraw.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <MapExports>true</MapExports>
-      <OutputFile>C:\Program Files (x86)\Steam\steamapps\common\Total Annihilation\$(TargetName)$(TargetExt)</OutputFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/ddraw.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/ddraw.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;DDRAW_EXPORTS;ProTA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\Release/tdraw.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CallingConvention>StdCall</CallingConvention>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ErrorReporting>None</ErrorReporting>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x041d</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>imm32.lib;user32.lib;kernel32.lib;gdi32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ModuleDefinitionFile>.\tdraw.def</ModuleDefinitionFile>
+      <MapFileName>.\Output\tdraw.map</MapFileName>
+      <ImportLibrary>.\Release/tdraw.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapExports>true</MapExports>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -603,13 +677,14 @@
       <AdditionalDependencies>imm32.lib;user32.lib;kernel32.lib;gdi32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>.\mdraw.def</ModuleDefinitionFile>
-      <MapFileName>.\Public\mdraw.map</MapFileName>
+      <MapFileName>.\Output\mdraw.map</MapFileName>
       <ImportLibrary>.\Release/mdraw.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <MapExports>true</MapExports>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -683,6 +758,7 @@
     <ClCompile Include="UnitIcon.cpp" />
     <ClCompile Include="ddraw.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -695,6 +771,7 @@
     <ClCompile Include="ExternhotKey.cpp" />
     <ClCompile Include="font.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -712,6 +789,7 @@
     <ClCompile Include="HPIfunc.cpp" />
     <ClCompile Include="iddraw.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -723,6 +801,7 @@
     </ClCompile>
     <ClCompile Include="iddrawsurface.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -738,6 +817,7 @@
     <ClCompile Include="MultiGameWeaponID.cpp" />
     <ClCompile Include="rings.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -749,6 +829,7 @@
     </ClCompile>
     <ClCompile Include="dddta.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -760,6 +841,7 @@
     </ClCompile>
     <ClCompile Include="bookmarks.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -771,6 +853,7 @@
     </ClCompile>
     <ClCompile Include="changequeue.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -782,6 +865,7 @@
     </ClCompile>
     <ClCompile Include="cinomce.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -793,6 +877,7 @@
     </ClCompile>
     <ClCompile Include="commanderwarp.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -804,6 +889,7 @@
     </ClCompile>
     <ClCompile Include="dialog.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -815,6 +901,7 @@
     </ClCompile>
     <ClCompile Include="maprect.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -826,6 +913,7 @@
     </ClCompile>
     <ClCompile Include="MinimapHandler.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -840,6 +928,7 @@
     <ClCompile Include="TAConfig.cpp" />
     <ClCompile Include="tahook.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -854,6 +943,7 @@
     <ClCompile Include="UnitMinimap.cpp" />
     <ClCompile Include="unitrotate.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -865,6 +955,7 @@
     </ClCompile>
     <ClCompile Include="whiteboard.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -876,6 +967,7 @@
     </ClCompile>
     <ClCompile Include="PCX.CPP">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -887,6 +979,7 @@
     </ClCompile>
     <ClCompile Include="pcxread.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -901,6 +994,7 @@
     <ClCompile Include="hook\InlineHook.cpp" />
     <ClCompile Include="cgraphic.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -912,6 +1006,7 @@
     </ClCompile>
     <ClCompile Include="ElementHandler.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseProTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseReImagined|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>

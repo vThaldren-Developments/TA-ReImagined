@@ -1215,7 +1215,11 @@ void Dialog::WriteSettings()
 	RegSetValueEx(hKey, "KeyCode", NULL, REG_DWORD, (unsigned char*)&VirtualKeyCode, sizeof(int));
 	RegSetValueEx(hKey, "OptimizeDT", NULL, REG_BINARY, (unsigned char*)&OptimizeDTEnabled, sizeof(bool));
 	RegSetValueEx(hKey, "FullRings", NULL, REG_BINARY, (unsigned char*)&FullRingsEnabled, sizeof(bool));
-	RegSetValueEx(hKey, "ShareText", NULL, REG_SZ, (unsigned char*)ShareText, strlen(ShareText));
+	//RegSetValueEx(hKey, "ShareText", NULL, REG_SZ, (unsigned char*)ShareText, strlen(ShareText));
+
+
+
+
 	RegSetValueEx(hKey, "Delay", NULL, REG_SZ, (unsigned char*)cAutoClickDelay, strlen(cAutoClickDelay));
 	RegSetValueEx(hKey, "WhiteboardKey", NULL, REG_DWORD, (unsigned char*)&VirtualWhiteboardKey, sizeof(int));
 	RegSetValueEx(hKey, "MegamapKey", NULL, REG_DWORD, (unsigned char*)&VirtualMegamap, sizeof(int));
@@ -1259,14 +1263,14 @@ void Dialog::ReadSettings()
 	{
 		FullRingsEnabled = true;
 	}
-	Size = 1000;
-	if(RegQueryValueEx(hKey, "ShareText", NULL, NULL, (unsigned char*)ShareText, &Size) != ERROR_SUCCESS)
-	{
-		lstrcpyA(ShareText, "+setshareenergy 1000\255+setsharemetal 1000\255+shareall\255+shootall");
-		ShareText[20] = 13;
-		ShareText[40] = 13;
-		ShareText[50] = 13;
-	}
+	//Size = 1000;
+	//if(RegQueryValueEx(hKey, "ShareText", NULL, NULL, (unsigned char*)ShareText, &Size) != ERROR_SUCCESS)
+	//{
+	//	lstrcpyA(ShareText, "+setshareenergy 1000\255+setsharemetal 1000\255+shareall\255+shootall");
+	//	ShareText[20] = 13;
+	//	ShareText[40] = 13;
+	//	ShareText[50] = 13;
+	//}
 	Size = 10;
 	if(RegQueryValueEx(hKey, "Delay", NULL, NULL, (unsigned char*)cAutoClickDelay, &Size) != ERROR_SUCCESS)
 	{

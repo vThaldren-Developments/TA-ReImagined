@@ -18,11 +18,18 @@
 #include "MegamapControl.h"
 
 
+#include <string>
+
+
 #ifdef WM_MOUSEWHEEL//vs2010
 #undef WM_MOUSEWHEEL
 #endif
 #define WM_MOUSEWHEEL 522
 #define MAX_SPACING 10
+
+
+#define MAX_MACRO_CHAT_LINES 32
+
 
 CTAHook *TAHook;
 
@@ -133,9 +140,7 @@ bool CTAHook::Message(HWND WinProcWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 				switch((int)wParam)
 				{
 				case 122: //f11
-#ifndef REIMAGINED
 					WriteShareMacro();
-#endif
 					return true;
 
 				case 33:  //pageup
@@ -366,29 +371,109 @@ void CTAHook::Set(int KeyCodei, char *ChatMacroi, bool OptimizeRowsi, bool FullR
 
 void CTAHook::WriteShareMacro()
 {
+		PlayerStruct* PlayerStruct;
 
-	char buf[1000];
+		LPSTR ChatLine = (LPSTR)malloc(46);
+		//unsigned char* ChatBuffer[32];
+		std::string ChatBuffer[32];
 
-	int lasti = 0;
+		std::string ChatLineKey;
 
-	for(size_t i=0; i<=strlen(ShareText); i++)
-	{
-		if(ShareText[i] == 13 || ShareText[i] == 0)
+
+		TCHAR ConfigFileNameFullPath2[256];
+		std::string ConfigFileName2 = "ChatMacro.ini"; // maybe make it per-mod sided at some point?
+
+
+		unsigned int x;
+
+		x = GetModuleFileNameA(0, ConfigFileNameFullPath2, 256);
+
+		while (ConfigFileNameFullPath2[x] != '\\')
 		{
-			size_t j;
-			for(j=0; j<i-lasti; j++)
-			{
-				buf[j] = ShareText[lasti+j];
-			}
-			buf[j] = 0;
-			ShowText(&TAdynmem->Players[0], buf, 4, 0);
-
-			if(buf[0] == '+')
-				InterpretCommand(buf+1, 1);
-
-			lasti=i+1;
+			ConfigFileNameFullPath2[x] = 0x00;
+			x--;
 		}
-	}
+
+		x++;
+
+		for (size_t i = 0; i < ConfigFileName2.size(); i++)
+		{
+			ConfigFileNameFullPath2[x] = ConfigFileName2[i];
+			x++;
+		}
+
+		ConfigFileNameFullPath2[x] = 0x00;
+
+
+
+
+		__asm
+		{
+			mov esi, dword ptr ds : [0x511DE8]
+			add esi, 0x1B63
+			mov PlayerStruct, esi
+		}
+
+		for (int i = 0; i < MAX_MACRO_CHAT_LINES; i++)
+		{
+			ChatLineKey = "ChatLine" + std::to_string(i);
+
+			GetPrivateProfileStringA("ChatMacro", ChatLineKey.c_str(), "", ChatLine, 46, ConfigFileNameFullPath2);
+
+			ChatBuffer[i] = "";
+
+			for (int j = 0; j < 46; j++)
+			{
+				if (ChatLine[j] == 0 || ChatLine[j] == 13)
+				{
+					ChatBuffer[i] += '\0';
+					j = 46;
+				}
+				else
+				{
+					ChatBuffer[i] += ChatLine[j];
+				}
+			}
+		}
+
+		free(ChatLine);
+
+		for (int i = 0; i < MAX_MACRO_CHAT_LINES; i++)
+		{
+			if (ChatBuffer[i].size() > 0 && ChatBuffer[i][0] != '\0')
+			{
+				ShowText(PlayerStruct, (char*)ChatBuffer[i].c_str(), 4, 0);
+
+				if (ChatBuffer[i][0] == '+')
+				{
+					InterpretCommand((char*)ChatBuffer[i].c_str() + 1, 1);
+				}
+			}
+		}
+
+
+	//char buf[1000];
+
+	//int lasti = 0;
+
+	//for(size_t i=0; i<=strlen(ShareText); i++)
+	//{
+	//	if(ShareText[i] == 13 || ShareText[i] == 0)
+	//	{
+	//		size_t j;
+	//		for(j=0; j<i-lasti; j++)
+	//		{
+	//			buf[j] = ShareText[lasti+j];
+	//		}
+	//		buf[j] = 0;
+	//		ShowText(&TAdynmem->Players[0], buf, 4, 0);
+
+	//		if(buf[0] == '+')
+	//			InterpretCommand(buf+1, 1);
+
+	//		lasti=i+1;
+	//	}
+	//}
 
 	/*  if(QueuePos>0)
 	return;

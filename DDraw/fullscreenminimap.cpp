@@ -1169,7 +1169,11 @@ void __stdcall FullScreenMinimap::UpdateFrame(LPVOID DestSurf, LPDDSURFACEDESC D
 
 					for (int y = 0; y < bottom; y++)
 					{
-#ifdef OTA
+#if defined OTA || MAYHEM
+						memset((void*)((LPBYTE)DestSurf + ((y + top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + left), 0x00, ((*TAmainStruct_PtrPtr)->GameScreenWidth));
+#endif
+
+#ifdef ProTA
 						memset((void*)((LPBYTE)DestSurf + ((y + top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + left), 0x5F, ((*TAmainStruct_PtrPtr)->GameScreenWidth));
 #endif
 
@@ -1183,7 +1187,11 @@ void __stdcall FullScreenMinimap::UpdateFrame(LPVOID DestSurf, LPDDSURFACEDESC D
 				{
 					for (int y = 0; y < bottom; y++)
 					{
-#ifdef OTA
+#if defined OTA || MAYHEM
+						memset((void*)((LPBYTE)DestSurf + ((y + top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + left), 0x00, ((*TAmainStruct_PtrPtr)->GameScreenWidth));
+#endif
+
+#ifdef ProTA
 						memset((void*)((LPBYTE)DestSurf + ((y + top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + left), 0x5F, ((*TAmainStruct_PtrPtr)->GameScreenWidth));
 #endif
 

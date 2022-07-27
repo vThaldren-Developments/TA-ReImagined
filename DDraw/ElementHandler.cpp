@@ -24,7 +24,7 @@ CElementHandler::~CElementHandler()
 		for(int x=0;x<ELEMENT_HASH_SIZE;x++)
 		{
 
-			for (int i = 0; i < map[y][x].size(); i++)
+			for (size_t i = 0; i < map[y][x].size(); i++)
 			{
 				element = map[y][x][i];
 
@@ -119,11 +119,12 @@ void CElementHandler::DeleteBetween(int x1, int y1, int x2, int y2)
 		for (int x = sx1; x <= sx2; x++)
 		{
 			//ElementList::iterator eli;
-			for (int i = 0; i < map[y][x].size(); i++)
+			for (size_t i = 0; i < map[y][x].size(); i++)
 			{
 				element = map[y][x][i];
 
-				if (element->x1 >= x1 && element->y1 >= y1)
+				if (element->x1 > x1 && element->x1 < x2 &&
+					element->y1 > y1 && element->y1 < y2)
 				{
 					toBeDeleted.push_back(element);
 				}
@@ -148,7 +149,7 @@ void CElementHandler::DeleteBetween(int x1, int y1, int x2, int y2)
 				int index = -1;
 
 				// find identical's index by iterating
-				for (int i = 0; i < map[y][x].size(); i++)
+				for (size_t i = 0; i < map[y][x].size(); i++)
 				{
 
 					mapGE = map[y][x][i];
@@ -250,12 +251,12 @@ std::vector<GraphicElement*> CElementHandler::GetArea(int x1, int y1, int x2, in
 		{
 			for (int x = sx1; x <= sx2; x++) {
 
-				for (int i = 0; i < map[y][x].size(); i++)
+				for (size_t i = 0; i < map[y][x].size(); i++)
 				{
 					element = map[y][x][i];
 					if (element != nullptr)
 					{
-						if (((element)->x1 >= x1) && ((element)->x1 <= x2) && ((element)->y1 >= y1) && ((element)->y1 <= y2))
+						if (((element)->x1 > x1) && ((element)->x1 < x2) && ((element)->y1 > y1) && ((element)->y1 < y2))
 							r.push_back(element);
 					}
 				}
@@ -292,7 +293,7 @@ GraphicElement* CElementHandler::MoveTextElement(GraphicElement* GE, int x, int 
 		int index = -1;
 
 		// find identical's index by iterating
-		for (int i = 0; i < map[my][mx].size(); i++)
+		for (size_t i = 0; i < map[my][mx].size(); i++)
 		{
 			GraphicElement* currentGE = map[my][mx][i];
 			if (currentGE && ge)

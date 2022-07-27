@@ -32,7 +32,7 @@ TADRConfig::TADRConfig ()
 	GetTempFileNameA ( TAexePath, "TotalMini", 0x0, TAexeName);
 #endif
 
-#ifdef OTA
+#if defined OTA || ProTA
 	GetTempFileNameA(TAexePath, "TAini", 0x0, TAexeName);
 #endif
 
