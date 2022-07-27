@@ -189,7 +189,7 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='LinuxOTA|Win32'">.\ReleaseLinux\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseZero|Win32'">.\Release\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='LinuxZero|Win32'">.\ReleaseLinux\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseEsc|Win32'">.\Release\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseEsc|Win32'">.\Others\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='LinuxEsc|Win32'">.\ReleaseLinux\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseMayhem|Win32'">.\Others\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='LinuxMayhem|Win32'">.\ReleaseLinux\</IntDir>
@@ -654,7 +654,7 @@
       <AdditionalDependencies>imm32.lib;user32.lib;kernel32.lib;gdi32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>.\edraw.def</ModuleDefinitionFile>
-      <MapFileName>.\Public\edraw.map</MapFileName>
+      <MapFileName>.\Output\edraw.map</MapFileName>
       <ImportLibrary>.\Release/edraw.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>

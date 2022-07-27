@@ -1169,7 +1169,7 @@ void __stdcall FullScreenMinimap::UpdateFrame(LPVOID DestSurf, LPDDSURFACEDESC D
 
 					for (int y = 0; y < bottom; y++)
 					{
-#if defined OTA || MAYHEM || TWILIGHT
+#if defined OTA || MAYHEM || TWILIGHT || ESCALATION
 						memset((void*)((LPBYTE)DestSurf + ((y + top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + left), 0x00, ((*TAmainStruct_PtrPtr)->GameScreenWidth));
 #endif
 
@@ -1187,7 +1187,7 @@ void __stdcall FullScreenMinimap::UpdateFrame(LPVOID DestSurf, LPDDSURFACEDESC D
 				{
 					for (int y = 0; y < bottom; y++)
 					{
-#if defined OTA || MAYHEM || TWILIGHT
+#if defined OTA || MAYHEM || TWILIGHT || ESCALATION
 						memset((void*)((LPBYTE)DestSurf + ((y + top) * (*TAmainStruct_PtrPtr)->ScreenWidth) + left), 0x00, ((*TAmainStruct_PtrPtr)->GameScreenWidth));
 #endif
 
