@@ -186,6 +186,11 @@ bool APIENTRY DllMain(HINSTANCE hinst, unsigned long reason, void*)
 		//IDDrawSurface::OutptTxt ("Install Limit Crack");
 		NowCrackLimit= new LimitCrack;
 
+
+		// Thaldren's Debugging Utility DLL
+		LoadLibrary("ta_debug.dll");
+
+
 #ifdef REIMAGINED
 		// Thaldren's Initializers
 		StaticInitializers_DllMain();
@@ -240,7 +245,8 @@ bool APIENTRY DllMain(HINSTANCE hinst, unsigned long reason, void*)
 
 void GetSysDir()
 {
-	SDDraw = LoadLibrary("pdraw.dll");
+	char Buff[MAX_PATH];
+	/*SDDraw = LoadLibrary("pdraw.dll");
 
 	if (SDDraw == NULL)
 	{
@@ -262,7 +268,7 @@ void GetSysDir()
 		SDDraw = LoadLibrary(SystemDDraw);
 
 		if(SDDraw == NULL)
-		{
+		{*/
 			memset(Buff, 0, MAX_PATH);
 			//char Buff[MAX_PATH];
 			GetSystemDirectory(Buff, MAX_PATH);
@@ -272,8 +278,8 @@ void GetSysDir()
 			lstrcpyA(SystemDDraw, Buff);
 			lstrcatA(SystemDDraw, "\\ddraw.dll");
 			SDDraw = LoadLibrary(SystemDDraw);
-		}
-	}
+		//}
+	//}
 }
 
 HRESULT WINAPI DirectDrawCreate(GUID FAR *lpGUID, LPDIRECTDRAW FAR *lplpDD, IUnknown FAR *pUnkOuter)

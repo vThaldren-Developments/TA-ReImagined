@@ -1486,7 +1486,7 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 				{
 					if (unitPtr->Weapon3->Range)
 					{
-						Radius= (static_cast<int>(unitPtr->Weapon3->Range)* static_cast<int>(Aspect->x))/ parent->TAMAPTAPos.right;
+						Radius = (DWORD)(((float)unitPtr->Weapon3->Range * (float)Aspect->x / (float)parent->TAMAPTAPos.right));
 
 						DrawRadarCircle ( (LPBYTE)PixelBits, Aspect,
 							TAx, TAy, 
@@ -1499,7 +1499,7 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 				{
 					if (unitPtr->Weapon2->Range)
 					{
-						Radius= (static_cast<int>(unitPtr->Weapon2->Range)* static_cast<int>(Aspect->x))/ parent->TAMAPTAPos.right;
+						Radius = (DWORD)(((float)unitPtr->Weapon2->Range * (float)Aspect->x / (float)parent->TAMAPTAPos.right));
 
 						DrawRadarCircle ( (LPBYTE)PixelBits, Aspect,
 							TAx, TAy, 
@@ -1511,7 +1511,7 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 				{
 					if (unitPtr->Weapon1->Range)
 					{
-						Radius= (static_cast<int>(unitPtr->Weapon1->Range)* static_cast<int>(Aspect->x))/ parent->TAMAPTAPos.right;
+						Radius = (DWORD)(((float)unitPtr->Weapon1->Range * (float)Aspect->x / (float)parent->TAMAPTAPos.right));
 
 
 						DrawRadarCircle ( (LPBYTE)PixelBits, Aspect,
@@ -1530,10 +1530,10 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 			//radar and jam
 			if (MegamapRadarMinimum<unitPtr->UnitType->nRadarDistance)
 			{
-				DrawRadarCircle ( PixelBits, Aspect,
-					TAx, TAy, 
-					(static_cast<int>(unitPtr->UnitType->nRadarDistance)* static_cast<int>(Aspect->x))/ parent->TAMAPTAPos.right, 
-					MegamapRadarColor );
+				DrawRadarCircle(PixelBits, Aspect,
+					TAx, TAy,
+					((DWORD)((float)unitPtr->UnitType->nRadarDistance * (float)Aspect->x / (float)parent->TAMAPTAPos.right)),
+					MegamapRadarColor);
 			}
 
 			if (MegamapSonarMinimum<unitPtr->UnitType->nSonarDistance)
@@ -1541,7 +1541,7 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 
 				DrawRadarCircle ( PixelBits, Aspect,
 					TAx, TAy, 
-					(static_cast<int>(unitPtr->UnitType->nSonarDistance)* static_cast<int>(Aspect->x))/ parent->TAMAPTAPos.right, 
+					((DWORD)((float)unitPtr->UnitType->nSonarDistance* (float)Aspect->x / (float)parent->TAMAPTAPos.right)),
 					MegamapSonarColor );
 			}
 	
@@ -1549,16 +1549,16 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 			{
 				DrawRadarCircle ( PixelBits, Aspect,
 					TAx, TAy, 
-					(static_cast<int>(unitPtr->UnitType->radardistancejam)* static_cast<int>(Aspect->x))/ parent->TAMAPTAPos.right, 
+					((DWORD)((float)unitPtr->UnitType->radardistancejam * (float)Aspect->x / (float)parent->TAMAPTAPos.right)),
 					MegamapRadarJamColor  );
 			}
 
 			if (MegamapSonarJamMinimum<unitPtr->UnitType->sonardistancejam)
 			{
-				DrawRadarCircle ( PixelBits, Aspect,
-					TAx, TAy, 
-					(static_cast<int>(unitPtr->UnitType->sonardistancejam)* static_cast<int>(Aspect->x))/ parent->TAMAPTAPos.right, 
-					MegamapSonarJamColor  );
+				DrawRadarCircle(PixelBits, Aspect,
+					TAx, TAy,
+					((DWORD)((float)unitPtr->UnitType->sonardistancejam * (float)Aspect->x / (float)parent->TAMAPTAPos.right)),
+					MegamapSonarJamColor);
 			}
 
 			// anti nuke
@@ -1569,7 +1569,7 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 				{
 					if (MegamapAntiNukeMinimum<static_cast<int>(unitPtr->Weapon1->coverage))
 					{
-						int Radius= (static_cast<int>(unitPtr->Weapon1->coverage- 0x200)* (static_cast<int>(Aspect->x))/ parent->TAMAPTAPos.right);
+						Radius = (DWORD)((float)unitPtr->Weapon1->coverage * (float)Aspect->x / (float)parent->TAMAPTAPos.right);
 
 						if (unitPtr->Weapon1Dotte)
 						{
@@ -1581,10 +1581,10 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 						}
 						else
 						{
-							DrawRadarCircle ( PixelBits, Aspect,
-								TAx, TAy, 
+							DrawRadarCircle(PixelBits, Aspect,
+								TAx, TAy,
 								Radius,
-								MegamapAntinukeColor  );
+								MegamapAntinukeColor);
 						}
 					}
 				}
@@ -1593,22 +1593,22 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 				{
 					if (MegamapAntiNukeMinimum<static_cast<int>(unitPtr->Weapon2->coverage))
 					{
-						int Radius= (static_cast<int>(unitPtr->Weapon2->coverage- 0x200)* (static_cast<int>(Aspect->x))/ parent->TAMAPTAPos.right);
+						int Radius = (DWORD)((float)unitPtr->UnitType->weapon2->coverage * (float)Aspect->x / (float)parent->TAMAPTAPos.right);
 						//int Radius= static_cast<int>(static_cast<float>(unitPtr->Weapon2->coverage- 0x200)* (static_cast<float>(Aspect->x)/ static_cast<float>(parent->TAMAPTAPos.right)));
 						if (unitPtr->Weapon2Dotte)
 						{
-							DrawDotteCircle ( PixelBits, Aspect,
-								TAx, TAy, 
+							DrawDotteCircle(PixelBits, Aspect,
+								TAx, TAy,
 								Radius,
-								MegamapAntinukeColor ,
+								MegamapAntinukeColor,
 								0x20, (*TAmainStruct_PtrPtr)->AntiWeaponDotte_b);
 						}
 						else
 						{
-							DrawRadarCircle ( PixelBits, Aspect,
-								TAx, TAy, 
+							DrawRadarCircle(PixelBits, Aspect,
+								TAx, TAy,
 								Radius,
-								MegamapAntinukeColor  );
+								MegamapAntinukeColor);
 						}
 					}
 				}
@@ -1617,7 +1617,7 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 				{
 					if (MegamapAntiNukeMinimum<static_cast<int>(unitPtr->Weapon3->coverage))
 					{
-						int Radius= (static_cast<int>(unitPtr->Weapon3->coverage- 0x200)* (static_cast<int>(Aspect->x))/ parent->TAMAPTAPos.right);
+						int Radius = (DWORD)((float)unitPtr->Weapon3->coverage * (float)Aspect->x / (float)parent->TAMAPTAPos.right);
 						if (unitPtr->Weapon3Dotte)
 						{
 							DrawDotteCircle ( PixelBits, Aspect,
@@ -1628,10 +1628,10 @@ void UnitsMinimap::DrawUnit ( LPBYTE PixelBits, POINT * Aspect, UnitStruct * uni
 						}
 						else
 						{
-							DrawRadarCircle ( PixelBits, Aspect,
-								TAx, TAy, 
+							DrawRadarCircle(PixelBits, Aspect,
+								TAx, TAy,
 								Radius,
-								MegamapAntinukeColor  );
+								MegamapAntinukeColor);
 						}
 					}
 				}

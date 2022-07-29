@@ -393,21 +393,30 @@ void ExternHotKey::FindIdleConst()
 					&&((MatchInTypeAry ( Start->UnitID, ConstructorMask))))
 				{
 
-					char *UnitState = (char*)(*UnitOrderPTR + 4);
-					
-					if((NULL==*UnitOrderPTR)
-						||(*UnitState==41 || *UnitState==64)) //idle
+					// add universal code for actual builders that can move
+					if (Start->UnitType->lRawSpeed_maxvelocity > 0)
 					{
-						if  (LastNum<i)
+						if (Start->UnitType->builddistance > 30)
 						{
-							LastNum = i;
 
-							*UnitSelected|= UnitSelected_State;
 
-							ScrollToCenter(*XPos, *YPos);
-							goto ReleaseIdleConsSemaphore;
+							char* UnitState = (char*)(*UnitOrderPTR + 4);
+
+							if ((NULL == *UnitOrderPTR)
+								|| (*UnitState == 41 || *UnitState == 64)) //idle
+							{
+								if (LastNum < i)
+								{
+									LastNum = i;
+
+									*UnitSelected |= UnitSelected_State;
+
+									ScrollToCenter(*XPos, *YPos);
+									goto ReleaseIdleConsSemaphore;
+								}
+
+							}
 						}
-
 					}
 				}
 			}
