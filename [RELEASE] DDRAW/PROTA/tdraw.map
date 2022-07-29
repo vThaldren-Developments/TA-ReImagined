@@ -1,6 +1,6 @@
  tdraw
 
- Timestamp is 62e3e5c1 (Fri Jul 29 09:50:57 2022)
+ Timestamp is 62e3e82f (Fri Jul 29 10:01:19 2022)
 
  Preferred load address is 10000000
 
@@ -648,107 +648,107 @@
  0001:00015fa0       ?GetPlayerColor@CIncome@@AAEEH@Z 10016fa0 f   cinomce.obj
  0001:00015fd0       ?IsShow@CIncome@@QAE_NPAUtagRECT@@@Z 10016fd0 f   cinomce.obj
  0001:00016020       ?Message@CIncome@@QAE_NPAUHWND__@@IIJ@Z 10017020 f   cinomce.obj
- 0001:00016550       ?PaintStoragebar@CIncome@@AAEXHHHH@Z 10017550 f   cinomce.obj
- 0001:00016730       ?ReadPos@CIncome@@AAEXXZ   10017730 f   cinomce.obj
- 0001:000167e0       ?Set@CIncome@@QAEXH@Z      100177e0 f   cinomce.obj
- 0001:00016800       ?ShowAllIncome@CIncome@@AAEHXZ 10017800 f   cinomce.obj
- 0001:000168d0       ?ShowAllyIncome@CIncome@@AAEHXZ 100178d0 f   cinomce.obj
- 0001:000169c0       ?ShowMyViewIncome@CIncome@@AAEXHH@Z 100179c0 f   cinomce.obj
- 0001:00016a90       ?ShowPlayerIncome@CIncome@@AAEXHHH@Z 10017a90 f   cinomce.obj
- 0001:00016d70       ?WritePos@CIncome@@AAEXXZ  10017d70 f   cinomce.obj
- 0001:00016e20       ?inRect@CIncome@@AAE_NHH@Z 10017e20 f   cinomce.obj
- 0001:00016f30       ??0CWarp@@QAE@H@Z          10017f30 f   commanderwarp.obj
- 0001:00016fb0       ??1CWarp@@QAE@XZ           10017fb0 f   commanderwarp.obj
- 0001:00017020       ?Blit@CWarp@@QAEXPAUIDirectDrawSurface@@@Z 10018020 f   commanderwarp.obj
- 0001:00017090       ?BlitBtn@CWarp@@AAEXPAE@Z  10018090 f   commanderwarp.obj
- 0001:00017220       ?Message@CWarp@@QAE_NPAUHWND__@@IIJ@Z 10018220 f   commanderwarp.obj
- 0001:000173f0       ?SetPos@CWarp@@AAEXHH@Z    100183f0 f   commanderwarp.obj
- 0001:00017440       ?WithinButton@CWarp@@AAE_NHH@Z 10018440 f   commanderwarp.obj
- 0001:00017490       ??$?0$$V@?$_Compressed_pair@V?$allocator@D@std@@V?$_String_val@U?$_Simple_types@D@std@@@2@$00@std@@QAE@U_Zero_then_variadic_args_t@1@@Z 10018490 f i dialog.obj
- 0001:000174b0       ??$_Construct_in_place@PADABQAD@std@@YGXAAPADABQAD@Z 100184b0 f i dialog.obj
- 0001:000174f0       ??$_Convert_size@I@std@@YGII@Z 100184f0 f i dialog.obj
- 0001:00017500       ??$_Destroy_in_place@PAD@std@@YGXAAPAD@Z 10018500 f i dialog.obj
- 0001:00017510       ??$_Get_size_of_n@$00@std@@YGII@Z 10018510 f i dialog.obj
- 0001:00017530       ??$_Reallocate_for@V<lambda_9366063389c5f42a00a5088cf24e69de>@@PBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@IV<lambda_9366063389c5f42a00a5088cf24e69de>@@PBD@Z 10018530 f i dialog.obj
- 0001:000175f0       ??$_Unfancy@D@std@@YGPADPAD@Z 100185f0 f i dialog.obj
- 0001:00017600       ??$_Voidify_iter@PAPAD@std@@YGPAXPAPAD@Z 10018600 f i dialog.obj
- 0001:00017610       ??$addressof@PAD@std@@YGPAPADAAPAD@Z 10018610 f i dialog.obj
- 0001:00017620       ??$forward@ABQAD@std@@YGABQADABQAD@Z 10018620 f i dialog.obj
- 0001:00017630       ??$max@I@std@@YGABIABI0@Z  10018630 f i dialog.obj
- 0001:00017660       ??0?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ 10018660 f i dialog.obj
- 0001:00017690       ??0?$allocator@D@std@@QAE@XZ 10018690 f i dialog.obj
- 0001:000176a0       ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@QBD@Z 100186a0 f i dialog.obj
- 0001:00017730       ??0Dialog@@QAE@H@Z         10018730 f   dialog.obj
- 0001:000179c0       ??0_Bxty@?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ 100189c0 f i dialog.obj
- 0001:000179e0       ??0_Fake_proxy_ptr_impl@std@@QAE@ABU_Fake_allocator@1@ABU_Container_base0@1@@Z 100189e0 f i dialog.obj
- 0001:000179f0       ??1?$_Compressed_pair@V?$allocator@D@std@@V?$_String_val@U?$_Simple_types@D@std@@@2@$00@std@@QAE@XZ 100189f0 f i dialog.obj
- 0001:00017a10       ??1?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ 10018a10 f i dialog.obj
- 0001:00017a30       ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ 10018a30 f i dialog.obj
- 0001:00017a50       ??1Dialog@@QAE@XZ          10018a50 f   dialog.obj
- 0001:00017a60       ??1_Bxty@?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ 10018a60 f i dialog.obj
- 0001:00017a70       ??A?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAADI@Z 10018a70 f i dialog.obj
- 0001:00017a90       ??R<lambda_9366063389c5f42a00a5088cf24e69de>@@QBE@QADIQBD@Z 10018a90 f i dialog.obj
- 0001:00017ad0       ?BlitCursor@Dialog@@QAEXPAEHH@Z 10018ad0 f   dialog.obj
- 0001:00017cb0       ?BlitDialog@Dialog@@QAEXPAE@Z 10018cb0 f   dialog.obj
- 0001:00017f50       ?CorrectPos@Dialog@@AAEXXZ 10018f50 f   dialog.obj
- 0001:00017fe0       ?DrawBackgroundButton@Dialog@@AAEXXZ 10018fe0 f   dialog.obj
- 0001:00018370       ?DrawDelay@Dialog@@AAEXXZ  10019370 f   dialog.obj
- 0001:00018470       ?DrawFullRings@Dialog@@AAEXXZ 10019470 f   dialog.obj
- 0001:00018700       ?DrawKeyCode@Dialog@@AAEXXZ 10019700 f   dialog.obj
- 0001:00018840       ?DrawMegaMapKey@Dialog@@AAEXXZ 10019840 f   dialog.obj
- 0001:00018930       ?DrawOptimizeDT@Dialog@@AAEXXZ 10019930 f   dialog.obj
- 0001:00018bc0       ?DrawShareBox@Dialog@@AAEXXZ 10019bc0 f   dialog.obj
- 0001:00018fc0       ?DrawSmallText@Dialog@@QAEXPAEHHPAD@Z 10019fc0 f   dialog.obj
- 0001:00019600       ?DrawTextA@Dialog@@QAEXPAEHHPAD@Z 1001a600 f   dialog.obj
- 0001:00019c40       ?DrawTinyText@Dialog@@AAEXPADHHD@Z 1001ac40 f   dialog.obj
- 0001:00019da0       ?DrawVSync@Dialog@@AAEXXZ  1001ada0 f   dialog.obj
- 0001:0001a110       ?DrawVisibleButton@Dialog@@AAEXXZ 1001b110 f   dialog.obj
- 0001:0001a1d0       ?DrawWhiteboardKey@Dialog@@AAEXXZ 1001b1d0 f   dialog.obj
- 0001:0001a2c0       ?EnterOption@@YGHPAUtagInlineX86StackBuffer@@@Z 1001b2c0 f   dialog.obj
- 0001:0001a2e0       ?FillRect@Dialog@@AAEXHHHHD@Z 1001b2e0 f   dialog.obj
- 0001:0001a3a0       ?HideDialog@Dialog@@QAEXXZ 1001b3a0 f   dialog.obj
- 0001:0001a3e0       ?Inside@Dialog@@AAE_NHHH@Z 1001b3e0 f   dialog.obj
- 0001:0001a650       ?IsShow@Dialog@@QAE_NPAUtagRECT@@@Z 1001b650 f   dialog.obj
- 0001:0001a6b0       ?Message@Dialog@@QAE_NPAUHWND__@@IIJ@Z 1001b6b0 f   dialog.obj
- 0001:0001b430       ?PressInOption@@YGHPAUtagInlineX86StackBuffer@@@Z 1001c430 f   dialog.obj
- 0001:0001b460       ?ReadPos@Dialog@@AAEXXZ    1001c460 f   dialog.obj
- 0001:0001b4f0       ?ReadSettings@Dialog@@QAEXXZ 1001c4f0 f   dialog.obj
- 0001:0001b830       ?RenderDialog@Dialog@@QAEXPAE@Z 1001c830 f   dialog.obj
- 0001:0001bb10       ?RestoreAll@Dialog@@QAEXXZ 1001cb10 f   dialog.obj
- 0001:0001bc90       ?RestoreCursor@Dialog@@AAEXXZ 1001cc90 f   dialog.obj
- 0001:0001be50       ?SetAll@Dialog@@QAEXXZ     1001ce50 f   dialog.obj
- 0001:0001bf60       ?SetVisibleList@Dialog@@AAEXXZ 1001cf60 f   dialog.obj
- 0001:0001bf70       ?ShowDialog@Dialog@@QAEXXZ 1001cf70 f   dialog.obj
- 0001:0001bfe0       ?WritePos@Dialog@@AAEXXZ   1001cfe0 f   dialog.obj
- 0001:0001c090       ?WriteSettings@Dialog@@AAEXXZ 1001d090 f   dialog.obj
- 0001:0001c1f0       ?_Calculate_growth@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABEII@Z 1001d1f0 f i dialog.obj
- 0001:0001c220       ?_Calculate_growth@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@CGIIII@Z 1001d220 f i dialog.obj
- 0001:0001c270       ?_Get_first@?$_Compressed_pair@V?$allocator@D@std@@V?$_String_val@U?$_Simple_types@D@std@@@2@$00@std@@QAEAAV?$allocator@D@2@XZ 1001d270 f i dialog.obj
- 0001:0001c280       ?_Get_first@?$_Compressed_pair@V?$allocator@D@std@@V?$_String_val@U?$_Simple_types@D@std@@@2@$00@std@@QBEABV?$allocator@D@2@XZ 1001d280 f i dialog.obj
- 0001:0001c290       ?_Getal@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV?$allocator@D@2@XZ 1001d290 f i dialog.obj
- 0001:0001c2b0       ?_Getal@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABEABV?$allocator@D@2@XZ 1001d2b0 f i dialog.obj
- 0001:0001c2d0       ?_Large_string_engaged@?$_String_val@U?$_Simple_types@D@std@@@std@@QBE_NXZ 1001d2d0 f i dialog.obj
- 0001:0001c300       ?_Myptr@?$_String_val@U?$_Simple_types@D@std@@@std@@QAEPADXZ 1001d300 f i dialog.obj
- 0001:0001c340       ?_Release@_Fake_proxy_ptr_impl@std@@QAEXXZ 1001d340 f i dialog.obj
- 0001:0001c350       ?_Tidy_deallocate@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ 1001d350 f i dialog.obj
- 0001:0001c410       ?_Tidy_init@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ 1001d410 f i dialog.obj
- 0001:0001c450       ?_Xlen_string@std@@YGXXZ   1001d450 f i dialog.obj
- 0001:0001c460       ?allocate@?$allocator@D@std@@QAEPADI@Z 1001d460 f i dialog.obj
- 0001:0001c480       ?assign@?$_Narrow_char_traits@DH@std@@SGXAADABD@Z 1001d480 f i dialog.obj
- 0001:0001c4a0       ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@QBD@Z 1001d4a0 f i dialog.obj
- 0001:0001c4d0       ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@QBDI@Z 1001d4d0 f i dialog.obj
- 0001:0001c550       ?copy@?$_Char_traits@DH@std@@SGPADQADQBDI@Z 1001d550 f i dialog.obj
- 0001:0001c570       ?deallocate@?$allocator@D@std@@QAEXQADI@Z 1001d570 f i dialog.obj
- 0001:0001c590       ?length@?$_Narrow_char_traits@DH@std@@SGIQBD@Z 1001d590 f i dialog.obj
- 0001:0001c5b0       ?max_size@?$_Default_allocator_traits@V?$allocator@D@std@@@std@@SGIABV?$allocator@D@2@@Z 1001d5b0 f i dialog.obj
- 0001:0001c5c0       ?max_size@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIXZ 1001d5c0 f i dialog.obj
- 0001:0001c620       ?move@?$_Char_traits@DH@std@@SGPADQADQBDI@Z 1001d620 f i dialog.obj
- 0001:0001c640       ?size@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIXZ 1001d640 f i dialog.obj
- 0001:0001c660       ??0CMapRect@@QAE@H@Z       1001d660 f   maprect.obj
- 0001:0001cb20       ??1CMapRect@@QAE@XZ        1001db20 f   maprect.obj
- 0001:0001cb80       ?Blit@CMapRect@@QAEXPAUIDirectDrawSurface@@@Z 1001db80 f   maprect.obj
- 0001:0001cdb0       ?GetMapMaxX@CMapRect@@AAEHXZ 1001ddb0 f   maprect.obj
- 0001:0001cdd0       ?GetMapMaxY@CMapRect@@AAEHXZ 1001ddd0 f   maprect.obj
+ 0001:00016570       ?PaintStoragebar@CIncome@@AAEXHHHH@Z 10017570 f   cinomce.obj
+ 0001:00016750       ?ReadPos@CIncome@@AAEXXZ   10017750 f   cinomce.obj
+ 0001:00016800       ?Set@CIncome@@QAEXH@Z      10017800 f   cinomce.obj
+ 0001:00016820       ?ShowAllIncome@CIncome@@AAEHXZ 10017820 f   cinomce.obj
+ 0001:000168f0       ?ShowAllyIncome@CIncome@@AAEHXZ 100178f0 f   cinomce.obj
+ 0001:000169e0       ?ShowMyViewIncome@CIncome@@AAEXHH@Z 100179e0 f   cinomce.obj
+ 0001:00016ab0       ?ShowPlayerIncome@CIncome@@AAEXHHH@Z 10017ab0 f   cinomce.obj
+ 0001:00016d90       ?WritePos@CIncome@@AAEXXZ  10017d90 f   cinomce.obj
+ 0001:00016e40       ?inRect@CIncome@@AAE_NHH@Z 10017e40 f   cinomce.obj
+ 0001:00016f50       ??0CWarp@@QAE@H@Z          10017f50 f   commanderwarp.obj
+ 0001:00016fd0       ??1CWarp@@QAE@XZ           10017fd0 f   commanderwarp.obj
+ 0001:00017040       ?Blit@CWarp@@QAEXPAUIDirectDrawSurface@@@Z 10018040 f   commanderwarp.obj
+ 0001:000170b0       ?BlitBtn@CWarp@@AAEXPAE@Z  100180b0 f   commanderwarp.obj
+ 0001:00017240       ?Message@CWarp@@QAE_NPAUHWND__@@IIJ@Z 10018240 f   commanderwarp.obj
+ 0001:00017410       ?SetPos@CWarp@@AAEXHH@Z    10018410 f   commanderwarp.obj
+ 0001:00017460       ?WithinButton@CWarp@@AAE_NHH@Z 10018460 f   commanderwarp.obj
+ 0001:000174b0       ??$?0$$V@?$_Compressed_pair@V?$allocator@D@std@@V?$_String_val@U?$_Simple_types@D@std@@@2@$00@std@@QAE@U_Zero_then_variadic_args_t@1@@Z 100184b0 f i dialog.obj
+ 0001:000174d0       ??$_Construct_in_place@PADABQAD@std@@YGXAAPADABQAD@Z 100184d0 f i dialog.obj
+ 0001:00017510       ??$_Convert_size@I@std@@YGII@Z 10018510 f i dialog.obj
+ 0001:00017520       ??$_Destroy_in_place@PAD@std@@YGXAAPAD@Z 10018520 f i dialog.obj
+ 0001:00017530       ??$_Get_size_of_n@$00@std@@YGII@Z 10018530 f i dialog.obj
+ 0001:00017550       ??$_Reallocate_for@V<lambda_9366063389c5f42a00a5088cf24e69de>@@PBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@IV<lambda_9366063389c5f42a00a5088cf24e69de>@@PBD@Z 10018550 f i dialog.obj
+ 0001:00017610       ??$_Unfancy@D@std@@YGPADPAD@Z 10018610 f i dialog.obj
+ 0001:00017620       ??$_Voidify_iter@PAPAD@std@@YGPAXPAPAD@Z 10018620 f i dialog.obj
+ 0001:00017630       ??$addressof@PAD@std@@YGPAPADAAPAD@Z 10018630 f i dialog.obj
+ 0001:00017640       ??$forward@ABQAD@std@@YGABQADABQAD@Z 10018640 f i dialog.obj
+ 0001:00017650       ??$max@I@std@@YGABIABI0@Z  10018650 f i dialog.obj
+ 0001:00017680       ??0?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ 10018680 f i dialog.obj
+ 0001:000176b0       ??0?$allocator@D@std@@QAE@XZ 100186b0 f i dialog.obj
+ 0001:000176c0       ??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@QBD@Z 100186c0 f i dialog.obj
+ 0001:00017750       ??0Dialog@@QAE@H@Z         10018750 f   dialog.obj
+ 0001:000179e0       ??0_Bxty@?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ 100189e0 f i dialog.obj
+ 0001:00017a00       ??0_Fake_proxy_ptr_impl@std@@QAE@ABU_Fake_allocator@1@ABU_Container_base0@1@@Z 10018a00 f i dialog.obj
+ 0001:00017a10       ??1?$_Compressed_pair@V?$allocator@D@std@@V?$_String_val@U?$_Simple_types@D@std@@@2@$00@std@@QAE@XZ 10018a10 f i dialog.obj
+ 0001:00017a30       ??1?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ 10018a30 f i dialog.obj
+ 0001:00017a50       ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ 10018a50 f i dialog.obj
+ 0001:00017a70       ??1Dialog@@QAE@XZ          10018a70 f   dialog.obj
+ 0001:00017a80       ??1_Bxty@?$_String_val@U?$_Simple_types@D@std@@@std@@QAE@XZ 10018a80 f i dialog.obj
+ 0001:00017a90       ??A?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAADI@Z 10018a90 f i dialog.obj
+ 0001:00017ab0       ??R<lambda_9366063389c5f42a00a5088cf24e69de>@@QBE@QADIQBD@Z 10018ab0 f i dialog.obj
+ 0001:00017af0       ?BlitCursor@Dialog@@QAEXPAEHH@Z 10018af0 f   dialog.obj
+ 0001:00017cd0       ?BlitDialog@Dialog@@QAEXPAE@Z 10018cd0 f   dialog.obj
+ 0001:00017f70       ?CorrectPos@Dialog@@AAEXXZ 10018f70 f   dialog.obj
+ 0001:00018000       ?DrawBackgroundButton@Dialog@@AAEXXZ 10019000 f   dialog.obj
+ 0001:00018390       ?DrawDelay@Dialog@@AAEXXZ  10019390 f   dialog.obj
+ 0001:00018490       ?DrawFullRings@Dialog@@AAEXXZ 10019490 f   dialog.obj
+ 0001:00018720       ?DrawKeyCode@Dialog@@AAEXXZ 10019720 f   dialog.obj
+ 0001:00018860       ?DrawMegaMapKey@Dialog@@AAEXXZ 10019860 f   dialog.obj
+ 0001:00018950       ?DrawOptimizeDT@Dialog@@AAEXXZ 10019950 f   dialog.obj
+ 0001:00018be0       ?DrawShareBox@Dialog@@AAEXXZ 10019be0 f   dialog.obj
+ 0001:00018fe0       ?DrawSmallText@Dialog@@QAEXPAEHHPAD@Z 10019fe0 f   dialog.obj
+ 0001:00019620       ?DrawTextA@Dialog@@QAEXPAEHHPAD@Z 1001a620 f   dialog.obj
+ 0001:00019c60       ?DrawTinyText@Dialog@@AAEXPADHHD@Z 1001ac60 f   dialog.obj
+ 0001:00019dc0       ?DrawVSync@Dialog@@AAEXXZ  1001adc0 f   dialog.obj
+ 0001:0001a130       ?DrawVisibleButton@Dialog@@AAEXXZ 1001b130 f   dialog.obj
+ 0001:0001a1f0       ?DrawWhiteboardKey@Dialog@@AAEXXZ 1001b1f0 f   dialog.obj
+ 0001:0001a2e0       ?EnterOption@@YGHPAUtagInlineX86StackBuffer@@@Z 1001b2e0 f   dialog.obj
+ 0001:0001a300       ?FillRect@Dialog@@AAEXHHHHD@Z 1001b300 f   dialog.obj
+ 0001:0001a3c0       ?HideDialog@Dialog@@QAEXXZ 1001b3c0 f   dialog.obj
+ 0001:0001a400       ?Inside@Dialog@@AAE_NHHH@Z 1001b400 f   dialog.obj
+ 0001:0001a670       ?IsShow@Dialog@@QAE_NPAUtagRECT@@@Z 1001b670 f   dialog.obj
+ 0001:0001a6d0       ?Message@Dialog@@QAE_NPAUHWND__@@IIJ@Z 1001b6d0 f   dialog.obj
+ 0001:0001b450       ?PressInOption@@YGHPAUtagInlineX86StackBuffer@@@Z 1001c450 f   dialog.obj
+ 0001:0001b480       ?ReadPos@Dialog@@AAEXXZ    1001c480 f   dialog.obj
+ 0001:0001b510       ?ReadSettings@Dialog@@QAEXXZ 1001c510 f   dialog.obj
+ 0001:0001b850       ?RenderDialog@Dialog@@QAEXPAE@Z 1001c850 f   dialog.obj
+ 0001:0001bb30       ?RestoreAll@Dialog@@QAEXXZ 1001cb30 f   dialog.obj
+ 0001:0001bcb0       ?RestoreCursor@Dialog@@AAEXXZ 1001ccb0 f   dialog.obj
+ 0001:0001be70       ?SetAll@Dialog@@QAEXXZ     1001ce70 f   dialog.obj
+ 0001:0001bf80       ?SetVisibleList@Dialog@@AAEXXZ 1001cf80 f   dialog.obj
+ 0001:0001bf90       ?ShowDialog@Dialog@@QAEXXZ 1001cf90 f   dialog.obj
+ 0001:0001c000       ?WritePos@Dialog@@AAEXXZ   1001d000 f   dialog.obj
+ 0001:0001c0b0       ?WriteSettings@Dialog@@AAEXXZ 1001d0b0 f   dialog.obj
+ 0001:0001c210       ?_Calculate_growth@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABEII@Z 1001d210 f i dialog.obj
+ 0001:0001c240       ?_Calculate_growth@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@CGIIII@Z 1001d240 f i dialog.obj
+ 0001:0001c290       ?_Get_first@?$_Compressed_pair@V?$allocator@D@std@@V?$_String_val@U?$_Simple_types@D@std@@@2@$00@std@@QAEAAV?$allocator@D@2@XZ 1001d290 f i dialog.obj
+ 0001:0001c2a0       ?_Get_first@?$_Compressed_pair@V?$allocator@D@std@@V?$_String_val@U?$_Simple_types@D@std@@@2@$00@std@@QBEABV?$allocator@D@2@XZ 1001d2a0 f i dialog.obj
+ 0001:0001c2b0       ?_Getal@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV?$allocator@D@2@XZ 1001d2b0 f i dialog.obj
+ 0001:0001c2d0       ?_Getal@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABEABV?$allocator@D@2@XZ 1001d2d0 f i dialog.obj
+ 0001:0001c2f0       ?_Large_string_engaged@?$_String_val@U?$_Simple_types@D@std@@@std@@QBE_NXZ 1001d2f0 f i dialog.obj
+ 0001:0001c320       ?_Myptr@?$_String_val@U?$_Simple_types@D@std@@@std@@QAEPADXZ 1001d320 f i dialog.obj
+ 0001:0001c360       ?_Release@_Fake_proxy_ptr_impl@std@@QAEXXZ 1001d360 f i dialog.obj
+ 0001:0001c370       ?_Tidy_deallocate@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ 1001d370 f i dialog.obj
+ 0001:0001c430       ?_Tidy_init@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ 1001d430 f i dialog.obj
+ 0001:0001c470       ?_Xlen_string@std@@YGXXZ   1001d470 f i dialog.obj
+ 0001:0001c480       ?allocate@?$allocator@D@std@@QAEPADI@Z 1001d480 f i dialog.obj
+ 0001:0001c4a0       ?assign@?$_Narrow_char_traits@DH@std@@SGXAADABD@Z 1001d4a0 f i dialog.obj
+ 0001:0001c4c0       ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@QBD@Z 1001d4c0 f i dialog.obj
+ 0001:0001c4f0       ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@QBDI@Z 1001d4f0 f i dialog.obj
+ 0001:0001c570       ?copy@?$_Char_traits@DH@std@@SGPADQADQBDI@Z 1001d570 f i dialog.obj
+ 0001:0001c590       ?deallocate@?$allocator@D@std@@QAEXQADI@Z 1001d590 f i dialog.obj
+ 0001:0001c5b0       ?length@?$_Narrow_char_traits@DH@std@@SGIQBD@Z 1001d5b0 f i dialog.obj
+ 0001:0001c5d0       ?max_size@?$_Default_allocator_traits@V?$allocator@D@std@@@std@@SGIABV?$allocator@D@2@@Z 1001d5d0 f i dialog.obj
+ 0001:0001c5e0       ?max_size@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIXZ 1001d5e0 f i dialog.obj
+ 0001:0001c640       ?move@?$_Char_traits@DH@std@@SGPADQADQBDI@Z 1001d640 f i dialog.obj
+ 0001:0001c660       ?size@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIXZ 1001d660 f i dialog.obj
+ 0001:0001c680       ??0CMapRect@@QAE@H@Z       1001d680 f   maprect.obj
+ 0001:0001cb40       ??1CMapRect@@QAE@XZ        1001db40 f   maprect.obj
+ 0001:0001cba0       ?Blit@CMapRect@@QAEXPAUIDirectDrawSurface@@@Z 1001dba0 f   maprect.obj
+ 0001:0001cdd0       ?GetMapMaxX@CMapRect@@AAEHXZ 1001ddd0 f   maprect.obj
+ 0001:0001cdf0       ?GetMapMaxY@CMapRect@@AAEHXZ 1001ddf0 f   maprect.obj
  0001:0001ce10       ?LockBlit@CMapRect@@QAEXPADH@Z 1001de10 f   maprect.obj
  0001:0001d150       ?PaintRect@CMapRect@@AAEXXZ 1001e150 f   maprect.obj
  0001:0001d2e0       ?WorldToMiniX@CMapRect@@QAEHH@Z 1001e2e0 f   maprect.obj
@@ -6861,7 +6861,7 @@
  0001:00011610       _memcpy_s                  10012610 f   MapParse.obj
  0001:000126a6       __catch$?EnsureDplayx@ModifyWeaponPacket@@AAEXH@Z$0 100136a6 f   MultiGameWeaponID.obj
  0001:00013ebf       __catch$?InitDDDTA@CDDDTA@@AAEXXZ$0 10014ebf f   dddta.obj
- 0001:0001a620       $LN38                      1001b620     dialog.obj
+ 0001:0001a640       $LN38                      1001b640     dialog.obj
  0001:0001f1d1       __catch$??$_Emplace_reallocate@ABQAVRegDword@@@?$vector@PAVRegDword@@V?$allocator@PAVRegDword@@@std@@@std@@AAEPAPAVRegDword@@QAPAV2@ABQAV2@@Z$0 100201d1 f i TAConfig.obj
  0001:0001f3a1       __catch$??$_Emplace_reallocate@ABQAVRegString@@@?$vector@PAVRegString@@V?$allocator@PAVRegString@@@std@@@std@@AAEPAPAVRegString@@QAPAV2@ABQAV2@@Z$0 100203a1 f i TAConfig.obj
  0001:00020540       $LN12                      10021540     TAConfig.obj

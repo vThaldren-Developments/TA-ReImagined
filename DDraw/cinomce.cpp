@@ -572,7 +572,7 @@ bool CIncome::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 			}
 		}
 
-		if (j == 0)
+		if (j == 0 && !DataShare->PlayingDemo)
 			return false;
 		
 		//if(DataShare->PlayingDemo && (0 != (WATCH & (Ptr->Players[LocalShare->OrgLocalPlayerID].PlayerInfo->PropertyMask))))
