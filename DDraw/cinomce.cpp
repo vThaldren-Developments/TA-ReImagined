@@ -18,7 +18,7 @@
 #include "TAConfig.h"
 
 
-
+extern int lastPitch;
 int X, Y;
 
 CIncome::CIncome(BOOL VidMem)
@@ -86,8 +86,24 @@ void CIncome::BlitIncome(LPBYTE DestSurf)
 	//		return;
 	//}
 
+
+	bool respectPitch = false;
+
+
+	if (lastPitch != (*TAmainStruct_PtrPtr)->ScreenWidth)
+	{
+		respectPitch = true;
+	}
+
+
+
+
 	SurfaceMemory = DestSurf;
-	lPitch = (*TAmainStruct_PtrPtr)->ScreenWidth;
+
+	if (respectPitch)
+		lPitch = lastPitch;
+	else
+		lPitch = (*TAmainStruct_PtrPtr)->ScreenWidth;
 
 
 	//BlitState++;
