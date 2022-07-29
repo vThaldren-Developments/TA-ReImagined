@@ -22,6 +22,7 @@
 #include "MegamapControl.h"
 
 #include <vector>
+#include <string>
 
 #include "UnicodeSupport.h"
 
@@ -57,11 +58,7 @@ Dialog::Dialog(BOOL Vidmem_a)
 
 	VidMem= Vidmem_a;
 	ReadPos();
-	ReadSettings();
-	
-
-	//SetAll();
-	
+	ReadSettings();	
 
 
 
@@ -355,6 +352,7 @@ void Dialog::RestoreAll()
 
 bool Dialog::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
+
 	__try
 	{
 		if(!DialogVisible)
@@ -1221,7 +1219,10 @@ void Dialog::WriteSettings()
 
 
 	RegSetValueEx(hKey, "Delay", NULL, REG_SZ, (unsigned char*)cAutoClickDelay, strlen(cAutoClickDelay));
-	RegSetValueEx(hKey, "WhiteboardKey", NULL, REG_DWORD, (unsigned char*)&VirtualWhiteboardKey, sizeof(int));
+	//RegSetValueEx(hKey, "WhiteboardKey", NULL, REG_DWORD, (unsigned char*)&VirtualWhiteboardKey, sizeof(int));
+
+
+
 	RegSetValueEx(hKey, "MegamapKey", NULL, REG_DWORD, (unsigned char*)&VirtualMegamap, sizeof(int));
 
 	RegCloseKey(hKey);
@@ -1230,6 +1231,32 @@ void Dialog::WriteSettings()
 
 void Dialog::ReadSettings()
 {
+	TCHAR ConfigFileNameFullPath2[256];
+	std::string ConfigFileName2 = "Settings.ini"; // maybe make it per-mod sided at some point?
+
+
+	unsigned int x;
+
+	x = GetModuleFileNameA(0, ConfigFileNameFullPath2, 256);
+
+	while (ConfigFileNameFullPath2[x] != '\\')
+	{
+		ConfigFileNameFullPath2[x] = 0x00;
+		x--;
+	}
+
+	x++;
+
+	for (size_t i = 0; i < ConfigFileName2.size(); i++)
+	{
+		ConfigFileNameFullPath2[x] = ConfigFileName2[i];
+		x++;
+	}
+
+	ConfigFileNameFullPath2[x] = 0x00;
+
+
+
 	HKEY hKey;
 	DWORD dwDisposition;
 	DWORD Size;
@@ -1238,11 +1265,11 @@ void Dialog::ReadSettings()
 
 	RegCreateKeyEx(HKEY_CURRENT_USER, TADRREGPATH, NULL, TADRCONFIGREGNAME, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey, &dwDisposition);
 
-	Size = sizeof(int);
-	if(RegQueryValueEx(hKey, "BackGround", NULL, NULL, (unsigned char*)&StagedButton3State, &Size) != ERROR_SUCCESS)
-	{
-		StagedButton3State = 0;
-	}
+	//Size = sizeof(int);
+	//if(RegQueryValueEx(hKey, "BackGround", NULL, NULL, (unsigned char*)&StagedButton3State, &Size) != ERROR_SUCCESS)
+	//{
+	//	StagedButton3State = 0;
+	//}
 	Size = sizeof(bool);
 	if(RegQueryValueEx(hKey, "VSync", NULL, NULL, (unsigned char*)&VSyncEnabled, &Size) != ERROR_SUCCESS)
 	{
@@ -1253,16 +1280,23 @@ void Dialog::ReadSettings()
 	{
 		VirtualKeyCode = 88;
 	}
-	Size = sizeof(bool);
-	if(RegQueryValueEx(hKey, "OptimizeDT", NULL, NULL, (unsigned char*)&OptimizeDTEnabled, &Size) != ERROR_SUCCESS)
-	{
-		OptimizeDTEnabled = true;
-	}
-	Size = sizeof(bool);
-	if(RegQueryValueEx(hKey, "FullRings", NULL, NULL, (unsigned char*)&FullRingsEnabled, &Size) != ERROR_SUCCESS)
-	{
-		FullRingsEnabled = true;
-	}
+
+	OptimizeDTEnabled = GetPrivateProfileIntA("Settings", "OptimizeDTEnabled", 1, ConfigFileNameFullPath2);
+
+	//Size = sizeof(bool);
+	//if(RegQueryValueEx(hKey, "OptimizeDT", NULL, NULL, (unsigned char*)&OptimizeDTEnabled, &Size) != ERROR_SUCCESS)
+	//{
+	//	OptimizeDTEnabled = true;
+	//}
+
+	FullRingsEnabled = GetPrivateProfileIntA("Settings", "FullRingsEnabled", 1, ConfigFileNameFullPath2);
+
+
+	//Size = sizeof(bool);
+	//if(RegQueryValueEx(hKey, "FullRings", NULL, NULL, (unsigned char*)&FullRingsEnabled, &Size) != ERROR_SUCCESS)
+	//{
+	//	FullRingsEnabled = true;
+	//}
 	//Size = 1000;
 	//if(RegQueryValueEx(hKey, "ShareText", NULL, NULL, (unsigned char*)ShareText, &Size) != ERROR_SUCCESS)
 	//{
@@ -1277,16 +1311,20 @@ void Dialog::ReadSettings()
 		lstrcpyA(cAutoClickDelay, "10");
 	}
 	Size = sizeof(int);
-	if(RegQueryValueEx(hKey, "WhiteboardKey", NULL, NULL, (unsigned char*)&VirtualWhiteboardKey, &Size) != ERROR_SUCCESS)
-	{
-		VirtualWhiteboardKey = 220;
-	}
 
-	Size = sizeof(int);
-	if(RegQueryValueEx(hKey, "MegamapKey", NULL, NULL, (unsigned char*)&VirtualMegamap, &Size) != ERROR_SUCCESS)
-	{
-		VirtualMegamap = VK_TAB;
-	}
+
+
+	VirtualWhiteboardKey = GetPrivateProfileIntA("Settings", "WhiteboardKey", 220, ConfigFileNameFullPath2);
+
+
+
+	VirtualMegamap = GetPrivateProfileIntA("Settings", "MegaMapKey", 115, ConfigFileNameFullPath2);
+
+	//Size = sizeof(int);
+	//if(RegQueryValueEx(hKey, "MegamapKey", NULL, NULL, (unsigned char*)&VirtualMegamap, &Size) != ERROR_SUCCESS)
+	//{
+	//	VirtualMegamap = VK_TAB;
+	//}
 
 	RegCloseKey(hKey);
 }

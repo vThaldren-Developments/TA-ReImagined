@@ -155,7 +155,7 @@ class Dialog
 
     void ReadPos();
     void WritePos();
-    void ReadSettings();
+
     void WriteSettings();
 
     void CorrectPos();
@@ -167,7 +167,7 @@ class Dialog
     Dialog(BOOL VidMem_a);
     ~Dialog();
     void RenderDialog(LPBYTE SurfaceMemory_);
-
+    void ReadSettings();
     void RestoreAll();
     void ShowDialog();
     void HideDialog();

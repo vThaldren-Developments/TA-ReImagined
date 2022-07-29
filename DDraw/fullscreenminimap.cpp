@@ -422,7 +422,7 @@ FullScreenMinimap::FullScreenMinimap (BOOL Doit, int FPSlimit)
 	DrawTAScreenEnd_hok= NULL;
 
 
-	MegamapVirtualKey= VK_F4;
+	//MegamapVirtualKey= VK_F4;
 
 	savedMEGAMAPsurface = 0;
 

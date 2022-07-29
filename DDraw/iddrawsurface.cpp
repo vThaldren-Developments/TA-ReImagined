@@ -199,6 +199,11 @@ IDDrawSurface::IDDrawSurface(LPDIRECTDRAW lpDD, LPDDSURFACEDESC lpTAddsc, LPDIRE
 	ChangeQueue = new CChangeQueue;
 	DDDTA = new CDDDTA;
 
+
+	SettingsDialog->ReadSettings();
+	SettingsDialog->SetAll();
+
+
 #ifdef USEMEGAMAP
 
 	if (GUIExpander

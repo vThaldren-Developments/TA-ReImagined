@@ -37,7 +37,7 @@ AlliesWhiteboard::AlliesWhiteboard(BOOL VidMem)
 
 	LocalShare->Whiteboard = this;
 	Disabled = false;
-	VirtualKeyCode = 220;
+	//VirtualKeyCode = 220;
 
 	int *PTR = (int*)0x00511de8;
 
