@@ -65,7 +65,7 @@ CIncome::CIncome(BOOL VidMem)
 	PlayerDotColors[9] = MyConfig->GetIniInt("Player10DotColors", 67);
 
 
-	LocalShare->Height = PlayerHight * 10;
+	
 	//IDDrawSurface::OutptTxt ( "New CIncome");
 }
 
@@ -85,6 +85,20 @@ void CIncome::BlitIncome(LPBYTE DestSurf)
 	//	if (lpIncomeSurf->Restore() != DD_OK)
 	//		return;
 	//}
+
+	int j = 0;
+	for (int i = 0; i < 10; i++)
+	{
+		if (strlen(DataShare->PlayerNames[i]) > 0)
+		{
+			j++;
+		}
+	}
+
+	LocalShare->Height = PlayerHight * j;
+
+
+
 
 
 	bool respectPitch = false;
@@ -517,9 +531,9 @@ bool CIncome::inRect(int x, int y)
 	CorrectPos();
 
 	int j = 0;
-	for (int i = 1; i < 10; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		if (DataShare->allies[i])
+		if (strlen(DataShare->PlayerNames[i])> 0)
 		{
 			j++;
 		}
@@ -527,12 +541,13 @@ bool CIncome::inRect(int x, int y)
 
 	TAdynmemStruct* Ptr = *(TAdynmemStruct**)0x00511de8;
 
-	if (!DataShare->PlayingDemo && (0 != (WATCH & (Ptr->Players[LocalShare->OrgLocalPlayerID].PlayerInfo->PropertyMask))))
+	if (DataShare->PlayingDemo
+		|| (0 != (WATCH & (Ptr->Players[LocalShare->OrgLocalPlayerID].PlayerInfo->PropertyMask))))
 	{
 		if (x > posX &&
 			x<(posX + LocalShare->Width)
 			&& y>(posY)
-			&& y < ((posY)+LocalShare->Height))
+			&& y < ((posY)+PlayerHight * j))
 		{
 			return true;
 		}
@@ -548,7 +563,6 @@ bool CIncome::inRect(int x, int y)
 		}
 	}
 
-
 	return false;
 }
 bool CIncome::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
@@ -557,7 +571,6 @@ bool CIncome::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	{
 		TAdynmemStruct* Ptr;
 		Ptr = *(TAdynmemStruct**)0x00511de8;
-
 
 		if (DataShare->TAProgress != TAInGame)
 			return false;
@@ -572,7 +585,7 @@ bool CIncome::Message(HWND WinProchWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 			}
 		}
 
-		if (j == 0 && !DataShare->PlayingDemo)
+		if (j == 0 && DataShare->PlayingDemo == false)
 			return false;
 		
 		//if(DataShare->PlayingDemo && (0 != (WATCH & (Ptr->Players[LocalShare->OrgLocalPlayerID].PlayerInfo->PropertyMask))))
@@ -744,6 +757,16 @@ bool CIncome::IsShow(RECT* Rect_p)
 
 void CIncome::CorrectPos()
 {
+	int j = 0;
+	for (int i = 1; i < 10; i++)
+	{
+		if (DataShare->allies[i] || strlen(DataShare->PlayerNames[i]) > 0)
+		{
+			j++;
+		}
+	}
+
+
 	if (posX < 0)
 		posX = 0;
 	if (posX > (LocalShare->ScreenWidth - PlayerWidth))
@@ -753,8 +776,8 @@ void CIncome::CorrectPos()
 		posY = 0;
 	//if (posY > (LocalShare->ScreenHeight - (PlayerHight * 2))) //always two players inside screen
 		//posY = LocalShare->ScreenHeight - (PlayerHight * 2);
- 	if (posY > (LocalShare->ScreenHeight - (PlayerHight * 10))) //always two players inside screen
-		posY = LocalShare->ScreenHeight - (PlayerHight * 10);
+ 	if (posY > (LocalShare->ScreenHeight - (PlayerHight * (j+1)))) //always two players inside screen
+		posY = LocalShare->ScreenHeight - (PlayerHight * (j+1));
 
 }
 
